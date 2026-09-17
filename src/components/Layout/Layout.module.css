@@ -1,0 +1,42 @@
+.layout {
+  display: flex;
+  min-height: calc(100vh - 60px); /* adjust if your navbar height is different */
+}
+
+.sidebarWrapper {
+  width: 280px;
+  flex-shrink: 0;
+  border-right: 1px solid #e5e7eb;
+  background-color: #f8f9fa;
+  position: sticky;
+  top: 60px;
+  height: calc(100vh - 60px);
+  overflow-y: auto;
+}
+
+.content {
+  flex: 1;
+  padding: 2.5rem 3rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Mobile Responsive */
+@media (max-width: 996px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebarWrapper {
+    width: 100%;
+    height: auto;
+    position: relative;
+    top: 0;
+    border-right: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .content {
+    padding: 1.5rem;
+  }
+}
