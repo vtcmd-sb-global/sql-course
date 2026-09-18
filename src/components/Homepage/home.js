@@ -5,15 +5,14 @@ const HomePage = () => {
   return (
     <div className="home-page">
       <main>
-        <h1>Proficient Programming with C#</h1>
-
+        <h1>SQL Server – The Definitive Guide</h1>
         <p>
-          Welcome to the <strong>C# (C-Sharp) Course</strong>.
+          Welcome to the <strong>SQL Server Course</strong>.
         </p>
-
         <p>
-          This course takes you from C# fundamentals to advanced C# and
-          professional application development.
+          This course takes you from fundamental database concepts to advanced
+          SQL Server 2022 features, including T-SQL programming, performance
+          tuning, and modern data capabilities.
         </p>
 
         {/* Course Levels */}
@@ -22,31 +21,30 @@ const HomePage = () => {
 
           <h3>Beginner</h3>
           <ul>
-            <li>C# Fundamentals</li>
-            <li>Variables & Data Types</li>
-            <li>Operators</li>
-            <li>Conditions & Loops</li>
-            <li>Arrays</li>
-            <li>Methods</li>
+            <li>RDBMS Concepts</li>
+            <li>Entity-Relationship (E-R) Model & Normalization</li>
+            <li>Introduction to SQL Server 2022</li>
+            <li>Transact-SQL Basics</li>
+            <li>Creating and Managing Databases</li>
+            <li>Creating Tables</li>
           </ul>
 
           <h3>Intermediate</h3>
           <ul>
-            <li>Classes & Objects</li>
-            <li>Inheritance & Polymorphism</li>
-            <li>Abstract Classes & Interfaces</li>
-            <li>Properties, Indexers & Records</li>
-            <li>Exception Handling</li>
-            <li>Delegates, Events & Collections</li>
+            <li>Microsoft Azure SQL</li>
+            <li>Accessing Data (SELECT & Clauses)</li>
+            <li>Advanced Queries and Joins</li>
+            <li>Views, Stored Procedures & Metadata</li>
+            <li>Indexes</li>
+            <li>Triggers</li>
           </ul>
 
           <h3>Advanced</h3>
           <ul>
-            <li>Generics & Iterators</li>
-            <li>Windows Forms + SQL Server</li>
-            <li>Advanced C# Features</li>
-            <li>.NET MAUI (Cross-Platform Apps)</li>
-            <li>Modern .NET & Future</li>
+            <li>Programming Transact-SQL</li>
+            <li>Transactions and Error Handling</li>
+            <li>PolyBase and Query Store</li>
+            <li>Artificial Intelligence and Machine Learning in SQL Server 2022</li>
           </ul>
         </section>
 
@@ -54,13 +52,13 @@ const HomePage = () => {
         <section>
           <h2>Course Structure</h2>
           <p>
-            The course contains <strong>14 sessions</strong>, with each session
+            The course contains <strong>16 sessions</strong>, with each session
             lasting approximately <strong>2 hours</strong>.
           </p>
           <p>
-            These guides are prepared according to the official Aptech C# book
-            so that students can follow both the book and practical examples
-            easily.
+            These guides are prepared according to the official Aptech book
+            <strong> “SQL Server – The Definitive Guide”</strong> so that students
+            can follow both the book and practical examples easily.
           </p>
         </section>
 
@@ -69,12 +67,12 @@ const HomePage = () => {
           <h2>Student Expectations</h2>
           <p>Students are expected to:</p>
           <ol>
-            <li>Read the lesson material.</li>
-            <li>Type and execute the examples themselves.</li>
-            <li>Complete the exercises.</li>
+            <li>Read the lesson material carefully.</li>
+            <li>Type and execute all examples themselves in SSMS.</li>
+            <li>Complete the exercises and challenges.</li>
             <li>Complete the assignments.</li>
-            <li>Practice outside the classroom.</li>
-            <li>Build the final project.</li>
+            <li>Practice outside the classroom regularly.</li>
+            <li>Build the final project using SQL Server.</li>
           </ol>
         </section>
 
@@ -87,72 +85,82 @@ const HomePage = () => {
           <ul>
             <li>
               <Link to="/sessions/session-01">
-                Session 01 — Getting Started with C#
+                Session 01 — RDBMS Concepts
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-02">
-                Session 02 — Basic Building Blocks in C#
+                Session 02 — Entity-Relationship (E-R) Model and Normalization
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-03">
-                Session 03 — Programming Constructs and Arrays
+                Session 03 — Introduction to SQL Server 2022
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-04">
-                Session 04 — Classes and Methods in C#
+                Session 04 — Transact-SQL
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-05">
-                Session 05 — Inheritance and Polymorphism
+                Session 05 — Creating and Managing Databases
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-06">
-                Session 06 — Abstract Classes and Interfaces
+                Session 06 — Creating Tables
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-07">
-                Session 07 — Properties, Indexers, and Record Types
+                Session 07 — Microsoft Azure SQL
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-08">
-                Session 08 — Namespaces and Exception Handling
+                Session 08 — Accessing Data
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-09">
-                Session 09 — Events, Delegates, and Collections
+                Session 09 — Advanced Queries and Joins
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-10">
-                Session 10 — Generics and Iterators
+                Session 10 — Using Views, Stored Procedures, and Querying Metadata
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-11">
-                Session 11 — GUI and Connectivity with SQL Database
+                Session 11 — Indexes
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-12">
-                Session 12 — Advanced Concepts in C#
+                Session 12 — Triggers
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-13">
-                Session 13 — Building Cross-Platform Mobile Apps Using .NET MAUI
+                Session 13 — Programming Transact-SQL
               </Link>
             </li>
             <li>
               <Link to="/sessions/session-14">
-                Session 14 — .NET Development and the Future
+                Session 14 — Transactions and Error Handling
+              </Link>
+            </li>
+            <li>
+              <Link to="/sessions/session-15">
+                Session 15 — PolyBase and Query Store
+              </Link>
+            </li>
+            <li>
+              <Link to="/sessions/session-16">
+                Session 16 — Artificial Intelligence and Machine Learning in SQL Server 2022
               </Link>
             </li>
           </ul>
@@ -163,135 +171,3 @@ const HomePage = () => {
 };
 
 export default HomePage;
-
-
-
-
-// import React from "react";
-// import Link from "@docusaurus/Link";
-
-// const HomePage = () => {
-//   return (
-//     <div className="home-page">
-//       {/* Header / Nav can be handled by your layout */}
-//       <main>
-//         <h1>Proficient Programming with C#</h1>
-
-//         <p>
-//           Welcome to the <strong>C# (C-Sharp) Course</strong>.
-//         </p>
-
-//         <p>
-//           This course takes you from C# fundamentals to advanced C# and
-//           professional application development.
-//         </p>
-
-//         {/* Course Levels */}
-//         <section>
-//           <h2>Course Levels</h2>
-
-//           <h3>Beginner</h3>
-//           <ul>
-//             <li>C# Fundamentals</li>
-//             <li>Variables</li>
-//             <li>Data Types</li>
-//             <li>Operators</li>
-//             <li>Conditions</li>
-//             <li>Loops</li>
-//             <li>Methods</li>
-//             <li>Arrays</li>
-//             <li>Collections</li>
-//           </ul>
-
-//           <h3>Intermediate</h3>
-//           <ul>
-//             <li>Classes</li>
-//             <li>Objects</li>
-//             <li>Constructors</li>
-//             <li>Properties</li>
-//             <li>Encapsulation</li>
-//             <li>Inheritance</li>
-//             <li>Polymorphism</li>
-//             <li>Interfaces</li>
-//           </ul>
-
-//           <h3>Advanced</h3>
-//           <ul>
-//             <li>Generics</li>
-//             <li>Delegates</li>
-//             <li>Lambda Expressions</li>
-//             <li>LINQ</li>
-//             <li>Exception Handling</li>
-//             <li>JSON</li>
-//             <li>Async/Await</li>
-//             <li>SQL Server</li>
-//             <li>ASP.NET Core Web API</li>
-//             <li>Dependency Injection</li>
-//             <li>SOLID Principles</li>
-//           </ul>
-//         </section>
-
-//         <hr />
-
-//         {/* Sessions */}
-//         <section>
-//           <h2>Sessions</h2>
-//           <p>Start with:</p>
-//           <ul>
-//             <li>
-//               <Link to="/sessions/session-01">
-//                 Session 01 — C# Fundamentals
-//               </Link>
-//             </li>
-
-//             <li>
-//               <Link to="/sessions/session-02">
-//                 Session 02 — Variables &amp; Data Types
-//               </Link>
-//             </li>
-
-//             <li>
-//               <Link to="/sessions/session-03">
-//                 Session 03 — Conditions
-//               </Link>
-//             </li>
-
-//             <li>
-//               <Link to="/sessions/session-04">
-//                 Session 04 — Loops &amp; Iterations
-//               </Link>
-//             </li>
-
-//             <li>
-//               <Link to="/sessions/session-05">
-//                 Session 05 — Methods, Parameters &amp; Recursion
-//               </Link>
-//             </li>
-//           <li>
-//               <Link to="/sessions/session-06">
-//                 Session 06 — Array & Strings
-//               </Link>
-//             </li>
-//           <li>
-//               <Link to="/sessions/session-07">
-//                 Session 07 — Advanced Parameters, Tuples & Exception Handling
-//               </Link>
-//           </li>
-//           <li>
-//               <Link to="/sessions/session-08">
-//                 Session 08 — Classes, Objects, Fields, Properties, Constructors & Encapsulation
-//               </Link>
-//           </li>
-//           <li>
-//               <Link to="/sessions/session-09">
-//                 Session 09 — Inheritance, Method Overriding & protected
-//               </Link>
-//           </li>
-//           </ul>
-//         </section>
-//       </main>
-//     </div>
-//   );
-// };
-
-// export default HomePage;
