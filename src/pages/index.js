@@ -4,6 +4,8 @@ import CustomLayout from '@site/src/components/Layout/Layout';
 import Homepage from '@site/src/components/Homepage/home';
 
 export default function Home() {
+  const {siteConfig} = useDocusaurusContext();
+  
   return (
     <Layout
       title={`${siteConfig.title}`}
