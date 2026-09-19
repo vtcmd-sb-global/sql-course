@@ -41,76 +41,76 @@ export default function Session08() {
           <p>Basic syntax:</p>
 
           <pre>
-            <code>{`SELECT column1, column2, ...
-FROM table_name
-WHERE condition
-ORDER BY column1 ASC|DESC;`}</code>
+            <code>{`select column1, column2, ...
+from table_name
+where condition
+order by column1 asc|desc;`}</code>
           </pre>
 
           <h3>Simple Examples</h3>
           <pre>
             <code>{`-- Select all columns
-SELECT * FROM Students;
+select * from students;
 
 -- Select specific columns
-SELECT Name, Age, Marks FROM Students;
+select studentName, age, marks from students;
 
 -- Select with alias
-SELECT Name AS StudentName, Marks AS StudentMarks
-FROM Students;`}</code>
+select studentName as StudentName, marks as StudentMarks
+from students;`}</code>
           </pre>
 
           <hr />
 
           <h2>3. Important Clauses used with SELECT</h2>
 
-          <h3>3.1 FROM Clause</h3>
+          <h3>3.1 from Clause</h3>
           <p>Specifies the table(s) from which to retrieve data.</p>
   
-          <h3>3.2 WHERE Clause</h3>
+          <h3>3.2 where Clause</h3>
           <p>Filters rows based on a condition.</p>
   
           <pre>
-            <code>{`SELECT * FROM Students
-WHERE Marks > 80;
+            <code>{`select * from students
+where marks > 80;
 
-SELECT * FROM Students
-WHERE City = 'Karachi' AND Gender = 'Female';`}</code>
+select * from students
+where city = 'Karachi' and gender = 'Female';`}</code>
           </pre>
 
-          <h3>3.3 ORDER BY Clause</h3>
+          <h3>3.3 order by Clause</h3>
 
-          <p>Sorts the result set in ascending (ASC) or descending (DESC) order.</p>
+          <p>Sorts the result set in ascending (asc) or descending (desc) order.</p>
   
           <pre>
             <code>{`-- Sort by Marks ascending (default)
-SELECT Name, Marks FROM Students
-ORDER BY Marks;
+select studentName, marks from students
+order by marks;
 
 -- Sort by Marks descending
-SELECT Name, Marks FROM Students
-ORDER BY Marks DESC;
+select studentName, marks from students
+order by marks desc;
 
 -- Sort by multiple columns
-SELECT Name, City, Marks FROM Students
-ORDER BY City ASC, Marks DESC;`}</code>
+select studentName, city, marks from students
+order by city asc, marks desc;`}</code>
           </pre>
 
           <h3>3.4 Other Useful Clauses</h3>
           <ul>
-            <li><code>TOP</code> – Limits the number of rows returned</li>
-            <li><code>DISTINCT</code> – Removes duplicate rows</li>
-            <li><code>GROUP BY</code> – Groups rows (covered in later sessions)</li>
-            <li><code>HAVING</code> – Filters groups (covered in later sessions)</li>
+            <li><code>top</code> – Limits the number of rows returned</li>
+            <li><code>distinct</code> – Removes duplicate rows</li>
+            <li><code>group by</code> – Groups rows (covered in later sessions)</li>
+            <li><code>having</code> – Filters groups (covered in later sessions)</li>
           </ul>
   
           <pre>
             <code>{`-- Top 3 highest scoring students
-SELECT TOP 3 Name, Marks FROM Students
-ORDER BY Marks DESC;
+select top 3 studentName, marks from students
+order by marks desc;
 
 -- Distinct cities
-SELECT DISTINCT City FROM Students;`}</code>
+select distinct city from students;`}</code>
           </pre>
 
           <hr />
@@ -165,18 +165,17 @@ SELECT DISTINCT City FROM Students;`}</code>
           <h2>5. Working with XML in SQL Server</h2>
           <p>SQL Server provides strong support for XML data.</p>
 
-          <h3>5.1 Untyped XML</h3>
+                    <h3>5.1 Untyped XML</h3>
           <p>When you store XML data in a column of type <code>xml</code> without associating it with an XML schema, it is called <strong>untyped XML</strong>.</p>
-
           <pre>
-            <code>{`CREATE TABLE ProductInfo
+            <code>{`create table studentInfo
 (
-    ProductID INT PRIMARY KEY,
-    ProductDetails XML
+    studentId int primary key,
+    studentDetails xml
 );
 
-INSERT INTO ProductInfo VALUES
-(1, '<Product><Name>Laptop</Name><Price>85000</Price></Product>');`}</code>
+insert into studentInfo values
+(1, '<student><studentName>Ali</studentName><marks>85</marks><city>Karachi</city></student>');`}</code>
           </pre>
 
           <h3>5.2 Typed XML</h3>
@@ -189,43 +188,44 @@ INSERT INTO ProductInfo VALUES
 
           <hr />
 
-          <h2>6. XML Schema Collections</h2>
+                    <h2>6. XML Schema Collections</h2>
           <p>An <strong>XML Schema Collection</strong> is a collection of XML schemas that can be used to validate typed XML data.</p>
 
           <h3>Creating an XML Schema Collection</h3>
           <pre>
-            <code>{`CREATE XML SCHEMA COLLECTION ProductSchema AS
+            <code>{`create xml schema collection studentSchema as
 '<?xml version="1.0"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:element name="Product">
+  <xs:element name="student">
     <xs:complexType>
       <xs:sequence>
-        <xs:element name="Name" type="xs:string"/>
-        <xs:element name="Price" type="xs:decimal"/>
+        <xs:element name="studentName" type="xs:string"/>
+        <xs:element name="marks" type="xs:int"/>
+        <xs:element name="city" type="xs:string"/>
       </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>';
-GO`}</code>
+`}</code>
           </pre>
 
           <h3>Using Typed XML</h3>
           <pre>
-            <code>{`CREATE TABLE ProductInfoTyped
+            <code>{`create table studentInfoTyped
 (
-    ProductID INT PRIMARY KEY,
-    ProductDetails XML (ProductSchema)
+    studentId int primary key,
+    studentDetails xml (studentSchema)
 );`}</code>
           </pre>
 
           <h3>Viewing XML Schema Collections</h3>
           <pre>
             <code>{`-- List all XML schema collections
-SELECT * FROM sys.xml_schema_collections;
+select * from sys.xml_schema_collections;
 
 -- View details of a specific schema collection
-SELECT * FROM sys.xml_schema_collections
-WHERE name = 'ProductSchema';`}</code>
+select * from sys.xml_schema_collections
+where name = 'studentSchema';`}</code>
           </pre>
 
           <hr />
@@ -233,11 +233,12 @@ WHERE name = 'ProductSchema';`}</code>
           <h2>7. Querying XML Data (Basic)</h2>
           <pre>
             <code>{`-- Extract value from XML
-SELECT 
-    ProductID,
-    ProductDetails.value('(/Product/Name)[1]', 'NVARCHAR(50)') AS ProductName,
-    ProductDetails.value('(/Product/Price)[1]', 'DECIMAL(10,2)') AS Price
-FROM ProductInfo;`}</code>
+select 
+    studentId,
+    studentDetails.value('(/student/name)[1]', 'nvarchar(50)') as studentName,
+    studentDetails.value('(/student/marks)[1]', 'int') as marks,
+    studentDetails.value('(/student/city)[1]', 'nvarchar(50)') as city
+from studentInfo;`}</code>
           </pre>
 
           <hr />
@@ -246,125 +247,125 @@ FROM ProductInfo;`}</code>
 
           <h2>Practical Example – CollegeDB</h2>
 
-          <h3>SELECT Statement</h3>
+          <h3>select Statement</h3>
           <pre>
             <code>{`-- Select every column
-SELECT * FROM Students;
+select * from Students;
 
 -- Select specific columns
-SELECT Name, Age, Marks FROM Students;
+select studentName, age, marks from students;
 
--- Rename a column using AS
-SELECT Name, Marks AS StudentMarks FROM Students;
+-- Rename a column using (as)
+select studentName, marks as studentMarks from students;
 
 -- Calculated column
-SELECT Name, Marks, Marks + 5 AS MarksAfterBonus FROM Students;`}</code>
+select studentName, marks, marks + 5 as marksAfterBonus from students;`}</code>
           </pre>
 
-          <h3>WHERE Clause</h3>
+          <h3>where Clause</h3>
           <pre>
-            <code>{`SELECT * FROM Students WHERE City = 'Karachi';
-SELECT * FROM Students WHERE Marks > 80;
-SELECT * FROM Students WHERE Marks < 70;
-SELECT * FROM Students WHERE Age >= 21;
-SELECT * FROM Students WHERE City <> 'Karachi';`}</code>
+            <code>{`select * from students where city = 'Karachi';
+select * from students where marks > 80;
+select * from students where marks < 70;
+select * from students where age >= 21;
+select * from students where city <> 'Karachi';`}</code>
           </pre>
 
-          <h3>AND | OR | NOT</h3>
+          <h3>and | or | not</h3>
           <pre>
-            <code>{`SELECT * FROM Students WHERE City = 'Karachi' AND Marks > 80;
-SELECT * FROM Students WHERE City = 'Karachi' OR City = 'Lahore';
-SELECT * FROM Students WHERE NOT City = 'Karachi';
+            <code>{`select * from students where city = 'Karachi' and marks > 80;
+select * from students where city = 'Karachi' or city = 'Lahore';
+select * from students where not city = 'Karachi';
 
-SELECT * FROM Students
-WHERE Gender = 'Female' AND City = 'Karachi' AND Marks >= 80;
+select * from students
+where gender = 'Female' and city = 'Karachi' and Marks >= 80;
 
 -- Complex condition with parentheses
-SELECT Name, City, Marks
-FROM Students
-WHERE (City = 'Karachi' OR City = 'Lahore') AND Marks >= 70;`}</code>
+select studentName, city, marks
+from students
+where (city = 'Karachi' or city = 'Lahore') and marks >= 70;`}</code>
           </pre>
 
-          <h3>ORDER BY</h3>
+          <h3>order by</h3>
           <pre>
-            <code>{`SELECT * FROM Students ORDER BY Marks ASC;
-SELECT * FROM Students ORDER BY Marks DESC;
-SELECT * FROM Students ORDER BY Name ASC;
-SELECT * FROM Students ORDER BY City ASC, Marks DESC;`}</code>
+            <code>{`select * from students order by marks asc;
+select * from students order by marks desc;
+select * from students order by name asc;
+select * from students order by city asc, marks desc;`}</code>
           </pre>
 
-          <h3>TOP</h3>
+          <h3>top</h3>
           <pre>
-            <code>{`SELECT TOP 3 * FROM Students ORDER BY Marks DESC;
-SELECT TOP 1 * FROM Students ORDER BY Marks DESC;
-SELECT TOP 50 PERCENT * FROM Students ORDER BY Marks DESC;`}</code>
+            <code>{`select top 3 * FROM Students ORDER BY Marks DESC;
+select top 1 * from students order by marks desc;
+select top 50 percent * from students order by marks desc;`}</code>
           </pre>
 
-          <h3>DISTINCT</h3>
+          <h3>distinct</h3>
           <pre>
-            <code>{`SELECT DISTINCT City FROM Students;
-SELECT DISTINCT DepartmentID FROM Students;
-SELECT DISTINCT City, DepartmentID FROM Students;`}</code>
+            <code>{`select distinct city from students;
+select distinct departmentId from students;
+select distinct city, departmentId from students;`}</code>
           </pre>
 
-          <h3>LIKE</h3>
+          <h3>like</h3>
           <pre>
-            <code>{`SELECT * FROM Students WHERE Name LIKE 'A%';      -- starts with A
-SELECT * FROM Students WHERE Name LIKE '%a';      -- ends with a
-SELECT * FROM Students WHERE Name LIKE '%ha%';    -- contains "ha"
-SELECT * FROM Students WHERE Name LIKE '____';    -- exactly 4 characters
-SELECT * FROM Students WHERE Name LIKE '_a%';     -- second character is 'a'`}</code>
+            <code>{`select * from students where studentName like 'A%';      -- starts with A
+select * from students where studentName like '%a';      -- ends with a
+select * from students where studentName like '%ha%';    -- contains "ha"
+select * from students where studentName like '____';    -- exactly 4 characters
+select * from students where studentName like '_a%';     -- second character is 'a'`}</code>
           </pre>
 
-          <h3>IN</h3>
+          <h3>in</h3>
           <pre>
-            <code>{`SELECT * FROM Students WHERE City IN ('Karachi', 'Lahore');
-SELECT * FROM Students WHERE DepartmentID IN (1, 2, 3);
-SELECT * FROM Students WHERE City NOT IN ('Karachi', 'Lahore');`}</code>
+            <code>{`select * from students where city in ('Karachi', 'Lahore');
+select * from students where departmentId in (1, 2, 3);
+select * from students where city not in ('Karachi', 'Lahore');`}</code>
           </pre>
 
-          <h3>BETWEEN</h3>
+          <h3>between</h3>
           <pre>
-            <code>{`SELECT * FROM Students WHERE Marks BETWEEN 70 AND 90;
-SELECT * FROM Students WHERE Age BETWEEN 20 AND 22;
-SELECT * FROM Students WHERE Marks NOT BETWEEN 70 AND 90;`}</code>
+            <code>{`select * from students where marks between 70 and 90;
+select * from students where age between 20 and 22;
+select * from students where marks not between 70 and 90;`}</code>
           </pre>
 
-          <h3>NULL Handling</h3>
+          <h3>null Handling</h3>
           <pre>
             <code>{`-- Insert a student with NULL City
-INSERT INTO Students (Name, Age, Gender, City, Marks, DepartmentID)
-VALUES ('Noor', 21, 'Female', NULL, 76, 3);
+insert into students (studentName, age, gender, city, marks, departmentId)
+values ('Noor', 21, 'Female', NULL, 76, 3);
 
-SELECT * FROM Students WHERE City IS NULL;
-SELECT * FROM Students WHERE City IS NOT NULL;
--- Never use: WHERE City = NULL`}</code>
+select * from students where city is null;
+select * from students where city is not null;
+-- Never use: where city = null`}</code>
           </pre>
 
-          <h3>UPDATE</h3>
+          <h3>update</h3>
           <pre>
-            <code>{`UPDATE Students SET Marks = 90 WHERE StudentID = 2;
-UPDATE Students SET City = 'Karachi' WHERE StudentID = 2;
+            <code>{`update students set marks = 90 WHERE studentId = 2;
+update students set city = 'Karachi' where studentId = 2;
 
-UPDATE Students
-SET Marks = 88, City = 'Lahore'
-WHERE StudentID = 2;
+update students
+set marks = 88, city = 'Lahore'
+where studentId = 2;
 
 -- DANGEROUS (updates ALL rows)
--- UPDATE Students SET Marks = 100;`}</code>
+-- update students set marks = 100;`}</code>
           </pre>
 
-          <h3>DELETE</h3>
+          <h3>delete</h3>
           <pre>
-            <code>{`DELETE FROM Students WHERE StudentID = 11;
+            <code>{`delete from students where studentId = 11;
 
 -- Always test with SELECT first
-SELECT * FROM Students WHERE Marks < 60;
+select * from students where marks < 60;
 -- Then:
--- DELETE FROM Students WHERE Marks < 60;
+-- delete from students where marks < 60;
 
 -- DANGEROUS
--- DELETE FROM Students;`}</code>
+-- delete from students;`}</code>
           </pre>
 
   <hr />
