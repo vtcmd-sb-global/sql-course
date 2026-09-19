@@ -30,13 +30,15 @@
   .sidebarWrapper {
     width: 100%;
     height: auto;
+    max-height: 45vh;          /* limit height so content is visible */
     position: relative;
     top: 0;
     border-right: none;
     border-bottom: 1px solid #e5e7eb;
+    overflow-y: auto;
   }
 
   .content {
-    padding: 1.5rem;
+    padding: 1.5rem 1rem;
   }
 }
