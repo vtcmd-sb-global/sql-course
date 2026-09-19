@@ -14,7 +14,7 @@ export default function Session01() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Building a strong foundation of database concepts before touching SQL Server.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 1 (RDBMS Concepts)</p>
+          <p><strong>Follows Book:</strong> From Book – Session 1 (RDBMS Concepts)</p>
 
           <hr />
 
@@ -327,7 +327,7 @@ export default function Session01() {
             <li>Write the difference between data and information with your own example.</li>
             <li>Why is the file-based approach not preferred in large organizations?</li>
             <li>Convert the following information into a table format:<br />
-              “There are three employees: Ali (age 28, Karachi), Sara (age 25, Lahore), and Usman (age 30, Islamabad).”
+              “There are three students: Ali (age 28, Karachi), Sara (age 25, Lahore), and Usman (age 30, Islamabad).”
             </li>
           </ol>
 
