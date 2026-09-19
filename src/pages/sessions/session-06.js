@@ -101,31 +101,33 @@ export default function Session06() {
           <hr />
 
                     <h2>4. Creating a Table</h2>
-          <p>Use the <code>CREATE TABLE</code> statement to create a new table.</p>
+          <p>Use the <code>create table</code> statement to create a new table.</p>
 
           <pre>
-            <code>{`CREATE TABLE Students
+            <code>{`create table students
 (
-    StudentID    INT PRIMARY KEY IDENTITY(1,1),
-    Name         VARCHAR(100) NOT NULL,
-    Age          INT,
-    Gender       VARCHAR(10),
-    City         VARCHAR(50),
-    Marks        INT,
-    DepartmentID INT,
+    studentId    int primary key identity(1,1),
+    studentName  varchar(100) not null,
+    age          int,
+    gender       varchar(10),
+    city         varchar(50),
+    marks        int,
+    departmentId int,
 
-    CONSTRAINT CK_Students_Age   CHECK (Age >= 16),
-    CONSTRAINT CK_Students_Marks CHECK (Marks BETWEEN 0 AND 100)
+    constraint ck_students_age   check (age >= 16),
+    constraint ck_students_marks check (marks between 0 and 100)
 );
-GO`}</code>
+`}</code>
           </pre>
 
           <h3>Important Points</h3>
           <ul>
-            <li><code>IDENTITY(1,1)</code> → Auto-increment starting from 1</li>
-            <li><code>PRIMARY KEY</code> → Uniquely identifies each row</li>
-            <li><code>NOT NULL</code> → Column cannot contain NULL values</li>
-            <li><code>CHECK</code> → Enforces a condition on the values</li>
+            <li><code>identity(1,1)</code> → Auto-increment starting from 1</li>
+            <li><code>primary key</code> → Uniquely identifies each row</li>
+            <li><code>not null</code> → Column cannot contain NULL values</li>
+            <li><code>unique</code> → All values in the column must be unique</li>
+            <li><code>default</code> → Provides a default value</li>
+            <li><code>check</code> → Enforces a condition on the values</li>
           </ul>
 
           <hr />
@@ -140,27 +142,27 @@ GO`}</code>
             </thead>
             <tbody>
               <tr>
-                <td>PRIMARY KEY</td>
+                <td>primary key</td>
                 <td>Uniquely identifies each row (cannot be NULL)</td>
               </tr>
               <tr>
-                <td>FOREIGN KEY</td>
+                <td>foreign key</td>
                 <td>Creates a relationship with another table</td>
               </tr>
               <tr>
-                <td>UNIQUE</td>
+                <td>unique</td>
                 <td>Ensures all values in a column are unique</td>
               </tr>
               <tr>
-                <td>NOT NULL</td>
+                <td>not null</td>
                 <td>Prevents NULL values</td>
               </tr>
               <tr>
-                <td>CHECK</td>
+                <td>check</td>
                 <td>Enforces a condition (e.g., Marks BETWEEN 0 AND 100)</td>
               </tr>
               <tr>
-                <td>DEFAULT</td>
+                <td>defaults</td>
                 <td>Sets a default value when none is provided</td>
               </tr>
             </tbody>
@@ -170,31 +172,31 @@ GO`}</code>
 
           <h2>6. Adding a Foreign Key</h2>
           <pre>
-            <code>{`-- First create the parent table
-CREATE TABLE Departments
+            <code>{`-- first create the parent table
+create table departments
 (
-    DepartmentID   INT PRIMARY KEY IDENTITY(1,1),
-    DepartmentName VARCHAR(100) NOT NULL UNIQUE
+    departmentId   int primary key identity(1,1),
+    departmentName varchar(100) not null unique
 );
-GO
 
--- Then create the child table with Foreign Key
-CREATE TABLE Students
+-- then create the child table with foreign Key
+create table students
 (
-    StudentID    INT PRIMARY KEY IDENTITY(1,1),
-    Name         VARCHAR(100) NOT NULL,
-    Age          INT,
-    Gender       VARCHAR(10),
-    City         VARCHAR(50),
-    Marks        INT,
-    DepartmentID INT,
+    studentID    int primary key identity(1,1),
+    studentName  varchar(100) not null,
+    age          int,
+    gender       varchar(10),
+    city         varchar(50),
+    marks        int,
+    departmentId int,
 
-    CONSTRAINT CK_Students_Age   CHECK (Age >= 16),
-    CONSTRAINT CK_Students_Marks CHECK (Marks BETWEEN 0 AND 100),
-    CONSTRAINT FK_Students_Departments
-        FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
-);
-GO`}</code>
+    constraint ck_students_age   check (age >= 16),
+    constraint ck_students_marks check (marks between 0 and 100),
+    constraint fk_students_departments
+        foreign key (departmentId) references departments(departmentId)
+        );
+        `}
+</code>
           </pre>
 
           <hr />
@@ -204,44 +206,41 @@ GO`}</code>
 
           <h3>Add a Column</h3>
           <pre>
-            <code>{`ALTER TABLE Employees
-ADD PhoneNumber NVARCHAR(20);
-GO`}</code>
+            <code>
+                  {`alter table students
+                  add PhoneNumber nvarchar(20);
+                  `}</code>
           </pre>
 
           <h3>Modify a Column</h3>
           <pre>
-            <code>{`ALTER TABLE Employees
-ALTER COLUMN PhoneNumber NVARCHAR(30);
-GO`}</code>
+            <code>{`alter table students
+alter column PhoneNumber nvarchar(30);`}</code>
           </pre>
 
           <h3>Drop a Column</h3>
           <pre>
-            <code>{`ALTER TABLE Employees
-DROP COLUMN PhoneNumber;
-GO`}</code>
+            <code>{`alter table Students
+drop column PhoneNumber;
+`}</code>
           </pre>
 
           <h3>Add a Constraint</h3>
           <pre>
-            <code>{`ALTER TABLE Employees
-ADD CONSTRAINT UQ_Employees_Email UNIQUE (Email);
-GO`}</code>
+            <code>{`alter table students
+add constraint uq_students_name unique (studentName);`}</code>
           </pre>
 
           <hr />
 
           <h2>8. Dropping a Table</h2>
           <pre>
-            <code>{`-- Drop a table
-DROP TABLE Employees;
-GO
+            <code>{`-- drop a table
+drop table students;
 
--- Check if table exists before dropping (safer)
-IF OBJECT_ID('Employees', 'U') IS NOT NULL
-    DROP TABLE Employees;
-GO`}</code>
+-- check if table exists before dropping (safer)
+if object_id('students', 'u') is not null
+    drop table students;`}</code>
           </pre>
 
           <p><strong>Note:</strong> You cannot drop a table if it is referenced by a foreign key in another table. Drop the foreign key first or drop the child table first.</p>
@@ -251,8 +250,8 @@ GO`}</code>
           <h2>9. Best Practices</h2>
           <ul>
             <li>Always define a Primary Key for every table</li>
-            <li>Use appropriate data types (don’t use NVARCHAR(MAX) unnecessarily)</li>
-            <li>Prefer <code>NVARCHAR</code> over <code>VARCHAR</code> when storing Unicode data</li>
+            <li>Use appropriate data types (don’t use nvarchar(MAX) unnecessarily)</li>
+            <li>Prefer <code>nvarchar</code> over <code>varchar</code> when storing Unicode data</li>
             <li>Use meaningful table and column names</li>
             <li>Add constraints to enforce data integrity</li>
             <li>Avoid using reserved keywords as object names</li>
@@ -261,7 +260,7 @@ GO`}</code>
   
           <hr />
 
-          <h2>Practical Example – CollegeDB (Full Setup)</h2>
+          <h2>Practical Example – collegeDb (Full Setup)</h2>
           <p>
             Run the following script <strong>once</strong> to create the practice database and tables 
             that we will use throughout the rest of the course.
@@ -269,94 +268,91 @@ GO`}</code>
 
           <pre>
             <code>{`-- =============================================
-                    -- CollegeDB - Complete Setup Script
+                    -- collegeDb - complete setup for sample data
                     -- =============================================
                     
-                    -- CREATE DATABASE CollegeDB;
-                    -- GO
-                    -- USE CollegeDB;
-                    -- GO
+                    -- create database collegeDb;
                     
-                    -- 1. Departments
-                    CREATE TABLE Departments
+                    -- use collegeDb; -- (to set the newly created database in the current context, SQL script file)
+                    
+                    -- 1. departments
+                    create table departments
                     (
-                        DepartmentID   INT PRIMARY KEY IDENTITY(1,1),
-                        DepartmentName VARCHAR(100) NOT NULL UNIQUE
+                        departmentId   int primary key identity(1,1),
+                        departmentName varchar(100) not null unique
                     );
-                    GO
                     
-                    -- 2. Classes
-                    CREATE TABLE Classes
+                    -- 2. classes
+                    create table classes
                     (
-                        ClassID   INT PRIMARY KEY IDENTITY(1,1),
-                        ClassName VARCHAR(100) NOT NULL
-                    );
-                    GO
+                        classId   int primary key identity(1,1),
+                        className varchar(100) not null
+                    );                    
+
                     
-                    -- 3. Students
-                    CREATE TABLE Students
+                    -- 3. teachers
+                    create table teachers
                     (
-                        StudentID    INT PRIMARY KEY IDENTITY(1,1),
-                        Name         VARCHAR(100) NOT NULL,
-                        Age          INT,
-                        Gender       VARCHAR(10),
-                        City         VARCHAR(50),
-                        Marks        INT,
-                        DepartmentID INT,
+                        teacherId    int primary key identity(1,1),
+                        teacherName  varchar(100) not null,
+                        age          int,
+                        gender       varchar(10),
+                        city         varchar(50),
+                        departmentId int,
+                        classId      int,
                     
-                        CONSTRAINT CK_Students_Age   CHECK (Age >= 16),
-                        CONSTRAINT CK_Students_Marks CHECK (Marks BETWEEN 0 AND 100),
-                        CONSTRAINT FK_Students_Departments
-                            FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+                        constraint fk_teachers_departments
+                            foreign key (departmentId) references departments(departmentId),
+                        constraint fk_teachers_classes
+                            foreign key (classId) references classes(classId)
                     );
-                    GO
                     
-                    -- 4. Teachers
-                    CREATE TABLE Teachers
+                    -- 4. students
+                    create table students
                     (
-                        TeacherID    INT PRIMARY KEY IDENTITY(1,1),
-                        Name         VARCHAR(100) NOT NULL,
-                        Age          INT,
-                        Gender       VARCHAR(10),
-                        City         VARCHAR(50),
-                        DepartmentID INT,
-                        ClassID      INT,
+                        studentId    int primary key identity(1,1),
+                        studentName  varchar(100) not null,
+                        age          int,
+                        gender       varchar(10),
+                        city         varchar(50),
+                        marks        int,
+                        departmentId int,
                     
-                        CONSTRAINT FK_Teachers_Departments
-                            FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID),
-                        CONSTRAINT FK_Teachers_Classes
-                            FOREIGN KEY (ClassID) REFERENCES Classes(ClassID)
+                        constraint ck_students_age   check (age >= 16),
+                        constraint ck_students_marks check (marks between 0 and 100),
+                        constraint fk_students_departments
+                            foreign key (departmentId) references departments(departmentId)
                     );
-                    GO
+                    
+                    
                     
                     -- =============================================
-                    -- Sample Data
+                    -- sample data
                     -- =============================================
 
-                    -- Sample Data for Departments
-                    INSERT INTO Departments (DepartmentName)
-                    VALUES
+                    -- sample data for departments
+                    insert into departments (departmentName)
+                    values
                     ('Computer Science'),
                     ('Information Technology'),
-                    ('Computer Science'),
                     ('Software Engineering'),
                     ('Business Administration'),
                     ('Accounting & Finance'),
                     ('Psychology');
-                    GO
+                    
 
-                    -- Sample Data for Classes
-                    INSERT INTO Classes (ClassName)
-                    VALUES
+                    -- sample data for classes
+                    insert into classes (className)
+                    values
                     ('1-A'),('1-B'),('2-A'),('2-B'),('3-A'),('3-B'),
                     ('4-A'),('4-B'),('5-A'),('5-B'),('6-A'),('6-B'),
                     ('7-A'),('7-B'),('8-A'),('8-B'),('9-A'),('9-B'),
                     ('10-A'),('10-B');
-                    GO
+                    
 
-                    -- Sample Data for Teachers
-                    INSERT INTO Teachers (Name, Age, Gender, City, DepartmentID, ClassID)
-                    VALUES
+                    -- sample data for teachers
+                    insert into teachers (teacherName, age, gender, city, departmentId, classId)
+                    values
                     ('Ali', 20, 'Male', 'Karachi', 1, 1),
                     ('Ahmed', 21, 'Male', 'Lahore', 4, 2),
                     ('Sara', 20, 'Female', 'Karachi', 3, 4),
@@ -367,11 +363,11 @@ GO`}</code>
                     ('Bilal', 24, 'Male', 'Islamabad', 4, 15),
                     ('Fatima', 22, 'Female', 'Karachi', 2, 17),
                     ('Zain', 19, 'Male', 'Lahore', 1, 5);
-                    GO
+                    
 
-                    -- Sample Data for Students
-                    INSERT INTO Students (Name, Age, Gender, City, Marks, DepartmentID)
-                    VALUES
+                    -- Sample Data for students
+                    insert into students (studentName, age, gender, city, marks, departmentId)
+                    values
                     ('Ali', 20, 'Male', 'Karachi', 85, 1),
                     ('Ahmed', 21, 'Male', 'Lahore', 72, 2),
                     ('Sara', 20, 'Female', 'Karachi', 91, 1),
@@ -382,14 +378,13 @@ GO`}</code>
                     ('Bilal', 24, 'Male', 'Islamabad', 55, 4),
                     ('Fatima', 22, 'Female', 'Karachi', 82, 3),
                     ('Zain', 19, 'Male', 'Lahore', 69, 1);
-                    GO
+                    
                     
                     -- Verify after inserting all sample data in each respective tables
-                    SELECT * FROM Departments;
-                    SELECT * FROM Classes;
-                    SELECT * FROM Teachers;
-                    SELECT * FROM Students;
-                    GO
+                    select * from departments;
+                    select * from classes;
+                    select * from teachers;
+                    select * from students;
                     `
                   }
             </code>
