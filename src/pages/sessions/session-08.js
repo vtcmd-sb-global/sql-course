@@ -64,7 +64,12 @@ FROM Students;`}</code>
 
           <h2>3. Important Clauses used with SELECT</h2>
 
+          <h3>3.1 FROM Clause</h3>
+          <p>Specifies the table(s) from which to retrieve data.</p>
+  
           <h3>3.2 WHERE Clause</h3>
+          <p>Filters rows based on a condition.</p>
+  
           <pre>
             <code>{`SELECT * FROM Students
 WHERE Marks > 80;
@@ -74,6 +79,9 @@ WHERE City = 'Karachi' AND Gender = 'Female';`}</code>
           </pre>
 
           <h3>3.3 ORDER BY Clause</h3>
+
+          <p>Sorts the result set in ascending (ASC) or descending (DESC) order.</p>
+  
           <pre>
             <code>{`-- Sort by Marks ascending (default)
 SELECT Name, Marks FROM Students
@@ -89,6 +97,13 @@ ORDER BY City ASC, Marks DESC;`}</code>
           </pre>
 
           <h3>3.4 Other Useful Clauses</h3>
+          <ul>
+            <li><code>TOP</code> – Limits the number of rows returned</li>
+            <li><code>DISTINCT</code> – Removes duplicate rows</li>
+            <li><code>GROUP BY</code> – Groups rows (covered in later sessions)</li>
+            <li><code>HAVING</code> – Filters groups (covered in later sessions)</li>
+          </ul>
+  
           <pre>
             <code>{`-- Top 3 highest scoring students
 SELECT TOP 3 Name, Marks FROM Students
