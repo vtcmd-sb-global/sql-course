@@ -14,7 +14,7 @@ export default function Session04() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Understanding Transact-SQL (T-SQL) — the language used to work with SQL Server.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 4</p>
+          <p><strong>Follows Book:</strong> From Book – Session 4</p>
 
           <hr />
 
@@ -64,25 +64,25 @@ export default function Session04() {
                 <td>DDL</td>
                 <td>Data Definition Language</td>
                 <td>Define and manage database structure</td>
-                <td>CREATE, ALTER, DROP, TRUNCATE</td>
+                <td>create, alter, drop, truncate</td>
               </tr>
               <tr>
                 <td>DML</td>
                 <td>Data Manipulation Language</td>
                 <td>Work with data inside tables</td>
-                <td>SELECT, INSERT, UPDATE, DELETE, MERGE</td>
+                <td>select, insert, update, delete, merge</td>
               </tr>
               <tr>
                 <td>DCL</td>
                 <td>Data Control Language</td>
                 <td>Control access and permissions</td>
-                <td>GRANT, REVOKE, DENY</td>
+                <td>grant, revoke, deny</td>
               </tr>
               <tr>
                 <td>TCL</td>
                 <td>Transaction Control Language</td>
                 <td>Manage transactions</td>
-                <td>BEGIN TRAN, COMMIT, ROLLBACK, SAVE TRAN</td>
+                <td>begin tran, commit, rollback, save tran</td>
               </tr>
             </tbody>
           </table>
@@ -141,7 +141,7 @@ export default function Session04() {
               </ul>
             </li>
             <li><strong>Batches</strong> – Groups of statements executed together (separated by <code>GO</code>)</li>
-            <li><strong>Control-of-flow</strong> – IF...ELSE, WHILE, BEGIN...END, RETURN, etc.</li>
+            <li><strong>Control-of-flow</strong> – if...else, while, begin...end, return, etc.</li>
           </ul>
 
           <hr />
@@ -157,23 +157,23 @@ export default function Session04() {
           </ul>
 
           <h3>Predicate Logic</h3>
-          <p>A <strong>predicate</strong> is a condition that evaluates to TRUE, FALSE, or UNKNOWN (three-valued logic).</p>
+          <p>A <strong>predicate</strong> is a condition that evaluates to true, false, or unknown (three-valued logic).</p>
 
           <p>Examples of predicates:</p>
           <ul>
             <li><code>Age &gt; 18</code></li>
             <li><code>City = 'Karachi'</code></li>
-            <li><code>Salary BETWEEN 50000 AND 100000</code></li>
-            <li><code>Name LIKE 'A%'</code></li>
-            <li><code>DepartmentID IS NULL</code></li>
+            <li><code>Salary between 50000 and 100000</code></li>
+            <li><code>Name like 'A%'</code></li>
+            <li><code>epartmentId is null</code></li>
           </ul>
 
           <p>Predicates are used in:</p>
           <ul>
-            <li>WHERE clause</li>
-            <li>HAVING clause</li>
-            <li>JOIN conditions</li>
-            <li>CHECK constraints</li>
+            <li>where clause</li>
+            <li>having clause</li>
+            <li>join conditions</li>
+            <li>check constraints</li>
           </ul>
 
           <hr />
@@ -183,28 +183,28 @@ export default function Session04() {
 
           <h3>Written Order (Syntax Order)</h3>
           <pre>
-            <code>{`SELECT
-FROM
-WHERE
-GROUP BY
-HAVING
-ORDER BY
-OFFSET-FETCH`}</code>
+            <code>{`select
+from
+where
+group by
+having
+order by
+offset-fetch`}</code>
           </pre>
 
           <h3>Logical Processing Order (Execution Order)</h3>
           <ol>
-            <li><strong>FROM</strong> (+ JOINs)</li>
-            <li><strong>WHERE</strong></li>
-            <li><strong>GROUP BY</strong></li>
-            <li><strong>HAVING</strong></li>
-            <li><strong>SELECT</strong> (including DISTINCT)</li>
-            <li><strong>ORDER BY</strong></li>
-            <li><strong>OFFSET-FETCH</strong> / TOP</li>
+            <li><strong>from</strong> (+ JOINs)</li>
+            <li><strong>where</strong></li>
+            <li><strong>group by</strong></li>
+            <li><strong>having</strong></li>
+            <li><strong>select</strong> (including distinct)</li>
+            <li><strong>order by</strong></li>
+            <li><strong>offset-fetch</strong> / TOP</li>
           </ol>
 
           <p><strong>Why is this important?</strong><br />
-          Because you cannot use a column alias defined in SELECT inside the WHERE clause — the WHERE clause is processed before SELECT.</p>
+          Because you cannot use a column alias defined in select inside the where clause — the where clause is processed before select.</p>
 
           <hr />
 
