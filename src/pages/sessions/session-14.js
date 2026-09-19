@@ -299,6 +299,52 @@ END CATCH;`}</code>
 
           <hr />
 
+          <h2>Practical Example – CollegeDB</h2>
+
+          <h3>Basic Transaction</h3>
+          <pre>
+            <code>{`BEGIN TRANSACTION;
+
+UPDATE Students
+SET Marks = Marks + 5
+WHERE DepartmentID = 1;
+
+SELECT * FROM Students WHERE DepartmentID = 1;
+
+COMMIT TRANSACTION;
+-- or ROLLBACK TRANSACTION;`}</code>
+          </pre>
+
+          <h3>Transaction with ROLLBACK</h3>
+          <pre>
+            <code>{`BEGIN TRANSACTION;
+
+UPDATE Students SET Marks = 0 WHERE DepartmentID = 1;
+SELECT * FROM Students WHERE DepartmentID = 1;
+
+ROLLBACK TRANSACTION;   -- undo the change`}</code>
+          </pre>
+
+          <h3>TRY...CATCH with Transaction</h3>
+          <pre>
+            <code>{`BEGIN TRY
+    BEGIN TRANSACTION;
+
+    UPDATE Students SET Marks = 100 WHERE StudentID = 1;
+
+    COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION;
+
+    SELECT
+        ERROR_NUMBER()  AS ErrorNumber,
+        ERROR_MESSAGE() AS ErrorMessage;
+END CATCH;`}</code>
+          </pre>
+  
+  <hr/>
+  
           <h2>Session 14 Exercise</h2>
           <ol>
             <li>Write a simple transaction that transfers money between two accounts and handles errors using TRY...CATCH.</li>
