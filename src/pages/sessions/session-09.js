@@ -256,6 +256,142 @@ GROUP BY GROUPING SETS
 
           <hr />
 
+          <h2>Practical Example – CollegeDB</h2>
+
+          <h3>Aggregate Functions</h3>
+          <pre>
+            <code>{`SELECT COUNT(*) AS TotalStudents FROM Students;
+SELECT COUNT(City) AS StudentsWithCity FROM Students;
+
+SELECT SUM(Marks) AS TotalMarks FROM Students;
+SELECT AVG(Marks) AS AverageMarks FROM Students;
+SELECT MIN(Marks) AS LowestMarks FROM Students;
+SELECT MAX(Marks) AS HighestMarks FROM Students;
+
+SELECT
+    COUNT(*) AS TotalStudents,
+    SUM(Marks) AS TotalMarks,
+    AVG(Marks) AS AverageMarks,
+    MIN(Marks) AS LowestMarks,
+    MAX(Marks) AS HighestMarks
+FROM Students;`}</code>
+          </pre>
+
+          <h3>GROUP BY</h3>
+          <pre>
+            <code>{`SELECT City, COUNT(*) AS TotalStudents
+FROM Students
+GROUP BY City;
+
+SELECT City, AVG(Marks) AS AverageMarks
+FROM Students
+GROUP BY City;
+
+SELECT DepartmentID, COUNT(*) AS TotalStudents
+FROM Students
+GROUP BY DepartmentID;
+
+SELECT DepartmentID, MAX(Marks) AS HighestMarks
+FROM Students
+GROUP BY DepartmentID;`}</code>
+          </pre>
+
+          <h3>HAVING</h3>
+          <pre>
+            <code>{`SELECT DepartmentID, COUNT(*) AS TotalStudents
+FROM Students
+GROUP BY DepartmentID
+HAVING COUNT(*) > 2;
+
+SELECT City, AVG(Marks) AS AverageMarks
+FROM Students
+WHERE City IS NOT NULL
+GROUP BY City
+HAVING AVG(Marks) > 75;
+
+-- WHERE filters rows BEFORE grouping
+-- HAVING filters groups AFTER grouping
+SELECT DepartmentID, AVG(Marks) AS AverageMarks
+FROM Students
+WHERE Marks >= 50
+GROUP BY DepartmentID
+HAVING AVG(Marks) > 70;`}</code>
+          </pre>
+
+          <h3>Table Alias</h3>
+          <pre>
+            <code>{`SELECT s.Name, s.Marks
+FROM Students AS s;`}</code>
+          </pre>
+
+          <h3>INNER JOIN</h3>
+          <pre>
+            <code>{`SELECT
+    s.StudentID, s.Name, s.Marks,
+    d.DepartmentName
+FROM Students AS s
+INNER JOIN Departments AS d
+    ON s.DepartmentID = d.DepartmentID;
+
+-- JOIN + WHERE
+SELECT s.Name, s.Marks, d.DepartmentName
+FROM Students AS s
+INNER JOIN Departments AS d ON s.DepartmentID = d.DepartmentID
+WHERE s.Marks >= 80;
+
+-- JOIN + ORDER BY
+SELECT s.Name, s.Marks, d.DepartmentName
+FROM Students AS s
+INNER JOIN Departments AS d ON s.DepartmentID = d.DepartmentID
+ORDER BY s.Marks DESC;`}</code>
+          </pre>
+
+          <h3>LEFT JOIN</h3>
+          <pre>
+            <code>{`SELECT d.DepartmentName, s.Name
+FROM Departments AS d
+LEFT JOIN Students AS s ON d.DepartmentID = s.DepartmentID;`}</code>
+          </pre>
+
+          <h3>RIGHT JOIN</h3>
+          <pre>
+            <code>{`SELECT s.Name, d.DepartmentName, s.City
+FROM Students AS s
+RIGHT JOIN Departments AS d ON s.DepartmentID = d.DepartmentID;`}</code>
+          </pre>
+
+          <h3>JOIN + GROUP BY</h3>
+          <pre>
+            <code>{`SELECT d.DepartmentName, COUNT(s.StudentID) AS TotalStudents
+FROM Departments AS d
+LEFT JOIN Students AS s ON d.DepartmentID = s.DepartmentID
+GROUP BY d.DepartmentName;
+
+SELECT d.DepartmentName, AVG(s.Marks) AS AverageMarks
+FROM Departments AS d
+LEFT JOIN Students AS s ON d.DepartmentID = s.DepartmentID
+GROUP BY d.DepartmentName;`}</code>
+          </pre>
+
+          <h3>Subqueries</h3>
+          <pre>
+            <code>{`-- Students above average marks
+SELECT * FROM Students
+WHERE Marks > (SELECT AVG(Marks) FROM Students);
+
+-- Student(s) with highest marks
+SELECT * FROM Students
+WHERE Marks = (SELECT MAX(Marks) FROM Students);
+
+-- Students in Computer Science
+SELECT * FROM Students
+WHERE DepartmentID = (
+    SELECT DepartmentID FROM Departments
+    WHERE DepartmentName = 'Computer Science'
+);`}</code>
+          </pre>
+
+  <hr />
           <h2>Session 9 Exercise</h2>
           <ol>
             <li>Write a query to show the total number of employees and average salary for each department.</li>
