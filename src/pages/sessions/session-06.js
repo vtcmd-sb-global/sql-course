@@ -14,7 +14,7 @@ export default function Session06() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Learning how to create, modify, and manage tables and columns in SQL Server 2022.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 6</p>
+          <p><strong>Follows Book:</strong> From Book – Session 6</p>
 
           <hr />
 
