@@ -50,7 +50,22 @@
 }
 
 /* Category button (Sessions / Exercises) */
-.category-btn {
+/* .category-btn {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.65rem 1.5rem;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1f2937;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+} */
+.categoryBtn {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -66,31 +81,55 @@
   transition: background-color 0.2s ease;
 }
 
-.category-btn:hover {
+/* .category-btn:hover {
+  background-color: #f3f4f6;
+} */
+.categoryBtn:hover {
   background-color: #f3f4f6;
 }
 
-.category-btn span {
+/* .category-btn span {
+  font-size: 0.8rem;
+  color: #6b7280;
+} */
+.categoryBtn span {
   font-size: 0.8rem;
   color: #6b7280;
 }
 
 /* Sub items */
-.sub-items {
+/* .sub-items {
+  background-color: #ffffff;
+  border-left: 2px solid #e5e7eb;
+  margin-left: 1.2rem;
+  margin-bottom: 0.5rem;
+} */
+.subItems {
   background-color: #ffffff;
   border-left: 2px solid #e5e7eb;
   margin-left: 1.2rem;
   margin-bottom: 0.5rem;
 }
 
-.sub-items li a {
+/* .sub-items li a {
+  padding: 0.45rem 1.2rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #4b5563;
+} */
+.subItems li a {
   padding: 0.45rem 1.2rem;
   font-size: 0.875rem;
   font-weight: 400;
   color: #4b5563;
 }
 
-.sub-items li a:hover {
+/* .sub-items li a:hover {
+  background-color: #f5f3ff;
+  color: #5b21b6;
+} */
+
+.subItems li a:hover {
   background-color: #f5f3ff;
   color: #5b21b6;
 }
