@@ -45,14 +45,14 @@ export default function Session09() {
           </ul>
 
           <pre>
-            <code>{`-- Total employees in each department
-SELECT DepartmentID, COUNT(*) AS TotalEmployees
-FROM Employees
+            <code>{`-- Total students in each department
+SELECT DepartmentID, COUNT(*) AS TotalStudents
+FROM Students
 GROUP BY DepartmentID;
 
--- Average salary by department
-SELECT DepartmentID, AVG(Salary) AS AverageSalary
-FROM Employees
+-- Average marks by department
+SELECT DepartmentID, AVG(Marks) AS AverageMarks
+FROM Students
 GROUP BY DepartmentID;`}</code>
           </pre>
 
@@ -60,10 +60,10 @@ GROUP BY DepartmentID;`}</code>
           <p>The <code>HAVING</code> clause is used to filter groups (after <code>GROUP BY</code>).</p>
 
           <pre>
-            <code>{`SELECT DepartmentID, COUNT(*) AS TotalEmployees
-FROM Employees
+            <code>{`SELECT DepartmentID, COUNT(*) AS TotalStudents
+FROM Students
 GROUP BY DepartmentID
-HAVING COUNT(*) > 5;`}</code>
+HAVING COUNT(*) > 2;`}</code>
           </pre>
 
           <hr />
@@ -79,16 +79,17 @@ HAVING COUNT(*) > 5;`}</code>
           </ul>
 
           <pre>
-            <code>{`-- Employees who earn more than the average salary
-SELECT FirstName, Salary
-FROM Employees
-WHERE Salary > (SELECT AVG(Salary) FROM Employees);
+            <code>{`-- Students who scored more than the average marks
+SELECT Name, Marks
+FROM Students
+WHERE Marks > (SELECT AVG(Marks) FROM Students);
 
--- Employees in departments located in 'Karachi'
-SELECT FirstName, LastName
-FROM Employees
-WHERE DepartmentID IN (
-    SELECT DepartmentID FROM Departments WHERE City = 'Karachi'
+-- Students in Computer Science department
+SELECT Name, Marks
+FROM Students
+WHERE DepartmentID = (
+    SELECT DepartmentID FROM Departments
+    WHERE DepartmentName = 'Computer Science'
 );`}</code>
           </pre>
 
@@ -161,19 +162,19 @@ WHERE AvgSalary > 60000;`}</code>
           <h3>Examples</h3>
           <pre>
             <code>{`-- INNER JOIN
-SELECT e.FirstName, e.LastName, d.DepartmentName
-FROM Employees e
-INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
+SELECT s.Name, s.Marks, d.DepartmentName
+FROM Students AS s
+INNER JOIN Departments AS d ON s.DepartmentID = d.DepartmentID;
 
 -- LEFT JOIN
-SELECT e.FirstName, d.DepartmentName
-FROM Employees e
-LEFT JOIN Departments d ON e.DepartmentID = d.DepartmentID;
+SELECT d.DepartmentName, s.Name
+FROM Departments AS d
+LEFT JOIN Students AS s ON d.DepartmentID = s.DepartmentID;
 
 -- RIGHT JOIN
-SELECT e.FirstName, d.DepartmentName
-FROM Employees e
-RIGHT JOIN Departments d ON e.DepartmentID = d.DepartmentID;`}</code>
+SELECT s.Name, d.DepartmentName
+FROM Students AS s
+RIGHT JOIN Departments AS d ON s.DepartmentID = d.DepartmentID;`}</code>
           </pre>
 
           <hr />
