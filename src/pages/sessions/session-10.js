@@ -250,7 +250,92 @@ SELECT * FROM INFORMATION_SCHEMA.VIEWS;`}</code>
           </pre>
 
           <hr />
+  
+          <h2>Practical Example – CollegeDB</h2>
 
+          <h3>Views</h3>
+          <pre>
+            <code>{`CREATE VIEW StudentDetails
+AS
+SELECT
+    s.StudentID, s.Name, s.Age, s.City, s.Marks,
+    d.DepartmentName
+FROM Students AS s
+INNER JOIN Departments AS d ON s.DepartmentID = d.DepartmentID;
+GO
+
+SELECT * FROM StudentDetails;
+SELECT * FROM StudentDetails WHERE Marks >= 80;
+
+-- Modify the view
+ALTER VIEW StudentDetails
+AS
+SELECT s.StudentID, s.Name, s.Marks, d.DepartmentName
+FROM Students AS s
+INNER JOIN Departments AS d ON s.DepartmentID = d.DepartmentID;
+GO`}</code>
+          </pre>
+
+          <h3>Stored Procedures</h3>
+
+          <h4>Insert Procedure</h4>
+          <pre>
+            <code>{`CREATE PROCEDURE AddStudent
+    @Name VARCHAR(100),
+    @Age INT,
+    @Gender VARCHAR(10),
+    @City VARCHAR(50),
+    @Marks INT,
+    @DepartmentID INT
+AS
+BEGIN
+    INSERT INTO Students (Name, Age, Gender, City, Marks, DepartmentID)
+    VALUES (@Name, @Age, @Gender, @City, @Marks, @DepartmentID);
+END;
+GO
+
+-- EXEC AddStudent 'Shaarif', 27, 'Male', 'Rawalpindi', 61, 3;`}</code>
+          </pre>
+
+          <h4>Update Procedure (with Error Handling)</h4>
+          <pre>
+            <code>{`CREATE PROCEDURE UpdateStudent
+    @StudentID INT,
+    @City VARCHAR(100) = NULL
+AS
+BEGIN
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        UPDATE Students
+        SET City = @City
+        WHERE StudentID = @StudentID;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        SELECT ERROR_MESSAGE() AS ErrorMessage;
+    END CATCH;
+END;
+GO`}</code>
+          </pre>
+
+          <h4>Delete Procedure</h4>
+          <pre>
+            <code>{`CREATE PROCEDURE DeleteStudent
+    @StudentID INT
+AS
+BEGIN
+    DELETE FROM Students WHERE StudentID = @StudentID;
+END;
+GO
+
+-- EXEC DeleteStudent @StudentID = 12;`}</code>
+          </pre>
+  
+  <hr />
+  
           <h2>Session 10 Exercise</h2>
           <ol>
             <li>Create a view that shows Employee Full Name, Department Name, and Salary.</li>
