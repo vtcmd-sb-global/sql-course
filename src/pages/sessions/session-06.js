@@ -100,21 +100,22 @@ export default function Session06() {
 
           <hr />
 
-          <h2>4. Creating a Table</h2>
+                    <h2>4. Creating a Table</h2>
           <p>Use the <code>CREATE TABLE</code> statement to create a new table.</p>
 
           <pre>
-            <code>{`CREATE TABLE Employees
+            <code>{`CREATE TABLE Students
 (
-    EmployeeID        INT IDENTITY(1,1) PRIMARY KEY,
-    FirstName         NVARCHAR(50) NOT NULL,
-    LastName          NVARCHAR(50) NOT NULL,
-    Email             NVARCHAR(100) UNIQUE,
-    DateOfBirth       DATE,
-    HireDate          DATE NOT NULL DEFAULT GETDATE(),
-    Salary            DECIMAL(10,2) CHECK (Salary > 0),
-    DepartmentID      INT,
-    IsActive          BIT DEFAULT 1
+    StudentID    INT PRIMARY KEY IDENTITY(1,1),
+    Name         VARCHAR(100) NOT NULL,
+    Age          INT,
+    Gender       VARCHAR(10),
+    City         VARCHAR(50),
+    Marks        INT,
+    DepartmentID INT,
+
+    CONSTRAINT CK_Students_Age   CHECK (Age >= 16),
+    CONSTRAINT CK_Students_Marks CHECK (Marks BETWEEN 0 AND 100)
 );
 GO`}</code>
           </pre>
@@ -124,8 +125,6 @@ GO`}</code>
             <li><code>IDENTITY(1,1)</code> → Auto-increment starting from 1</li>
             <li><code>PRIMARY KEY</code> → Uniquely identifies each row</li>
             <li><code>NOT NULL</code> → Column cannot contain NULL values</li>
-            <li><code>UNIQUE</code> → All values in the column must be unique</li>
-            <li><code>DEFAULT</code> → Provides a default value</li>
             <li><code>CHECK</code> → Enforces a condition on the values</li>
           </ul>
 
@@ -158,7 +157,7 @@ GO`}</code>
               </tr>
               <tr>
                 <td>CHECK</td>
-                <td>Enforces a condition (e.g., Salary &gt; 0)</td>
+                <td>Enforces a condition (e.g., Marks BETWEEN 0 AND 100)</td>
               </tr>
               <tr>
                 <td>DEFAULT</td>
@@ -174,19 +173,25 @@ GO`}</code>
             <code>{`-- First create the parent table
 CREATE TABLE Departments
 (
-    DepartmentID    INT PRIMARY KEY,
-    DepartmentName  NVARCHAR(50) NOT NULL
+    DepartmentID   INT PRIMARY KEY IDENTITY(1,1),
+    DepartmentName VARCHAR(100) NOT NULL UNIQUE
 );
 GO
 
 -- Then create the child table with Foreign Key
-CREATE TABLE Employees
+CREATE TABLE Students
 (
-    EmployeeID      INT IDENTITY(1,1) PRIMARY KEY,
-    FirstName       NVARCHAR(50) NOT NULL,
-    LastName        NVARCHAR(50) NOT NULL,
-    DepartmentID    INT,
-    CONSTRAINT FK_Employees_Departments 
+    StudentID    INT PRIMARY KEY IDENTITY(1,1),
+    Name         VARCHAR(100) NOT NULL,
+    Age          INT,
+    Gender       VARCHAR(10),
+    City         VARCHAR(50),
+    Marks        INT,
+    DepartmentID INT,
+
+    CONSTRAINT CK_Students_Age   CHECK (Age >= 16),
+    CONSTRAINT CK_Students_Marks CHECK (Marks BETWEEN 0 AND 100),
+    CONSTRAINT FK_Students_Departments
         FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
 );
 GO`}</code>
