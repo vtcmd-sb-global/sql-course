@@ -14,7 +14,7 @@ export default function Session02() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Understanding how to design a database properly using the E-R Model and Normalization.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 2</p>
+          <p><strong>Follows Book:</strong> From Book – Session 2</p>
 
           <hr />
 
