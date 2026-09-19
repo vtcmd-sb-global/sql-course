@@ -37,7 +37,7 @@ export default function Session08() {
 
           <hr />
 
-          <h2>2. The SELECT Statement</h2>
+                    <h2>2. The SELECT Statement</h2>
           <p>Basic syntax:</p>
 
           <pre>
@@ -50,64 +50,52 @@ ORDER BY column1 ASC|DESC;`}</code>
           <h3>Simple Examples</h3>
           <pre>
             <code>{`-- Select all columns
-SELECT * FROM Employees;
+SELECT * FROM Students;
 
 -- Select specific columns
-SELECT FirstName, LastName, Salary FROM Employees;
+SELECT Name, Age, Marks FROM Students;
 
 -- Select with alias
-SELECT FirstName AS [First Name], LastName AS [Last Name]
-FROM Employees;`}</code>
+SELECT Name AS StudentName, Marks AS StudentMarks
+FROM Students;`}</code>
           </pre>
 
           <hr />
 
           <h2>3. Important Clauses used with SELECT</h2>
 
-          <h3>3.1 FROM Clause</h3>
-          <p>Specifies the table(s) from which to retrieve data.</p>
-
           <h3>3.2 WHERE Clause</h3>
-          <p>Filters rows based on a condition.</p>
           <pre>
-            <code>{`SELECT * FROM Employees
-WHERE Salary > 50000;
+            <code>{`SELECT * FROM Students
+WHERE Marks > 80;
 
-SELECT * FROM Employees
-WHERE DepartmentID = 3 AND IsActive = 1;`}</code>
+SELECT * FROM Students
+WHERE City = 'Karachi' AND Gender = 'Female';`}</code>
           </pre>
 
           <h3>3.3 ORDER BY Clause</h3>
-          <p>Sorts the result set in ascending (ASC) or descending (DESC) order.</p>
           <pre>
-            <code>{`-- Sort by Salary ascending (default)
-SELECT FirstName, Salary FROM Employees
-ORDER BY Salary;
+            <code>{`-- Sort by Marks ascending (default)
+SELECT Name, Marks FROM Students
+ORDER BY Marks;
 
--- Sort by Salary descending
-SELECT FirstName, Salary FROM Employees
-ORDER BY Salary DESC;
+-- Sort by Marks descending
+SELECT Name, Marks FROM Students
+ORDER BY Marks DESC;
 
 -- Sort by multiple columns
-SELECT FirstName, DepartmentID, Salary FROM Employees
-ORDER BY DepartmentID ASC, Salary DESC;`}</code>
+SELECT Name, City, Marks FROM Students
+ORDER BY City ASC, Marks DESC;`}</code>
           </pre>
 
-          <h3>3.4 Other Useful Clauses (Preview)</h3>
-          <ul>
-            <li><code>TOP</code> – Limits the number of rows returned</li>
-            <li><code>DISTINCT</code> – Removes duplicate rows</li>
-            <li><code>GROUP BY</code> – Groups rows (covered in later sessions)</li>
-            <li><code>HAVING</code> – Filters groups (covered in later sessions)</li>
-          </ul>
-
+          <h3>3.4 Other Useful Clauses</h3>
           <pre>
-            <code>{`-- Top 5 highest paid employees
-SELECT TOP 5 FirstName, Salary FROM Employees
-ORDER BY Salary DESC;
+            <code>{`-- Top 3 highest scoring students
+SELECT TOP 3 Name, Marks FROM Students
+ORDER BY Marks DESC;
 
 -- Distinct cities
-SELECT DISTINCT City FROM Employees;`}</code>
+SELECT DISTINCT City FROM Students;`}</code>
           </pre>
 
           <hr />
