@@ -253,9 +253,145 @@ GO`}</code>
             <li>Avoid using reserved keywords as object names</li>
             <li>Document important design decisions</li>
           </ul>
-
+  
           <hr />
 
+          <h2>Practical Example – CollegeDB (Full Setup)</h2>
+          <p>
+            Run the following script <strong>once</strong> to create the practice database and tables 
+            that we will use throughout the rest of the course.
+          </p>
+
+          <pre>
+            <code>{`-- =============================================
+                    -- CollegeDB - Complete Setup Script
+                    -- =============================================
+                    
+                    -- CREATE DATABASE CollegeDB;
+                    -- GO
+                    -- USE CollegeDB;
+                    -- GO
+                    
+                    -- 1. Departments
+                    CREATE TABLE Departments
+                    (
+                        DepartmentID   INT PRIMARY KEY IDENTITY(1,1),
+                        DepartmentName VARCHAR(100) NOT NULL UNIQUE
+                    );
+                    GO
+                    
+                    -- 2. Classes
+                    CREATE TABLE Classes
+                    (
+                        ClassID   INT PRIMARY KEY IDENTITY(1,1),
+                        ClassName VARCHAR(100) NOT NULL
+                    );
+                    GO
+                    
+                    -- 3. Students
+                    CREATE TABLE Students
+                    (
+                        StudentID    INT PRIMARY KEY IDENTITY(1,1),
+                        Name         VARCHAR(100) NOT NULL,
+                        Age          INT,
+                        Gender       VARCHAR(10),
+                        City         VARCHAR(50),
+                        Marks        INT,
+                        DepartmentID INT,
+                    
+                        CONSTRAINT CK_Students_Age   CHECK (Age >= 16),
+                        CONSTRAINT CK_Students_Marks CHECK (Marks BETWEEN 0 AND 100),
+                        CONSTRAINT FK_Students_Departments
+                            FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID)
+                    );
+                    GO
+                    
+                    -- 4. Teachers
+                    CREATE TABLE Teachers
+                    (
+                        TeacherID    INT PRIMARY KEY IDENTITY(1,1),
+                        Name         VARCHAR(100) NOT NULL,
+                        Age          INT,
+                        Gender       VARCHAR(10),
+                        City         VARCHAR(50),
+                        DepartmentID INT,
+                        ClassID      INT,
+                    
+                        CONSTRAINT FK_Teachers_Departments
+                            FOREIGN KEY (DepartmentID) REFERENCES Departments(DepartmentID),
+                        CONSTRAINT FK_Teachers_Classes
+                            FOREIGN KEY (ClassID) REFERENCES Classes(ClassID)
+                    );
+                    GO
+                    
+                    -- =============================================
+                    -- Sample Data
+                    -- =============================================
+
+                    -- Sample Data for Departments
+                    INSERT INTO Departments (DepartmentName)
+                    VALUES
+                    ('Computer Science'),
+                    ('Information Technology'),
+                    ('Computer Science'),
+                    ('Software Engineering'),
+                    ('Business Administration'),
+                    ('Accounting & Finance'),
+                    ('Psychology');
+                    GO
+
+                    -- Sample Data for Classes
+                    INSERT INTO Classes (ClassName)
+                    VALUES
+                    ('1-A'),('1-B'),('2-A'),('2-B'),('3-A'),('3-B'),
+                    ('4-A'),('4-B'),('5-A'),('5-B'),('6-A'),('6-B'),
+                    ('7-A'),('7-B'),('8-A'),('8-B'),('9-A'),('9-B'),
+                    ('10-A'),('10-B');
+                    GO
+
+                    -- Sample Data for Teachers
+                    INSERT INTO Teachers (Name, Age, Gender, City, DepartmentID, ClassID)
+                    VALUES
+                    ('Ali', 20, 'Male', 'Karachi', 1, 1),
+                    ('Ahmed', 21, 'Male', 'Lahore', 4, 2),
+                    ('Sara', 20, 'Female', 'Karachi', 3, 4),
+                    ('Ayesha', 22, 'Female', 'Islamabad', 2, 20),
+                    ('Hamza', 23, 'Male', 'Karachi', 1, 18),
+                    ('Usman', 21, 'Male', 'Lahore', 4, 1),
+                    ('Hina', 20, 'Female', 'Karachi', 3, 11),
+                    ('Bilal', 24, 'Male', 'Islamabad', 4, 15),
+                    ('Fatima', 22, 'Female', 'Karachi', 2, 17),
+                    ('Zain', 19, 'Male', 'Lahore', 1, 5);
+                    GO
+
+                    -- Sample Data for Students
+                    INSERT INTO Students (Name, Age, Gender, City, Marks, DepartmentID)
+                    VALUES
+                    ('Ali', 20, 'Male', 'Karachi', 85, 1),
+                    ('Ahmed', 21, 'Male', 'Lahore', 72, 2),
+                    ('Sara', 20, 'Female', 'Karachi', 91, 1),
+                    ('Ayesha', 22, 'Female', 'Islamabad', 88, 3),
+                    ('Hamza', 23, 'Male', 'Karachi', 65, 2),
+                    ('Usman', 21, 'Male', 'Lahore', 78, 1),
+                    ('Hina', 20, 'Female', 'Karachi', 95, 2),
+                    ('Bilal', 24, 'Male', 'Islamabad', 55, 4),
+                    ('Fatima', 22, 'Female', 'Karachi', 82, 3),
+                    ('Zain', 19, 'Male', 'Lahore', 69, 1);
+                    GO
+                    
+                    -- Verify after inserting all sample data in each respective tables
+                    SELECT * FROM Departments;
+                    SELECT * FROM Classes;
+                    SELECT * FROM Teachers;
+                    SELECT * FROM Students;
+                    GO
+                    `
+                  }
+            </code>
+          </pre>
+          
+          <hr />
+              
           <h2>Session 6 Exercise</h2>
           <ol>
             <li>Create a table named <code>Students</code> with appropriate columns (StudentID, FirstName, LastName, Email, DateOfBirth, EnrollmentDate).</li>
