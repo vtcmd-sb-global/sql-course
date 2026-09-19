@@ -244,6 +244,59 @@ ENABLE TRIGGER trg_Employee_Insert ON Employees;`}</code>
 
           <hr />
 
+          <h2>Practical Example – CollegeDB</h2>
+          <pre>
+            <code>{`-- Supporting tables
+CREATE TABLE ProjectUsers
+(
+    UserID   INT PRIMARY KEY IDENTITY(1,1),
+    UserName NVARCHAR(150) NULL
+);
+GO
+
+INSERT INTO ProjectUsers (UserName) VALUES ('Aousaja'), ('Shafqat');
+GO
+
+CREATE TABLE StudentAudit
+(
+    AuditID    INT PRIMARY KEY IDENTITY(1,1),
+    StudentID  INT,
+    ActionType VARCHAR(20),
+    ActionDate DATETIME DEFAULT GETDATE(),
+    UserID     INT NULL
+);
+GO
+
+ALTER TABLE Students ADD UserID INT NULL;
+GO
+
+ALTER TABLE Students
+ADD CONSTRAINT FK_Students_ProjectUsers
+FOREIGN KEY (UserID) REFERENCES ProjectUsers(UserID);
+GO
+
+-- INSERT Trigger
+CREATE TRIGGER trg_Student_Insert
+ON Students
+AFTER INSERT
+AS
+BEGIN
+    INSERT INTO StudentAudit (StudentID, ActionType, UserID)
+    SELECT StudentID, 'INSERT', UserID
+    FROM inserted;
+END;
+GO
+
+-- Test
+INSERT INTO Students (Name, Age, Gender, City, Marks, DepartmentID, UserID)
+VALUES ('Ahsan Khan', 30, 'Male', 'Quetta', 65, 2, 1);
+GO
+
+SELECT TOP 1 * FROM StudentAudit ORDER BY AuditID DESC;`}</code>
+          </pre>
+
+  <hr />
+
           <h2>Session 12 Exercise</h2>
           <ol>
             <li>Create an AFTER INSERT trigger that logs new employee records into an audit table.</li>
