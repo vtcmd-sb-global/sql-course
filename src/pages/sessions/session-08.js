@@ -239,6 +239,133 @@ FROM ProductInfo;`}</code>
 
           <hr />
 
+            <hr />
+
+          <h2>Practical Example – CollegeDB</h2>
+
+          <h3>SELECT Statement</h3>
+          <pre>
+            <code>{`-- Select every column
+SELECT * FROM Students;
+
+-- Select specific columns
+SELECT Name, Age, Marks FROM Students;
+
+-- Rename a column using AS
+SELECT Name, Marks AS StudentMarks FROM Students;
+
+-- Calculated column
+SELECT Name, Marks, Marks + 5 AS MarksAfterBonus FROM Students;`}</code>
+          </pre>
+
+          <h3>WHERE Clause</h3>
+          <pre>
+            <code>{`SELECT * FROM Students WHERE City = 'Karachi';
+SELECT * FROM Students WHERE Marks > 80;
+SELECT * FROM Students WHERE Marks < 70;
+SELECT * FROM Students WHERE Age >= 21;
+SELECT * FROM Students WHERE City <> 'Karachi';`}</code>
+          </pre>
+
+          <h3>AND | OR | NOT</h3>
+          <pre>
+            <code>{`SELECT * FROM Students WHERE City = 'Karachi' AND Marks > 80;
+SELECT * FROM Students WHERE City = 'Karachi' OR City = 'Lahore';
+SELECT * FROM Students WHERE NOT City = 'Karachi';
+
+SELECT * FROM Students
+WHERE Gender = 'Female' AND City = 'Karachi' AND Marks >= 80;
+
+-- Complex condition with parentheses
+SELECT Name, City, Marks
+FROM Students
+WHERE (City = 'Karachi' OR City = 'Lahore') AND Marks >= 70;`}</code>
+          </pre>
+
+          <h3>ORDER BY</h3>
+          <pre>
+            <code>{`SELECT * FROM Students ORDER BY Marks ASC;
+SELECT * FROM Students ORDER BY Marks DESC;
+SELECT * FROM Students ORDER BY Name ASC;
+SELECT * FROM Students ORDER BY City ASC, Marks DESC;`}</code>
+          </pre>
+
+          <h3>TOP</h3>
+          <pre>
+            <code>{`SELECT TOP 3 * FROM Students ORDER BY Marks DESC;
+SELECT TOP 1 * FROM Students ORDER BY Marks DESC;
+SELECT TOP 50 PERCENT * FROM Students ORDER BY Marks DESC;`}</code>
+          </pre>
+
+          <h3>DISTINCT</h3>
+          <pre>
+            <code>{`SELECT DISTINCT City FROM Students;
+SELECT DISTINCT DepartmentID FROM Students;
+SELECT DISTINCT City, DepartmentID FROM Students;`}</code>
+          </pre>
+
+          <h3>LIKE</h3>
+          <pre>
+            <code>{`SELECT * FROM Students WHERE Name LIKE 'A%';      -- starts with A
+SELECT * FROM Students WHERE Name LIKE '%a';      -- ends with a
+SELECT * FROM Students WHERE Name LIKE '%ha%';    -- contains "ha"
+SELECT * FROM Students WHERE Name LIKE '____';    -- exactly 4 characters
+SELECT * FROM Students WHERE Name LIKE '_a%';     -- second character is 'a'`}</code>
+          </pre>
+
+          <h3>IN</h3>
+          <pre>
+            <code>{`SELECT * FROM Students WHERE City IN ('Karachi', 'Lahore');
+SELECT * FROM Students WHERE DepartmentID IN (1, 2, 3);
+SELECT * FROM Students WHERE City NOT IN ('Karachi', 'Lahore');`}</code>
+          </pre>
+
+          <h3>BETWEEN</h3>
+          <pre>
+            <code>{`SELECT * FROM Students WHERE Marks BETWEEN 70 AND 90;
+SELECT * FROM Students WHERE Age BETWEEN 20 AND 22;
+SELECT * FROM Students WHERE Marks NOT BETWEEN 70 AND 90;`}</code>
+          </pre>
+
+          <h3>NULL Handling</h3>
+          <pre>
+            <code>{`-- Insert a student with NULL City
+INSERT INTO Students (Name, Age, Gender, City, Marks, DepartmentID)
+VALUES ('Noor', 21, 'Female', NULL, 76, 3);
+
+SELECT * FROM Students WHERE City IS NULL;
+SELECT * FROM Students WHERE City IS NOT NULL;
+-- Never use: WHERE City = NULL`}</code>
+          </pre>
+
+          <h3>UPDATE</h3>
+          <pre>
+            <code>{`UPDATE Students SET Marks = 90 WHERE StudentID = 2;
+UPDATE Students SET City = 'Karachi' WHERE StudentID = 2;
+
+UPDATE Students
+SET Marks = 88, City = 'Lahore'
+WHERE StudentID = 2;
+
+-- DANGEROUS (updates ALL rows)
+-- UPDATE Students SET Marks = 100;`}</code>
+          </pre>
+
+          <h3>DELETE</h3>
+          <pre>
+            <code>{`DELETE FROM Students WHERE StudentID = 11;
+
+-- Always test with SELECT first
+SELECT * FROM Students WHERE Marks < 60;
+-- Then:
+-- DELETE FROM Students WHERE Marks < 60;
+
+-- DANGEROUS
+-- DELETE FROM Students;`}</code>
+          </pre>
+
+  <hr />
+  
           <h2>Session 8 Exercise</h2>
           <ol>
             <li>Write a query to display all employees with salary greater than 60,000 and sort them by salary descending.</li>
