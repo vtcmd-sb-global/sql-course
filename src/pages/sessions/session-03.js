@@ -14,7 +14,7 @@ export default function Session03() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Getting familiar with SQL Server 2022, its tools, and running your first queries.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 3</p>
+          <p><strong>Follows Book:</strong> From Book – Session 3</p>
 
           <hr />
 
@@ -25,7 +25,7 @@ export default function Session03() {
             <li>Explain basic architecture and version history of SQL Server 2022</li>
             <li>Identify new features added to SQL Server 2022</li>
             <li>Outline the process of connecting to SQL Server instances</li>
-            <li>Define databases and list the key features of AdventureWorks 2022 sample database</li>
+            <li>Define databases and list the key features of collegeDb sample database</li>
             <li>Explain the components of SQL Server Management Studio (SSMS)</li>
             <li>Elaborate on script file creation and organization</li>
             <li>Explain the process to execute Transact-SQL queries</li>
@@ -117,8 +117,8 @@ export default function Session03() {
 
           <hr />
 
-          <h2>6. AdventureWorks2022 Sample Database</h2>
-          <p><strong>AdventureWorks2022</strong> is the official sample database provided by Microsoft for learning and practice.</p>
+          <h2>6. collegeDb Sample Database</h2>
+          <p><strong>collegeDb</strong> is the official sample database provided by Microsoft for learning and practice.</p>
 
           <p>Key features:</p>
           <ul>
@@ -174,10 +174,10 @@ export default function Session03() {
           <h3>Basic Example</h3>
           <pre>
             <code>{`-- Simple query to check current date and time
-SELECT GETDATE() AS CurrentDateTime;
+select getdate() as currentDateTime;
 
 -- View all databases
-SELECT name FROM sys.databases;`}</code>
+select name from sys.databases;`}</code>
           </pre>
 
           <hr />
@@ -187,10 +187,10 @@ SELECT name FROM sys.databases;`}</code>
             <li>Connect to your local SQL Server instance using SSMS.</li>
             <li>Expand the System Databases and note their names.</li>
             <li>Create a new query window and run:
-              <pre><code>{`SELECT @@VERSION;`}</code></pre>
+              <pre><code>{`select @@VERSION;`}</code></pre>
             </li>
             <li>Save the query as <code>Session03_FirstQuery.sql</code>.</li>
-            <li>Explore Object Explorer and locate the AdventureWorks2022 database (if installed).</li>
+            <li>Explore Object Explorer and locate the collegeDb database (if installed).</li>
           </ol>
 
           <hr />
@@ -218,7 +218,7 @@ SELECT name FROM sys.databases;`}</code>
             <li>Name any four features of SQL Server 2022.</li>
             <li>What is the difference between a system database and a user database?</li>
             <li>List the four main system databases.</li>
-            <li>What is AdventureWorks2022?</li>
+            <li>What is collegeDb?</li>
             <li>What is the full form of SSMS?</li>
             <li>Name any three components of SSMS.</li>
             <li>How do you execute a query in SSMS?</li>
