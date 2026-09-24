@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session04() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 04 — Transact-SQL"
@@ -182,14 +202,14 @@ export default function Session04() {
           <p>This is one of the most important concepts in SQL. The order in which you <strong>write</strong> a SELECT statement is different from the order in which SQL Server <strong>processes</strong> it.</p>
 
           <h3>Written Order (Syntax Order)</h3>
-          <pre>
-            <code>{`select
-from
-where
-group by
-having
-order by
-offset-fetch`}</code>
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+FROM
+WHERE
+GROUP BY
+HAVING
+ORDER BY
+OFFSET-FETCH`}</code>
           </pre>
 
           <h3>Logical Processing Order (Execution Order)</h3>
