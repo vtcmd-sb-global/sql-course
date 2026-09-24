@@ -325,7 +325,7 @@ GO`}</code>
           </ul>
 
           <h3>Basic Example</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Simple query to check current date and time
 select getdate() as currentDateTime;
 
@@ -340,7 +340,7 @@ select name from sys.databases;`}</code>
             <li>Connect to your local SQL Server instance using SSMS.</li>
             <li>Expand the System Databases and note their names.</li>
             <li>Create a new query window and run:
-              <pre><code>{`select @@VERSION;`}</code></pre>
+              <pre style={codeBlockStyle}><code>{`select @@VERSION;`}</code></pre>
             </li>
             <li>Save the query as <code>Session03_FirstQuery.sql</code>.</li>
             <li>Explore Object Explorer and locate the collegeDb database (if installed).</li>
