@@ -237,6 +237,281 @@ OFFSET-FETCH`}</code>
           Because you cannot use a column Alias defined in SELECT inside the WHERE clause because the WHERE clause is processed before SELECT.</p>
 
           <hr />
+          <h2>7. Practical — Working with AdventureWorks2019</h2>
+
+          <p>
+            Now let's apply the concepts covered in this session using the
+            <strong> AdventureWorks2019 </strong>
+            sample database used throughout the Aptech SQL Server course.
+          </p>
+
+          <p>
+            Open <strong>SQL Server Management Studio (SSMS)</strong>, connect
+            to your SQL Server instance, and make sure the
+            <strong> AdventureWorks2019 </strong> database is available.
+          </p>
+
+          <h3>Step 1 — Select the AdventureWorks2019 Database</h3>
+
+          <p>
+            Before running our queries, we can explicitly select the
+            AdventureWorks2019 database using the <code>USE</code> statement.
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`USE AdventureWorks2019;
+GO`}</code>
+          </pre>
+
+          <p>
+            The <code>USE</code> statement tells SQL Server which database
+            should be the current database for the following statements.
+          </p>
+
+          <h3>Step 2 — View Products</h3>
+
+          <p>
+            AdventureWorks contains real sample data related to products.
+            The <code>Production.Product</code> table contains product
+            information.
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`USE AdventureWorks2019;
+GO
+
+SELECT *
+FROM Production.Product;
+GO`}</code>
+          </pre>
+
+          <p>
+            Here:
+          </p>
+
+          <ul>
+            <li><code>Production</code> is the schema.</li>
+            <li><code>Product</code> is the table.</li>
+            <li><code>*</code> means all columns.</li>
+          </ul>
+
+          <h3>Step 3 — Select Specific Columns</h3>
+
+          <p>
+            Instead of retrieving every column, we can select only the columns
+            we need.
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+    ProductID,
+    Name,
+    ProductNumber,
+    ListPrice
+FROM Production.Product;
+GO`}</code>
+          </pre>
+
+          <p>
+            This demonstrates the basic <code>SELECT</code> and
+            <code>FROM</code> clauses.
+          </p>
+
+          <h3>Step 4 — Using a WHERE Predicate</h3>
+
+          <p>
+            A <code>WHERE</code> clause allows us to filter rows. The
+            condition inside the <code>WHERE</code> clause is called a
+            <strong> predicate</strong>.
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+    ProductID,
+    Name,
+    ListPrice
+FROM Production.Product
+WHERE ListPrice > 1000;
+GO`}</code>
+          </pre>
+
+          <p>
+            Only products whose <code>ListPrice</code> is greater than
+            <code>1000</code> are returned.
+          </p>
+
+          <h3>Step 5 — Using AND</h3>
+
+          <p>
+            We can combine multiple predicates using the
+            <code>AND</code> logical operator.
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+    ProductID,
+    Name,
+    Color,
+    ListPrice
+FROM Production.Product
+WHERE ListPrice > 1000
+  AND Color = 'Black';
+GO`}</code>
+          </pre>
+
+          <p>
+            Both conditions must be true for a row to be returned.
+          </p>
+
+          <h3>Step 6 — Using OR</h3>
+
+          <p>
+            The <code>OR</code> operator returns a row when at least one of
+            the conditions is true.
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+    ProductID,
+    Name,
+    Color,
+    ListPrice
+FROM Production.Product
+WHERE Color = 'Black'
+   OR Color = 'Red';
+GO`}</code>
+          </pre>
+
+          <h3>Step 7 — Using ORDER BY</h3>
+
+          <p>
+            We can sort the result using <code>ORDER BY</code>.
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+    ProductID,
+    Name,
+    ListPrice
+FROM Production.Product
+WHERE ListPrice > 1000
+ORDER BY ListPrice DESC;
+GO`}</code>
+          </pre>
+
+          <p>
+            <code>DESC</code> sorts from highest to lowest.
+            If <code>DESC</code> is not specified, SQL Server sorts in
+            ascending order by default.
+          </p>
+
+          <h3>Step 8 — Understanding Logical Processing Order</h3>
+
+          <p>
+            Consider the following query:
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+    Name,
+    ListPrice
+FROM Production.Product
+WHERE ListPrice > 1000
+ORDER BY ListPrice DESC;
+GO`}</code>
+          </pre>
+
+          <p>
+            Although we <strong>write</strong> the query in this order:
+          </p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+FROM
+WHERE
+ORDER BY`}</code>
+          </pre>
+
+          <p>
+            SQL Server logically processes the query in this order:
+          </p>
+
+          <ol>
+            <li><strong>FROM</strong> — identify the source table.</li>
+            <li><strong>WHERE</strong> — filter the rows.</li>
+            <li><strong>SELECT</strong> — return the requested columns.</li>
+            <li><strong>ORDER BY</strong> — sort the final result.</li>
+          </ol>
+
+          <h3>Step 9 — Practical Task</h3>
+
+          <p>
+            Try the following query yourself before looking at the solution:
+          </p>
+
+          <p>
+            <strong>Task:</strong> Display the product ID, product name,
+            color, and list price for products whose list price is greater
+            than 500. Display the most expensive products first.
+          </p>
+
+          <p><strong>Solution:</strong></p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+    ProductID,
+    Name,
+    Color,
+    ListPrice
+FROM Production.Product
+WHERE ListPrice > 500
+ORDER BY ListPrice DESC;
+GO`}</code>
+          </pre>
+
+          <h3>Step 10 — Practical Challenge</h3>
+
+          <p>
+            Write a query that displays:
+          </p>
+
+          <ul>
+            <li><code>ProductID</code></li>
+            <li><code>Name</code></li>
+            <li><code>Color</code></li>
+            <li><code>ListPrice</code></li>
+          </ul>
+
+          <p>
+            Your query should return only products where:
+          </p>
+
+          <ul>
+            <li>The list price is greater than <code>1000</code></li>
+            <li>The color is <code>Black</code></li>
+            <li>The results are sorted by price from highest to lowest</li>
+          </ul>
+
+          <p><strong>Try it yourself first.</strong></p>
+
+          <p><strong>Expected solution:</strong></p>
+
+          <pre style={codeBlockStyle}>
+            <code>{`SELECT
+    ProductID,
+    Name,
+    Color,
+    ListPrice
+FROM Production.Product
+WHERE ListPrice > 1000
+  AND Color = 'Black'
+ORDER BY ListPrice DESC;
+GO`}</code>
+          </pre>
+
+          <hr />
+  
+          <hr />
 
           <h2>Session 4 Exercise</h2>
           <ol>
