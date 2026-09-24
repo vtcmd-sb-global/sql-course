@@ -30,6 +30,16 @@ export default function Session04() {
     >
       <CustomLayout>
         <article className="session-content">
+            <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
           <h1>Session 04 — Transact-SQL</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -114,17 +124,17 @@ export default function Session04() {
 
           <h3>Numeric Data Types</h3>
           <ul>
-            <li><code>int</code>, <code>bigint</code>, <code>smallint</code>, <code>tinyint</code></li>
-            <li><code>decimal(p,s)</code>, <code>numeric(p,s)</code></li>
-            <li><code>float</code>, <code>real</code></li>
-            <li><code>money</code>, <code>smallmoney</code></li>
+            <li><code>INT</code>, <code>BIGINT</code>, <code>SMALLINT</code>, <code>TINYINT</code></li>
+            <li><code>DECIMAL(p,s)</code>, <code>NUMERIC(p,s)</code></li>
+            <li><code>FLOAT</code>, <code>REAL</code></li>
+            <li><code>MONEY</code>, <code>SMALLMONEY</code></li>
           </ul>
 
           <h3>Character / String Data Types</h3>
           <ul>
-            <li><code>char(n)</code>, <code>varchar(n)</code>, <code>varchar(max)</code></li>
-            <li><code>nchar(n)</code>, <code>nvarchar(n)</code>, <code>nvarchar(max)</code></li>
-            <li><code>text</code>, <code>ntext</code> (legacy – avoid using)</li>
+            <li><code>CHAR(N)</code>, <code>VARCHAR(N)</code>, <code>VARCHAR(MAX)</code></li>
+            <li><code>NCHAR(N)</code>, <code>NVARCHAR(N)</code>, <code>NVARCHAR(MAX)</code></li>
+            <li><code>TEXT</code>, <code>NTEXT</code></li>
           </ul>
 
           <h3>Date and Time Data Types</h3>
@@ -138,11 +148,11 @@ export default function Session04() {
 
           <h3>Other Important Types</h3>
           <ul>
-            <li><code>bit</code> (true/false → 1/0)</li>
-            <li><code>uniqueidentifier</code> (GUID)</li>
-            <li><code>xml</code></li>
-            <li><code>json</code> (handled as nvarchar in older versions, native support improved in recent versions)</li>
-            <li><code>varbinary</code>, <code>image</code> (for binary data)</li>
+            <li><code>BIT</code> (true/false → 1/0)</li>
+            <li><code>UNIQUEIDENTIFIER</code> (GUID)</li>
+            <li><code>XML</code></li>
+            <li><code>JSON</code> (handled as nvarchar in older versions, native support improved in recent versions)</li>
+            <li><code>VARBINARY</code>, <code>IMAGE</code> (for binary data)</li>
           </ul>
 
           <hr />
@@ -185,15 +195,15 @@ export default function Session04() {
             <li><code>City = 'Karachi'</code></li>
             <li><code>Salary between 50000 and 100000</code></li>
             <li><code>Name like 'A%'</code></li>
-            <li><code>epartmentId is null</code></li>
+            <li><code>DepartmentID is null</code></li>
           </ul>
 
           <p>Predicates are used in:</p>
           <ul>
-            <li>where clause</li>
-            <li>having clause</li>
-            <li>join conditions</li>
-            <li>check constraints</li>
+            <li>WHERE clause</li>
+            <li>HAVING clause</li>
+            <li>JOIN conditions</li>
+            <li>CHECK constraints</li>
           </ul>
 
           <hr />
@@ -214,17 +224,17 @@ OFFSET-FETCH`}</code>
 
           <h3>Logical Processing Order (Execution Order)</h3>
           <ol>
-            <li><strong>from</strong> (+ JOINs)</li>
-            <li><strong>where</strong></li>
-            <li><strong>group by</strong></li>
-            <li><strong>having</strong></li>
-            <li><strong>select</strong> (including distinct)</li>
-            <li><strong>order by</strong></li>
-            <li><strong>offset-fetch</strong> / TOP</li>
+            <li><strong>FROM</strong> (+ JOINs)</li>
+            <li><strong>WHERE</strong></li>
+            <li><strong>GROUP BY</strong></li>
+            <li><strong>HAVING</strong></li>
+            <li><strong>SELECT</strong> (including distinct)</li>
+            <li><strong>ORDER BY</strong></li>
+            <li><strong>OFFSET-FETCH</strong> / TOP</li>
           </ol>
 
           <p><strong>Why is this important?</strong><br />
-          Because you cannot use a column alias defined in select inside the where clause — the where clause is processed before select.</p>
+          Because you cannot use a column Alias defined in SELECT inside the WHERE clause because the WHERE clause is processed before SELECT.</p>
 
           <hr />
 
@@ -233,7 +243,7 @@ OFFSET-FETCH`}</code>
             <li>Write the full forms of DDL, DML, DCL, and TCL.</li>
             <li>Give two examples of each category of T-SQL statements.</li>
             <li>List any five commonly used data types with examples.</li>
-            <li>What is the difference between <code>char</code> and <code>varchar</code>?</li>
+            <li>What is the difference between <code>CHAR</code> and <code>VARCHAR</code>?</li>
             <li>Explain the difference between written order and logical processing order of a SELECT statement.</li>
           </ol>
 
