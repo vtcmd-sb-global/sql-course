@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session03() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 03 — Introduction to SQL Server 2022"
@@ -117,18 +137,151 @@ export default function Session03() {
 
           <hr />
 
-          <h2>6. collegeDb Sample Database</h2>
-          <p><strong>collegeDb</strong> is the official sample database provided by Microsoft for learning and practice.</p>
+          <article style={{ maxWidth: '800px', margin: '0 auto', fontFamily: 'system-ui, -apple-system, sans-serif', color: '#333', lineHeight: '1.6' }}>
+      <header>
+        <h2>6. AdventureWorks2019 Sample Database</h2>
+      </header>
 
-          <p>Key features:</p>
-          <ul>
-            <li>Realistic business scenario (bicycle manufacturing company)</li>
-            <li>Contains multiple schemas (Sales, Production, HumanResources, Person, etc.)</li>
-            <li>Includes tables, views, stored procedures, functions, and sample data</li>
-            <li>Perfect for practicing queries, joins, indexes, and more</li>
-          </ul>
+      <section>
+        <p>
+          For this course, we will use the <strong>AdventureWorks2019</strong> sample database.
+        </p>
 
-          <p>We will use AdventureWorks2022 extensively throughout this course.</p>
+        <p>
+          AdventureWorks represents a fictional company called <strong>Adventure Works Cycles</strong>, which manufactures and sells bicycles and related products.
+        </p>
+
+        <p>The database contains several schemas and tables representing areas such as:</p>
+        <ul>
+          <li>Human Resources</li>
+          <li>Sales</li>
+          <li>Production</li>
+          <li>Purchasing</li>
+          <li>Person</li>
+          <li>Manufacturing</li>
+        </ul>
+
+        <p>The main database used in this course is:</p>
+        <pre style={codeBlockStyle}>
+          <code>AdventureWorks2019</code>
+        </pre>
+
+        <p>Before executing SQL queries, select the database:</p>
+        <pre style={codeBlockStyle}>
+          <code>{`USE AdventureWorks2019;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>Check the Current Database</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT DB_NAME() AS CurrentDatabase;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>View All Databases</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT name
+FROM sys.databases;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>Check SQL Server Version</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT @@VERSION;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>Check the AdventureWorks Database</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT name
+FROM sys.databases
+WHERE name = 'AdventureWorks2019';
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>View AdventureWorks Tables</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`USE AdventureWorks2019;
+GO
+
+SELECT
+    TABLE_SCHEMA,
+    TABLE_NAME
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE'
+ORDER BY TABLE_SCHEMA, TABLE_NAME;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>View Tables by Schema</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT
+    TABLE_SCHEMA,
+    TABLE_NAME
+FROM INFORMATION_SCHEMA.TABLES
+WHERE TABLE_TYPE = 'BASE TABLE'
+ORDER BY TABLE_SCHEMA, TABLE_NAME;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>Example: View Products</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT *
+FROM Production.Product;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>Example: View People</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT *
+FROM Person.Person;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>Example: View Employees</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT *
+FROM HumanResources.Employee;
+GO`}</code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>Example: View Customers</h3>
+        <pre style={codeBlockStyle}>
+          <code>{`SELECT *
+FROM Sales.Customer;
+GO`}</code>
+        </pre>
+      </section>
+
+      <footer>
+        <p>The important point for students is:</p>
+        <p style={{ padding: '12px', backgroundColor: '#e6f7ff', borderLeft: '4px solid #1890ff', borderRadius: '2px' }}>
+          <strong>
+            <code style={inlineCodeStyle}>AdventureWorks2019</code> is our common database for SQL practice throughout this course.
+          </strong>
+        </p>
+      </footer>
+    </article>
 
           <hr />
 
