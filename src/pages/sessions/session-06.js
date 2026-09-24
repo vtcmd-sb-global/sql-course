@@ -102,7 +102,7 @@ export default function Session06() {
             products.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -229,7 +229,7 @@ GO`}</code>
             available in AdventureWorks2022.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -278,7 +278,7 @@ GO`}</code>
             structure of an existing table.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -312,7 +312,7 @@ GO`}</code>
             table. We will <strong>not modify AdventureWorks2022 tables</strong>.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -423,7 +423,7 @@ GO`}</code>
             For example, products are connected to product subcategories.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -448,7 +448,7 @@ GO`}</code>
             We can also demonstrate the concept using our own practice tables.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -483,7 +483,7 @@ GO`}</code>
 
           <h3>Add a Column</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER TABLE CourseStudents
 ADD PhoneNumber NVARCHAR(20);
 GO`}</code>
@@ -491,7 +491,7 @@ GO`}</code>
 
           <h3>Modify a Column</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER TABLE CourseStudents
 ALTER COLUMN PhoneNumber NVARCHAR(30);
 GO`}</code>
@@ -499,7 +499,7 @@ GO`}</code>
 
           <h3>Drop a Column</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER TABLE CourseStudents
 DROP COLUMN PhoneNumber;
 GO`}</code>
@@ -507,7 +507,7 @@ GO`}</code>
 
           <h3>Add a UNIQUE Constraint</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER TABLE CourseStudents
 ADD CONSTRAINT UQ_CourseStudents_StudentName
 UNIQUE (StudentName);
@@ -528,7 +528,7 @@ GO`}</code>
             relationships. We can inspect them using system catalog views.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -557,7 +557,7 @@ GO`}</code>
             and its data.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DROP TABLE CourseStudents;
 GO`}</code>
           </pre>
@@ -566,7 +566,7 @@ GO`}</code>
             A safer approach is to check whether the table exists first.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`IF OBJECT_ID('dbo.CourseStudents', 'U') IS NOT NULL
     DROP TABLE dbo.CourseStudents;
 GO`}</code>
@@ -581,7 +581,7 @@ GO`}</code>
             For example, students should <strong>not</strong> run:
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DROP TABLE Production.Product;`}</code>
           </pre>
 
@@ -601,7 +601,7 @@ GO`}</code>
 
           <h3>Practical 1 — Select a Table</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -612,7 +612,7 @@ GO`}</code>
 
           <h3>Practical 2 — Select Specific Columns</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -625,7 +625,7 @@ GO`}</code>
 
           <h3>Practical 3 — Inspect the Table Structure</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}> 
             <code>{`SELECT
     COLUMN_NAME,
     DATA_TYPE,
@@ -640,7 +640,7 @@ GO`}</code>
 
           <h3>Practical 4 — Find Primary Key Information</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     tc.CONSTRAINT_NAME,
     tc.TABLE_SCHEMA,
@@ -657,7 +657,7 @@ GO`}</code>
 
           <h3>Practical 5 — Explore Product Relationships</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
