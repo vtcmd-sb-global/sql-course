@@ -30,6 +30,16 @@ export default function Session03() {
     >
       <CustomLayout>
         <article className="session-content">
+          <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
           <h1>Session 03 — Introduction to SQL Server 2022</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
