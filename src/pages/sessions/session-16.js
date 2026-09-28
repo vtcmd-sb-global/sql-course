@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session16() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 16 — Artificial Intelligence and Machine Learning in SQL Server 2022"
@@ -10,6 +30,16 @@ export default function Session16() {
     >
       <CustomLayout>
         <article className="session-content">
+        <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
           <h1>Session 16 — Artificial Intelligence and Machine Learning in SQL Server 2022</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -56,7 +86,7 @@ export default function Session16() {
             <li>Parameter Sensitive Plan (PSP) Optimization (new in SQL Server 2022)</li>
           </ul>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Enable IQP features by setting database compatibility level
 ALTER DATABASE [YourDatabase]
 SET COMPATIBILITY_LEVEL = 160;   -- 160 = SQL Server 2022`}</code>
@@ -118,7 +148,7 @@ RECONFIGURE WITH OVERRIDE;`}</code>
           <hr />
 
           <h2>6. Running Python Scripts in SQL Server</h2>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`EXECUTE sp_execute_external_script
     @language = N'Python',
     @script = N'
@@ -129,7 +159,7 @@ print("Hello from SQL Server Machine Learning Services!")
           </pre>
 
           <h3>Using Data from SQL Server in Python</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`EXECUTE sp_execute_external_script
     @language = N'Python',
     @script = N'
@@ -151,7 +181,7 @@ WITH RESULT SETS ((
           <h2>7. Predicting Data with Linear Regression</h2>
           <p>You can train a simple linear regression model and use it for predictions entirely inside SQL Server.</p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Example: Simple linear regression using Python
 EXECUTE sp_execute_external_script
     @language = N'Python',
