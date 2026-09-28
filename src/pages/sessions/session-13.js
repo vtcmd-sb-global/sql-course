@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session13() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 13 — Programming Transact-SQL"
@@ -10,6 +30,16 @@ export default function Session13() {
     >
       <CustomLayout>
         <article className="session-content">
+        <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
           <h1>Session 13 — Programming Transact-SQL</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -49,7 +79,7 @@ export default function Session13() {
           <h2>2. Batches</h2>
           <p>A <strong>batch</strong> is a group of one or more T-SQL statements that are sent to the server as a single unit and executed together.</p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`PRINT 'This is the first statement';
 PRINT 'This is the second statement';
 GO                                  -- End of batch
@@ -68,7 +98,7 @@ GO`}</code>
           <p>Groups multiple statements into a single block.</p>
 
           <h3>3.2 IF...ELSE</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DECLARE @Salary DECIMAL(10,2) = 75000;
 
 IF @Salary > 70000
@@ -78,7 +108,7 @@ ELSE
           </pre>
 
           <h3>3.3 WHILE Loop</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DECLARE @Counter INT = 1;
 
 WHILE @Counter <= 5
@@ -99,7 +129,7 @@ END;`}</code>
           <hr />
 
           <h2>4. Variables in T-SQL</h2>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DECLARE @EmployeeName NVARCHAR(50);
 DECLARE @Salary DECIMAL(10,2) = 0;
 
@@ -134,7 +164,7 @@ SELECT @EmployeeName AS Name, @Salary AS Salary;`}</code>
           </ul>
 
           <h3>Creating a Scalar Function</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE FUNCTION dbo.fn_GetFullName
 (
     @FirstName NVARCHAR(50),
@@ -152,7 +182,7 @@ SELECT dbo.fn_GetFullName('Ali', 'Khan') AS FullName;`}</code>
           </pre>
 
           <h3>Creating an Inline Table-Valued Function</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE FUNCTION dbo.fn_GetEmployeesByDept
 (
     @DepartmentID INT
@@ -172,7 +202,7 @@ SELECT * FROM dbo.fn_GetEmployeesByDept(3);`}</code>
           </pre>
 
           <h3>Altering and Dropping Functions</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER FUNCTION dbo.fn_GetFullName ...
 DROP FUNCTION dbo.fn_GetFullName;`}</code>
           </pre>
@@ -195,7 +225,7 @@ DROP FUNCTION dbo.fn_GetFullName;`}</code>
           </ul>
 
           <h3>Examples</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Row number within each department
 SELECT 
     EmployeeID,
