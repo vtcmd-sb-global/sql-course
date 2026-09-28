@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session15() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 15 — PolyBase and Query Store"
@@ -10,6 +30,16 @@ export default function Session15() {
     >
       <CustomLayout>
         <article className="session-content">
+        <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
           <h1>Session 15 — PolyBase and Query Store</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -84,7 +114,7 @@ export default function Session15() {
             <li><strong>External Tables</strong> – Appear like normal tables but point to external data</li>
           </ul>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Example: Create External Data Source (Azure Blob)
 CREATE EXTERNAL DATA SOURCE AzureBlobStorage
 WITH (
@@ -132,7 +162,7 @@ WITH (
           <hr />
 
           <h2>6. Enabling Query Store</h2>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Enable Query Store
 ALTER DATABASE AdventureWorks2022
 SET QUERY_STORE = ON;
@@ -162,7 +192,7 @@ SET QUERY_STORE (
 
           <h3>Forcing a Plan</h3>
           <p>If a query has a good plan and a bad plan, you can force the good plan:</p>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`EXEC sp_query_store_force_plan @query_id = 101, @plan_id = 5;`}</code>
           </pre>
 
