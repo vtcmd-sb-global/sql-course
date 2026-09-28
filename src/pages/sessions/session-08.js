@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session08() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 08 — Accessing Data"
@@ -78,7 +98,7 @@ export default function Session08() {
             accessing real-world sample data.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -100,7 +120,7 @@ GO`}</code>
             The basic syntax of the SELECT statement is:
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT column1, column2, ...
 FROM table_name
 WHERE condition
@@ -109,7 +129,7 @@ ORDER BY column1 ASC | DESC;`}</code>
 
           <h3>Simple AdventureWorks2022 Example</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -124,7 +144,7 @@ GO`}</code>
 
           <h3>Select All Columns</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT *
 FROM Production.Product;
 GO`}</code>
@@ -142,7 +162,7 @@ GO`}</code>
 
           <h3>Column Aliases</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID AS ID,
     Name AS ProductName,
@@ -162,7 +182,7 @@ GO`}</code>
             which data will be retrieved.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name
@@ -176,7 +196,7 @@ GO`}</code>
             The <code>WHERE</code> clause filters rows based on a condition.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -198,7 +218,7 @@ GO`}</code>
 
           <h4>Ascending Order</h4>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -210,7 +230,7 @@ GO`}</code>
 
           <h4>Descending Order</h4>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -222,7 +242,7 @@ GO`}</code>
 
           <h4>Sort by Multiple Columns</h4>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -259,7 +279,7 @@ GO`}</code>
 
           <h3>TOP</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT TOP 10
     ProductID,
     Name,
@@ -275,7 +295,7 @@ GO`}</code>
 
           <h3>DISTINCT</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT DISTINCT
     Color
 FROM Production.Product
@@ -360,7 +380,7 @@ GO`}</code>
 
           <h3>Greater Than</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -372,7 +392,7 @@ GO`}</code>
 
           <h3>Less Than</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -384,7 +404,7 @@ GO`}</code>
 
           <h3>Greater Than or Equal To</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -396,7 +416,7 @@ GO`}</code>
 
           <h3>Not Equal</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -416,7 +436,7 @@ GO`}</code>
             <code>AND</code> requires all specified conditions to be true.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -434,7 +454,7 @@ GO`}</code>
             <code>OR</code> returns rows where at least one condition is true.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -447,7 +467,7 @@ GO`}</code>
 
           <h3>NOT</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -459,7 +479,7 @@ GO`}</code>
 
           <h3>Using Parentheses</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -487,7 +507,7 @@ GO`}</code>
 
           <h3>Starts With</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name
@@ -502,7 +522,7 @@ GO`}</code>
 
           <h3>Ends With</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name
@@ -513,7 +533,7 @@ GO`}</code>
 
           <h3>Contains Text</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name
@@ -528,7 +548,7 @@ GO`}</code>
             The underscore <code>_</code> represents exactly one character.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     ProductNumber
@@ -546,7 +566,7 @@ GO`}</code>
             several specified values.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -563,7 +583,7 @@ GO`}</code>
 
           <h3>NOT IN</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -581,7 +601,7 @@ GO`}</code>
             <code>BETWEEN</code> is used to search for values within a range.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -598,7 +618,7 @@ GO`}</code>
 
           <h3>NOT BETWEEN</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -630,7 +650,7 @@ GO`}</code>
 
           <h3>IS NULL</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -642,7 +662,7 @@ GO`}</code>
 
           <h3>IS NOT NULL</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -684,7 +704,7 @@ GO`}</code>
             rather than changing AdventureWorks2022.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -698,7 +718,7 @@ GO`}</code>
 
           <h3>Insert XML Data</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`INSERT INTO StudentXMLPractice
 (
     StudentID,
@@ -726,7 +746,7 @@ GO`}</code>
 
           <h3>View XML Data</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     StudentID,
     StudentDetails
@@ -762,7 +782,7 @@ GO`}</code>
 
           <h3>Creating an XML Schema Collection</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -797,7 +817,7 @@ GO`}</code>
 
           <h3>Using Typed XML</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE TABLE StudentXMLTypedPractice
 (
     StudentID INT PRIMARY KEY,
@@ -808,7 +828,7 @@ GO`}</code>
 
           <h3>Insert Typed XML</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`INSERT INTO StudentXMLTypedPractice
 (
     StudentID,
@@ -840,7 +860,7 @@ GO`}</code>
             inspect XML schema collections.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     name,
     xml_collection_id,
@@ -851,7 +871,7 @@ GO`}</code>
 
           <h3>Find Our Practice Schema</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     name,
     xml_collection_id
@@ -871,7 +891,7 @@ GO`}</code>
 
           <h3>Extract Student Name</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     StudentID,
     StudentDetails.value(
@@ -884,7 +904,7 @@ GO`}</code>
 
           <h3>Extract Multiple Values</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     StudentID,
 
@@ -919,7 +939,7 @@ GO`}</code>
 
           <h3>Practical 1 — Select All Products</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO
 
@@ -930,7 +950,7 @@ GO`}</code>
 
           <h3>Practical 2 — Select Specific Columns</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -943,7 +963,7 @@ GO`}</code>
 
           <h3>Practical 3 — Use an Alias</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID AS ID,
     Name AS ProductName,
@@ -954,7 +974,7 @@ GO`}</code>
 
           <h3>Practical 4 — Calculated Column</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -966,7 +986,7 @@ GO`}</code>
 
           <h3>Practical 5 — WHERE</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -978,7 +998,7 @@ GO`}</code>
 
           <h3>Practical 6 — AND</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -992,7 +1012,7 @@ GO`}</code>
 
           <h3>Practical 7 — OR</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -1005,7 +1025,7 @@ GO`}</code>
 
           <h3>Practical 8 — LIKE</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name
@@ -1016,7 +1036,7 @@ GO`}</code>
 
           <h3>Practical 9 — IN</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -1028,7 +1048,7 @@ GO`}</code>
 
           <h3>Practical 10 — BETWEEN</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -1040,7 +1060,7 @@ GO`}</code>
 
           <h3>Practical 11 — TOP</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT TOP 10
     ProductID,
     Name,
@@ -1052,7 +1072,7 @@ GO`}</code>
 
           <h3>Practical 12 — DISTINCT</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT DISTINCT
     Color
 FROM Production.Product
@@ -1062,7 +1082,7 @@ GO`}</code>
 
           <h3>Practical 13 — NULL</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -1074,7 +1094,7 @@ GO`}</code>
 
           <h3>Practical 14 — ORDER BY</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -1087,7 +1107,7 @@ GO`}</code>
 
           <h3>Practical 15 — Working with Product Categories</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductCategoryID,
     Name
@@ -1098,7 +1118,7 @@ GO`}</code>
 
           <h3>Practical 16 — Working with Product Subcategories</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductSubcategoryID,
     Name,
@@ -1124,7 +1144,7 @@ GO`}</code>
             so the sample database remains clean.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DROP TABLE IF EXISTS StudentXMLTypedPractice;
 GO
 
