@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session12() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 12 — Triggers"
@@ -10,6 +30,17 @@ export default function Session12() {
     >
       <CustomLayout>
         <article className="session-content">
+        <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
+  
           <h1>Session 12 — Triggers</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -96,7 +127,7 @@ export default function Session12() {
           <h2>4. Creating DML Triggers</h2>
 
           <h3>INSERT Trigger Example</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE TRIGGER trg_Employee_Insert
 ON Employees
 AFTER INSERT
@@ -113,7 +144,7 @@ GO`}</code>
           </pre>
 
           <h3>UPDATE Trigger Example</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE TRIGGER trg_Employee_Update
 ON Employees
 AFTER UPDATE
@@ -135,7 +166,7 @@ GO`}</code>
           </pre>
 
           <h3>DELETE Trigger Example</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE TRIGGER trg_Employee_Delete
 ON Employees
 AFTER DELETE
@@ -155,7 +186,7 @@ GO`}</code>
 
           <p>These are commonly used on views to make them updatable.</p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE TRIGGER trg_InsteadOf_Insert_Employee
 ON Employees
 INSTEAD OF INSERT
@@ -180,7 +211,7 @@ GO`}</code>
             <li>Nesting can be enabled or disabled using the server configuration option <code>nested triggers</code>.</li>
           </ul>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Check current setting
 EXEC sp_configure 'nested triggers';
 
@@ -194,7 +225,7 @@ RECONFIGURE;`}</code>
           <h2>7. Handling Multiple Rows</h2>
           <p>Triggers must be written to handle multi-row operations correctly. Never assume only one row is affected.</p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Correct way (set-based)
 INSERT INTO AuditTable (EmployeeID, ActionDate)
 SELECT EmployeeID, GETDATE()
@@ -209,7 +240,7 @@ FROM inserted;
 
           <h2>8. Altering and Dropping Triggers</h2>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Alter a trigger
 ALTER TRIGGER trg_Employee_Insert
 ON Employees
@@ -245,7 +276,7 @@ ENABLE TRIGGER trg_Employee_Insert ON Employees;`}</code>
           <hr />
 
           <h2>Practical Example – CollegeDB</h2>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Supporting tables
 CREATE TABLE ProjectUsers
 (
