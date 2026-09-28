@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session09() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 09 — Advanced Queries and Joins"
@@ -10,6 +30,19 @@ export default function Session09() {
     >
       <CustomLayout>
         <article className="session-content">
+
+        <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
+
+        
           <h1>Session 09 — Advanced Queries and Joins</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -51,7 +84,7 @@ export default function Session09() {
             Management Studio (SSMS).
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`USE AdventureWorks2022;
 GO`}</code>
           </pre>
@@ -133,7 +166,7 @@ GO`}</code>
 
           <h3>Aggregate Functions with AdventureWorks2022</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Count all products
 SELECT COUNT(*) AS TotalProducts
 FROM Production.Product;
@@ -157,7 +190,7 @@ FROM Production.Product;`}</code>
 
           <h3>Using Multiple Aggregate Functions</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     COUNT(*) AS TotalProducts,
     SUM(ListPrice) AS TotalListPrice,
@@ -178,7 +211,7 @@ FROM Production.Product;`}</code>
 
           <h3>Group Products by Color</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     Color,
     COUNT(*) AS TotalProducts
@@ -189,7 +222,7 @@ ORDER BY TotalProducts DESC;`}</code>
 
           <h3>Average Price by Color</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     Color,
     AVG(ListPrice) AS AveragePrice
@@ -201,7 +234,7 @@ ORDER BY AveragePrice DESC;`}</code>
 
           <h3>Group Products by Product Subcategory</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductSubcategoryID,
     COUNT(*) AS TotalProducts
@@ -213,7 +246,7 @@ ORDER BY TotalProducts DESC;`}</code>
 
           <h3>Group Sales by Territory</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     TerritoryID,
     COUNT(*) AS TotalOrders
@@ -231,7 +264,7 @@ ORDER BY TotalOrders DESC;`}</code>
             <code>GROUP BY</code>.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Show colors having more than 10 products
 SELECT
     Color,
@@ -244,7 +277,7 @@ HAVING COUNT(*) > 10;`}</code>
 
           <h3>WHERE vs HAVING</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- WHERE filters individual rows BEFORE grouping
 -- HAVING filters groups AFTER grouping
 
@@ -281,7 +314,7 @@ HAVING AVG(ListPrice) > 500;`}</code>
 
           <h3>Products More Expensive Than the Average</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -296,7 +329,7 @@ ORDER BY ListPrice DESC;`}</code>
 
           <h3>Products with the Highest Price</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -310,7 +343,7 @@ WHERE ListPrice = (
 
           <h3>Products More Expensive Than a Specific Subcategory Average</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ProductID,
     Name,
@@ -346,7 +379,7 @@ ORDER BY ListPrice DESC;`}</code>
             for the duration of a single statement.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`WITH ExpensiveProducts AS
 (
     SELECT
@@ -363,7 +396,7 @@ ORDER BY ListPrice DESC;`}</code>
 
           <h3>CTE with GROUP BY</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`WITH ProductSummary AS
 (
     SELECT
@@ -387,7 +420,7 @@ ORDER BY AveragePrice DESC;`}</code>
             <code> FROM </code> clause.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT *
 FROM
 (
@@ -417,7 +450,7 @@ ORDER BY AveragePrice DESC;`}</code>
             A useful relationship for learning joins is:
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`Production.Product
         |
         | ProductSubcategoryID
@@ -485,7 +518,7 @@ Production.ProductCategory`}</code>
 
           <h3>Product and Product Subcategory</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
@@ -499,7 +532,7 @@ ORDER BY p.ListPrice DESC;`}</code>
 
           <h3>Joining Three Tables</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
@@ -515,7 +548,7 @@ ORDER BY pc.Name, ps.Name, p.Name;`}</code>
 
           <h3>JOIN + WHERE</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
@@ -537,7 +570,7 @@ ORDER BY p.ListPrice DESC;`}</code>
             even if there is no matching row in the right table.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
@@ -563,7 +596,7 @@ ORDER BY p.Name;`}</code>
             and matching rows from the left table.
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
@@ -591,7 +624,7 @@ ORDER BY ps.Name;`}</code>
 
           <h3>Number of Products in Each Subcategory</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ps.Name AS SubcategoryName,
     COUNT(p.ProductID) AS TotalProducts
@@ -604,7 +637,7 @@ ORDER BY TotalProducts DESC;`}</code>
 
           <h3>Average Product Price by Subcategory</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     ps.Name AS SubcategoryName,
     AVG(p.ListPrice) AS AveragePrice
@@ -617,7 +650,7 @@ ORDER BY AveragePrice DESC;`}</code>
 
           <h3>Product Count by Category</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     pc.Name AS CategoryName,
     COUNT(p.ProductID) AS TotalProducts
@@ -641,7 +674,7 @@ ORDER BY TotalProducts DESC;`}</code>
 
           <h3>Total Sales Amount by Territory</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     TerritoryID,
     SUM(TotalDue) AS TotalSales
@@ -652,7 +685,7 @@ ORDER BY TotalSales DESC;`}</code>
 
           <h3>Total Sales by Territory Name</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     st.Name AS TerritoryName,
     SUM(soh.TotalDue) AS TotalSales
@@ -665,7 +698,7 @@ ORDER BY TotalSales DESC;`}</code>
 
           <h3>Sales by Year</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     YEAR(OrderDate) AS SalesYear,
     SUM(TotalDue) AS TotalSales
@@ -721,7 +754,7 @@ ORDER BY SalesYear;`}</code>
 
           <h3>UNION</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT Color
 FROM Production.Product
 WHERE Color IS NOT NULL
@@ -739,7 +772,7 @@ WHERE Color IN ('Black', 'Red', 'Blue');`}</code>
 
           <h3>UNION ALL</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT Color
 FROM Production.Product
 WHERE Color IS NOT NULL
@@ -757,7 +790,7 @@ WHERE Color IN ('Black', 'Red', 'Blue');`}</code>
 
           <h3>INTERSECT</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT ProductID
 FROM Production.Product
 WHERE ListPrice > 1000
@@ -775,7 +808,7 @@ WHERE ListPrice < 3000;`}</code>
 
           <h3>EXCEPT</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT ProductID
 FROM Production.Product
 WHERE ListPrice > 1000
@@ -806,7 +839,7 @@ WHERE Color = 'Black';`}</code>
 
           <h3>PIVOT Example – Products by Color</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     [Black],
     [Red],
@@ -834,7 +867,7 @@ PIVOT
 
           <h3>PIVOT with Sales Data</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     [2005],
     [2006],
@@ -865,7 +898,7 @@ PIVOT
 
           <h3>Example with Sales</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     YEAR(OrderDate) AS SalesYear,
     TerritoryID,
@@ -898,7 +931,7 @@ ORDER BY SalesYear, TerritoryID;`}</code>
 
           <h3>Aggregate Functions</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Total number of products
 SELECT COUNT(*) AS TotalProducts
 FROM Production.Product;
@@ -935,7 +968,7 @@ FROM Production.Product;`}</code>
 
           <h3>GROUP BY</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Number of products by color
 SELECT
     Color,
@@ -966,7 +999,7 @@ ORDER BY TotalProducts DESC;`}</code>
 
           <h3>HAVING</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Colors containing more than 10 products
 SELECT
     Color,
@@ -988,7 +1021,7 @@ HAVING AVG(ListPrice) > 500;`}</code>
 
           <h3>Table Alias</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name,
@@ -998,7 +1031,7 @@ FROM Production.Product AS p;`}</code>
 
           <h3>INNER JOIN</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
@@ -1011,7 +1044,7 @@ INNER JOIN Production.ProductSubcategory AS ps
 
           <h3>INNER JOIN + WHERE</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
@@ -1026,7 +1059,7 @@ ORDER BY p.ListPrice DESC;`}</code>
 
           <h3>LEFT JOIN</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     p.ProductID,
     p.Name AS ProductName,
@@ -1039,7 +1072,7 @@ ORDER BY p.Name;`}</code>
 
           <h3>JOIN + GROUP BY</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Count products in each subcategory
 SELECT
     ps.Name AS SubcategoryName,
@@ -1063,7 +1096,7 @@ ORDER BY AveragePrice DESC;`}</code>
 
           <h3>Subqueries</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Products above the average price
 SELECT
     ProductID,
@@ -1123,7 +1156,7 @@ ORDER BY TotalProducts DESC;`}</code>
 
           <h3>Sales Aggregation</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     YEAR(OrderDate) AS SalesYear,
     SUM(TotalDue) AS TotalSales,
@@ -1136,7 +1169,7 @@ ORDER BY SalesYear;`}</code>
 
           <h3>Sales by Territory</h3>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT
     st.Name AS TerritoryName,
     COUNT(soh.SalesOrderID) AS TotalOrders,
@@ -1347,7 +1380,7 @@ ORDER BY TotalSales DESC;`}</code>
             For example:
           </p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`Product
    |
    | ProductSubcategoryID
