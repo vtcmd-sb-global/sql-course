@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session10() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 10 — Using Views, Stored Procedures, and Querying Metadata"
@@ -10,6 +30,16 @@ export default function Session10() {
     >
       <CustomLayout>
         <article className="session-content">
+        <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
           <h1>Session 10 — Using Views, Stored Procedures, and Querying Metadata</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -56,7 +86,7 @@ export default function Session10() {
           </ul>
 
           <h3>Creating a View</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE VIEW vw_EmployeeDetails
 AS
 SELECT 
@@ -71,13 +101,13 @@ GO`}</code>
           </pre>
 
           <h3>Querying a View</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT * FROM vw_EmployeeDetails
 WHERE Salary > 60000;`}</code>
           </pre>
 
           <h3>Altering a View</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER VIEW vw_EmployeeDetails
 AS
 SELECT 
@@ -91,7 +121,7 @@ GO`}</code>
           </pre>
 
           <h3>Dropping a View</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DROP VIEW vw_EmployeeDetails;
 GO`}</code>
           </pre>
@@ -127,7 +157,7 @@ GO`}</code>
           </ul>
 
           <h3>Creating a Stored Procedure</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE PROCEDURE usp_GetEmployeesByDepartment
     @DepartmentID INT
 AS
@@ -140,7 +170,7 @@ GO`}</code>
           </pre>
 
           <h3>Executing a Stored Procedure</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`EXEC usp_GetEmployeesByDepartment @DepartmentID = 3;
 
 -- or
@@ -148,7 +178,7 @@ EXECUTE usp_GetEmployeesByDepartment 3;`}</code>
           </pre>
 
           <h3>Stored Procedure with Output Parameter</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE PROCEDURE usp_GetEmployeeCount
     @DepartmentID INT,
     @TotalEmployees INT OUTPUT
@@ -167,7 +197,7 @@ SELECT @Count AS TotalEmployees;`}</code>
           </pre>
 
           <h3>Altering a Stored Procedure</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER PROCEDURE usp_GetEmployeesByDepartment
     @DepartmentID INT
 AS
@@ -181,7 +211,7 @@ GO`}</code>
           </pre>
 
           <h3>Dropping a Stored Procedure</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DROP PROCEDURE usp_GetEmployeesByDepartment;
 GO`}</code>
           </pre>
@@ -193,7 +223,7 @@ GO`}</code>
 
           <p>SQL Server supports nesting up to <strong>32 levels</strong>.</p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE PROCEDURE usp_OuterProcedure
 AS
 BEGIN
@@ -210,7 +240,7 @@ GO`}</code>
           <p>Metadata is data about the database objects (tables, columns, views, procedures, etc.).</p>
 
           <h3>Useful System Catalog Views</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- List all tables
 SELECT * FROM sys.tables;
 
@@ -229,7 +259,7 @@ SELECT * FROM sys.databases;`}</code>
           </pre>
 
           <h3>Useful System Functions</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Get object ID
 SELECT OBJECT_ID('Employees');
 
@@ -242,7 +272,7 @@ IF OBJECT_ID('Employees', 'U') IS NOT NULL
           </pre>
 
           <h3>INFORMATION_SCHEMA Views (ANSI Standard)</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SELECT * FROM INFORMATION_SCHEMA.TABLES;
 SELECT * FROM INFORMATION_SCHEMA.COLUMNS
 WHERE TABLE_NAME = 'Employees';
@@ -254,7 +284,7 @@ SELECT * FROM INFORMATION_SCHEMA.VIEWS;`}</code>
           <h2>Practical Example – CollegeDB</h2>
 
           <h3>Views</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE VIEW StudentDetails
 AS
 SELECT
@@ -279,7 +309,7 @@ GO`}</code>
           <h3>Stored Procedures</h3>
 
           <h4>Insert Procedure</h4>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE PROCEDURE AddStudent
     @Name VARCHAR(100),
     @Age INT,
@@ -298,7 +328,7 @@ GO
           </pre>
 
           <h4>Update Procedure (with Error Handling)</h4>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE PROCEDURE UpdateStudent
     @StudentID INT,
     @City VARCHAR(100) = NULL
@@ -322,7 +352,7 @@ GO`}</code>
           </pre>
 
           <h4>Delete Procedure</h4>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE PROCEDURE DeleteStudent
     @StudentID INT
 AS
