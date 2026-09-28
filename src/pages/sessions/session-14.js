@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session14() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 14 — Transactions and Error Handling"
@@ -10,6 +30,16 @@ export default function Session14() {
     >
       <CustomLayout>
         <article className="session-content">
+        <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
           <h1>Session 14 — Transactions and Error Handling</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -52,7 +82,7 @@ export default function Session14() {
 
           <h3>Explicit Transactions</h3>
           <p>You explicitly control the transaction using:</p>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRANSACTION;   -- or BEGIN TRAN
 -- SQL statements
 COMMIT TRANSACTION;   -- or COMMIT
@@ -70,7 +100,7 @@ ROLLBACK TRANSACTION; -- or ROLLBACK`}</code>
           <hr />
 
           <h2>3. Implementing Transactions</h2>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRY
     BEGIN TRANSACTION;
 
@@ -97,7 +127,7 @@ END CATCH;`}</code>
           <h2>4. Savepoints (Marking a Transaction)</h2>
           <p>You can create savepoints to partially roll back a transaction.</p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRANSACTION;
 
 UPDATE Employees SET Salary = Salary * 1.10 WHERE DepartmentID = 1;
@@ -159,7 +189,7 @@ COMMIT TRANSACTION;`}</code>
             </tbody>
           </table>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`SET TRANSACTION ISOLATION LEVEL SERIALIZABLE;
 BEGIN TRANSACTION;
 -- queries
@@ -188,7 +218,7 @@ COMMIT;`}</code>
           <p>Modern error handling is done using the <strong>TRY...CATCH</strong> block (introduced in SQL Server 2005).</p>
 
           <h3>Basic Structure</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRY
     -- Statements that might cause error
 END TRY
@@ -237,7 +267,7 @@ END CATCH`}</code>
             </tbody>
           </table>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRY
     SELECT 1 / 0;
 END TRY
@@ -257,7 +287,7 @@ END CATCH;`}</code>
           <h2>9. THROW Statement</h2>
           <p><code>THROW</code> is the modern recommended way to raise errors (preferred over <code>RAISERROR</code> in new code).</p>
 
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Re-throw the original error
 BEGIN CATCH
     THROW;
@@ -270,7 +300,7 @@ THROW 50001, 'Custom error: Invalid salary value.', 1;`}</code>
           <hr />
 
           <h2>10. Complete Example – Transaction + Error Handling</h2>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRY
     BEGIN TRANSACTION;
 
@@ -302,7 +332,7 @@ END CATCH;`}</code>
           <h2>Practical Example – CollegeDB</h2>
 
           <h3>Basic Transaction</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRANSACTION;
 
 UPDATE Students
@@ -316,7 +346,7 @@ COMMIT TRANSACTION;
           </pre>
 
           <h3>Transaction with ROLLBACK</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRANSACTION;
 
 UPDATE Students SET Marks = 0 WHERE DepartmentID = 1;
@@ -326,7 +356,7 @@ ROLLBACK TRANSACTION;   -- undo the change`}</code>
           </pre>
 
           <h3>TRY...CATCH with Transaction</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`BEGIN TRY
     BEGIN TRANSACTION;
 
