@@ -3,6 +3,26 @@ import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
 
 export default function Session11() {
+  const codeBlockStyle = {
+    backgroundColor: '#1e1e1e',
+    color: '#d4d4d4',
+    padding: '12px 16px',
+    borderRadius: '6px',
+    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
+    fontSize: '0.9rem',
+    overflowX: 'auto',
+    lineHeight: '1.5',
+    margin: '12px 0 24px 0'
+  };
+
+  const inlineCodeStyle = {
+    backgroundColor: '#f4f4f4',
+    color: '#d10057',
+    padding: '2px 6px',
+    borderRadius: '4px',
+    fontFamily: 'Consolas, Monaco, monospace',
+    fontSize: '0.9em'
+  };
   return (
     <Layout
       title="Session 11 — Indexes"
@@ -10,6 +30,16 @@ export default function Session11() {
     >
       <CustomLayout>
         <article className="session-content">
+        <style>{`
+            article code:not(pre code) {
+              background-color: #f4f4f4;
+              color: #d10057;
+              padding: 2px 6px;
+              border-radius: 4px;
+              font-family: Consolas, Monaco, monospace;
+              font-size: 0.9em;
+            }
+          `}</style>
           <h1>Session 11 — Indexes</h1>
 
           <p><strong>Duration:</strong> 2 hours</p>
@@ -135,14 +165,14 @@ export default function Session11() {
           <h2>5. Creating Indexes</h2>
 
           <h3>Creating a Clustered Index</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Usually created automatically with PRIMARY KEY
 CREATE CLUSTERED INDEX IX_Employees_EmployeeID
 ON Employees(EmployeeID);`}</code>
           </pre>
 
           <h3>Creating a Nonclustered Index</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE NONCLUSTERED INDEX IX_Employees_LastName
 ON Employees(LastName);
 
@@ -152,13 +182,13 @@ ON Employees(LastName, FirstName);`}</code>
           </pre>
 
           <h3>Creating a Unique Index</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`CREATE UNIQUE NONCLUSTERED INDEX IX_Employees_Email
 ON Employees(Email);`}</code>
           </pre>
 
           <h3>Creating a Columnstore Index</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Clustered Columnstore Index
 CREATE CLUSTERED COLUMNSTORE INDEX IX_Sales_Columnstore
 ON SalesData;
@@ -173,7 +203,7 @@ ON Employees(EmployeeID, DepartmentID, Salary);`}</code>
           <h2>6. Index Management</h2>
 
           <h3>Viewing Existing Indexes</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`-- Using system view
 SELECT 
     i.name AS IndexName,
@@ -186,17 +216,17 @@ WHERE t.name = 'Employees';`}</code>
           </pre>
 
           <h3>Dropping an Index</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`DROP INDEX IX_Employees_LastName ON Employees;`}</code>
           </pre>
 
           <h3>Rebuilding an Index</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER INDEX IX_Employees_LastName ON Employees REBUILD;`}</code>
           </pre>
 
           <h3>Reorganizing an Index</h3>
-          <pre>
+          <pre style={codeBlockStyle}>
             <code>{`ALTER INDEX IX_Employees_LastName ON Employees REORGANIZE;`}</code>
           </pre>
 
