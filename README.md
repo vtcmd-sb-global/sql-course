@@ -1,5 +1,15 @@
 # SQL Course for Beginners
-
+<style>{`
+    code {
+      background-color: #f4f4f4;
+      color: #d10057;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+      font-size: 0.9em;
+    }
+  `}
+</style>
 This course covers the basic fundamentals like:
 
 - How to create database using query
