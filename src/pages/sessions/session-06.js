@@ -27,7 +27,7 @@ export default function Session06() {
   return (
     <Layout
       title="Session 06 — Creating Tables"
-      description="Creating Tables in SQL Server 2022 — Data Types, Constraints, ALTER TABLE, DROP TABLE, AdventureWorks2022"
+      description="Creating Tables in SQL Server 2022 — Data Types, Constraints, ALTER TABLE, DROP TABLE, AdventureWorks2019"
     >
       <CustomLayout>
         <article className="session-content">
@@ -53,7 +53,7 @@ export default function Session06() {
           </p>
 
           <p>
-            <strong>Practical Database:</strong> AdventureWorks2022
+            <strong>Practical Database:</strong> AdventureWorks2019
           </p>
 
           <p>
@@ -71,10 +71,10 @@ export default function Session06() {
             <li>Explain the purpose of tables, rows, and columns</li>
             <li>Create tables using T-SQL</li>
             <li>Apply Primary Key, Foreign Key, UNIQUE, CHECK, DEFAULT, and NOT NULL constraints</li>
-            <li>Explain how AdventureWorks2022 uses tables and relationships</li>
+            <li>Explain how AdventureWorks2019 uses tables and relationships</li>
             <li>Add, modify, and drop columns using ALTER TABLE</li>
             <li>Understand how to safely drop tables</li>
-            <li>Inspect existing AdventureWorks2022 tables and their structures</li>
+            <li>Inspect existing AdventureWorks2019 tables and their structures</li>
           </ul>
 
           <hr />
@@ -97,13 +97,13 @@ export default function Session06() {
           </ul>
 
           <p>
-            For example, AdventureWorks2022 contains a table named
+            For example, AdventureWorks2019 contains a table named
             <code>Production.Product</code> that stores information about
             products.
           </p>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO
 
 SELECT TOP 10
@@ -222,15 +222,15 @@ GO`}</code>
 
           <hr />
 
-          <h2>4. Understanding Existing AdventureWorks2022 Tables</h2>
+          <h2>4. Understanding Existing AdventureWorks2019 Tables</h2>
 
           <p>
             Before creating our own tables, let's inspect the tables already
-            available in AdventureWorks2022.
+            available in AdventureWorks2019.
           </p>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO
 
 SELECT
@@ -246,7 +246,7 @@ GO`}</code>
             This query lists the base tables available in the database.
           </p>
 
-          <h3>Example AdventureWorks2022 Tables</h3>
+          <h3>Example AdventureWorks2019 Tables</h3>
 
           <ul>
             <li><code>Production.Product</code></li>
@@ -279,7 +279,7 @@ GO`}</code>
           </p>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO
 
 SELECT
@@ -309,11 +309,11 @@ GO`}</code>
 
           <p>
             For learning purposes, we will create a small temporary practice
-            table. We will <strong>not modify AdventureWorks2022 tables</strong>.
+            table. We will <strong>not modify AdventureWorks2019 tables</strong>.
           </p>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO
 
 CREATE TABLE CourseStudents
@@ -419,12 +419,12 @@ GO`}</code>
           </p>
 
           <p>
-            AdventureWorks2022 contains many examples of this concept.
+            AdventureWorks2019 contains many examples of this concept.
             For example, products are connected to product subcategories.
           </p>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO
 
 SELECT
@@ -449,7 +449,7 @@ GO`}</code>
           </p>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO
 
 CREATE TABLE Departments
@@ -521,15 +521,15 @@ GO`}</code>
 
           <hr />
 
-          <h2>10. Inspecting Constraints in AdventureWorks2022</h2>
+          <h2>10. Inspecting Constraints in AdventureWorks2019</h2>
 
           <p>
-            AdventureWorks2022 contains many Primary Key and Foreign Key
+            AdventureWorks2019 contains many Primary Key and Foreign Key
             relationships. We can inspect them using system catalog views.
           </p>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO
 
 SELECT
@@ -574,7 +574,7 @@ GO`}</code>
 
           <p>
             <strong>Important:</strong> Do not execute <code>DROP TABLE</code>
-            against AdventureWorks2022 tables during this course.
+            against AdventureWorks2019 tables during this course.
           </p>
 
           <p>
@@ -592,17 +592,17 @@ GO`}</code>
 
           <hr />
 
-          <h2>12. Practical — Working with AdventureWorks2022</h2>
+          <h2>12. Practical — Working with AdventureWorks2019</h2>
 
           <p>
-            Now let's apply what we have learned to the real AdventureWorks2022
+            Now let's apply what we have learned to the real AdventureWorks2019
             database.
           </p>
 
           <h3>Practical 1 — Select a Table</h3>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO
 
 SELECT TOP 10 *
@@ -701,7 +701,7 @@ GO`}</code>
             <li>Avoid reserved keywords as object names.</li>
 
             <li>
-              Do not modify or delete AdventureWorks2022 tables during
+              Do not modify or delete AdventureWorks2019 tables during
               practice.
             </li>
 
@@ -717,7 +717,7 @@ GO`}</code>
 
           <p>
             Complete the following exercises using
-            <strong>AdventureWorks2022</strong> where possible.
+            <strong>AdventureWorks2019</strong> where possible.
           </p>
 
           <ol>
@@ -832,7 +832,7 @@ GO`}</code>
           <p>
             <strong>Important:</strong> Create these tables as your own
             practice tables. Do not create or modify tables inside the
-            AdventureWorks2022 schema for this challenge.
+            AdventureWorks2019 schema for this challenge.
           </p>
 
           <hr />
@@ -889,16 +889,16 @@ GO`}</code>
 
             <li>
               What is the purpose of the <code>Production</code> schema in
-              AdventureWorks2022?
+              AdventureWorks2019?
             </li>
 
             <li>
-              Give an example of a relationship between two AdventureWorks2022
+              Give an example of a relationship between two AdventureWorks2019
               tables.
             </li>
 
             <li>
-              Why should students avoid modifying or dropping AdventureWorks2022
+              Why should students avoid modifying or dropping AdventureWorks2019
               tables during practical exercises?
             </li>
           </ol>
