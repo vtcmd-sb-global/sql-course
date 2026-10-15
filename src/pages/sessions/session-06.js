@@ -301,7 +301,7 @@ GO`}</code>
 
           <hr />
 
-          <h2>Creating a Schema</h2>
+          <h2>6. Creating a Schema</h2>
 
           <p>
             Use the <code>CREATE SCHEMA</code> statement to create a new schema.
@@ -332,7 +332,7 @@ GO`}</code>
 
           <hr />
               
-          <h2>6. Creating a Table</h2>
+          <h2>7. Creating a Table</h2>
 
           <p>
             Use the <code>CREATE TABLE</code> statement to create a new table.
@@ -397,7 +397,7 @@ GO`}</code>
 
           <hr />
 
-          <h2>7. Common Constraints</h2>
+          <h2>8. Common Constraints</h2>
 
           <table>
             <thead>
@@ -442,7 +442,7 @@ GO`}</code>
 
           <hr />
 
-          <h2>8. Adding a Foreign Key</h2>
+          <h2>9. Adding a Foreign Key</h2>
 
           <p>
             A <strong>Foreign Key</strong> creates a relationship between a
@@ -505,7 +505,7 @@ GO`}</code>
 
           <hr />
 
-          <h2>9. Modifying a Table — ALTER TABLE</h2>
+          <h2>10. Modifying a Table — ALTER TABLE</h2>
 
           <p>
             The <code>ALTER TABLE</code> statement is used to change an
@@ -552,7 +552,7 @@ GO`}</code>
 
           <hr />
 
-          <h2>10. Inspecting Constraints in AdventureWorks2019</h2>
+          <h2>11. Inspecting Constraints in AdventureWorks2019</h2>
 
           <p>
             AdventureWorks2019 contains many Primary Key and Foreign Key
@@ -581,7 +581,7 @@ GO`}</code>
 
           <hr />
 
-          <h2>11. Dropping a Table</h2>
+          <h2>12. Dropping a Table</h2>
 
           <p>
             The <code>DROP TABLE</code> statement permanently removes a table
@@ -623,7 +623,7 @@ GO`}</code>
 
           <hr />
 
-          <h2>12. Practical — Working with AdventureWorks2019</h2>
+          <h2>13. Practical — Working with AdventureWorks2019</h2>
 
           <p>
             Now let's apply what we have learned to the real AdventureWorks2019
@@ -709,7 +709,7 @@ GO`}</code>
 
           <hr />
 
-          <h2>13. Best Practices</h2>
+          <h2>14. Best Practices</h2>
 
           <ul>
             <li>Always define a Primary Key for important tables.</li>
