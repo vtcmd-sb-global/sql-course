@@ -22,7 +22,7 @@ This course takes students from the fundamentals of SQL to writing queries for r
 
 ---
 
-## Purpose of These Guides
+## Purpose of this Guide
 
 These guides have been carefully prepared in accordance with the **official course books provided to students through their Educational Course Material (ECM)**. Their primary purpose is to help students make better use of their prescribed learning materials by making the concepts easier to understand, revise, and apply in practice.
 
