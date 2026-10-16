@@ -1,4 +1,4 @@
-# SQL Programming — A Beginner-Friendly Course
+# Effective Data solutions with SQL Server — A Beginner-Friendly Course
 
 A complete, classroom-ready guide for learning **SQL and relational databases**, designed to help students understand database concepts through clear explanations, practical queries, and hands-on exercises.
 
@@ -19,6 +19,27 @@ This course takes students from the fundamentals of SQL to writing queries for r
   1. **Summary**
   2. **Test Your Knowledge**
   3. **Try It Yourself**
+
+---
+
+## Purpose of These Guides
+
+These guides have been carefully prepared in accordance with the **official course books provided to students through their Educational Course Material (ECM)**. Their primary purpose is to help students make better use of their prescribed learning materials by making the concepts easier to understand, revise, and apply in practice.
+
+Official books often contain extensive theoretical explanations. These guides complement the books by presenting the essential concepts in a **concise, summarized, and beginner-friendly format**, focusing on what students need to understand and practice.
+
+Instead of lengthy theoretical discussions, each topic emphasizes:
+
+- **To-the-point explanations** that make concepts easier to understand.
+- **Relevant code snippets and examples** that demonstrate how concepts work.
+- **Step-by-step practical demonstrations** to support hands-on learning.
+- **Exercises and challenges** that encourage independent problem-solving.
+- **Knowledge-check questions** to reinforce understanding and prepare students for assessments.
+- **Summaries and revision material** to help students review important concepts efficiently.
+
+**Important:** These guides are intended to complement the official course books, not replace them. Students should continue referring to their books for detailed theory, complete explanations, and the prescribed course content while using these guides for practical understanding, focused revision, and hands-on practice.
+
+The goal is simple: **make the official course material more useful, understandable, and practical, helping students turn what they read into what they can actually do.**
 
 ---
 
