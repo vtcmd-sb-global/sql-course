@@ -184,7 +184,7 @@ function makeSyntaxStyle(themeName) {
 export default function CodeBlock({
   code,
   language = "javascript",
-  initialTheme = "dark",
+  initialTheme = "blue",
 }) {
   const [theme, setTheme] = useState(initialTheme);
   const [loaded, setLoaded] = useState(false);
