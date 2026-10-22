@@ -1,28 +1,9 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
+import CodeBlock from '@site/src/components/CodeBlock';
 
 export default function Session16() {
-  const codeBlockStyle = {
-    backgroundColor: '#1e1e1e',
-    color: '#d4d4d4',
-    padding: '12px 16px',
-    borderRadius: '6px',
-    fontFamily: 'Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace',
-    fontSize: '0.9rem',
-    overflowX: 'auto',
-    lineHeight: '1.5',
-    margin: '12px 0 24px 0'
-  };
-
-  const inlineCodeStyle = {
-    backgroundColor: '#f4f4f4',
-    color: '#d10057',
-    padding: '2px 6px',
-    borderRadius: '4px',
-    fontFamily: 'Consolas, Monaco, monospace',
-    fontSize: '0.9em'
-  };
   return (
     <Layout
       title="Session 16 — Artificial Intelligence and Machine Learning in SQL Server 2022"
@@ -86,11 +67,12 @@ export default function Session16() {
             <li>Parameter Sensitive Plan (PSP) Optimization (new in SQL Server 2022)</li>
           </ul>
 
-          <pre style={codeBlockStyle}>
-            <code>{`-- Enable IQP features by setting database compatibility level
+          <CodeBlock
+          language="sql"
+            code={`-- Enable IQP features by setting database compatibility level
 ALTER DATABASE [YourDatabase]
-SET COMPATIBILITY_LEVEL = 160;   -- 160 = SQL Server 2022`}</code>
-          </pre>
+SET COMPATIBILITY_LEVEL = 160;   -- 160 = SQL Server 2022`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <hr />
 
@@ -138,29 +120,32 @@ SET COMPATIBILITY_LEVEL = 160;   -- 160 = SQL Server 2022`}</code>
             </li>
             <li>Complete the installation</li>
             <li>Enable external scripts:
-              <pre>
-                <code>{`EXEC sp_configure 'external scripts enabled', 1;
-RECONFIGURE WITH OVERRIDE;`}</code>
-              </pre>
+              <CodeBlock
+          language="sql"
+            code={`EXEC sp_configure 'external scripts enabled', 1;
+RECONFIGURE WITH OVERRIDE;`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
             </li>
           </ol>
 
           <hr />
 
           <h2>6. Running Python Scripts in SQL Server</h2>
-          <pre style={codeBlockStyle}>
-            <code>{`EXECUTE sp_execute_external_script
+          <CodeBlock
+          language="sql"
+            code={`EXECUTE sp_execute_external_script
     @language = N'Python',
     @script = N'
 import sys
 print("Python version:", sys.version)
 print("Hello from SQL Server Machine Learning Services!")
-';`}</code>
-          </pre>
+';`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>Using Data from SQL Server in Python</h3>
-          <pre style={codeBlockStyle}>
-            <code>{`EXECUTE sp_execute_external_script
+          <CodeBlock
+          language="sql"
+            code={`EXECUTE sp_execute_external_script
     @language = N'Python',
     @script = N'
 import pandas as pd
@@ -173,16 +158,17 @@ WITH RESULT SETS ((
     FirstName NVARCHAR(50),
     LastName NVARCHAR(50),
     Salary DECIMAL(10,2)
-));`}</code>
-          </pre>
+));`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <hr />
 
           <h2>7. Predicting Data with Linear Regression</h2>
           <p>You can train a simple linear regression model and use it for predictions entirely inside SQL Server.</p>
 
-          <pre style={codeBlockStyle}>
-            <code>{`-- Example: Simple linear regression using Python
+          <CodeBlock
+          language="sql"
+            code={`-- Example: Simple linear regression using Python
 EXECUTE sp_execute_external_script
     @language = N'Python',
     @script = N'
@@ -204,8 +190,8 @@ predictions = model.predict(new_data)
 print(predictions)
 ',
     @input_data_1 = N'SELECT YearsExperience, Salary FROM EmployeeSalaryData'
-;`}</code>
-          </pre>
+;`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <hr />
 
