@@ -172,7 +172,7 @@ export default function Session04() {
 
           <p>Examples of predicates:</p>
           <ul>
-            <li><code>Age > 18</code></li>
+            <li><code>Age &gt; 18</code></li>
             <li><code>City = 'Karachi'</code></li>
             <li><code>Salary between 50000 and 100000</code></li>
             <li><code>Name like 'A%'</code></li>
