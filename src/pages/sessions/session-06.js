@@ -289,7 +289,7 @@ GO`}
 
           <p>
             Use the <code>CREATE SCHEMA</code> statement to create a new schema.
-            It's always a good practice for bigenners to create separate schema for separating entity (real world object)
+            It's always a good practice for beginners to create separate schema for separating entity (real world object)
           </p>
 
           <p>
@@ -302,21 +302,20 @@ GO`}
             code={`USE AdventureWorks2019;
 GO
 
-CREATE TABLE SCHEMA PracticeStudent
+CREATE SCHEMA PracticeStudent;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-              <h3>Important Points</h3>
+          <h3>Important Points</h3>
 
           <ul>
             <li>
-              <code>SCHEMA</code> automatically generates separate entity name
-              which you provide at the end of the command like here we have given PracticeStudent
+              <code>SCHEMA</code> creates a separate namespace for organizing objects.
             </li>
           </ul>
 
           <hr />
-              
+
           <h2>7. Creating a Table</h2>
 
           <p>
@@ -720,7 +719,10 @@ GO`}
 
           <hr />
 
-          <p><strong>Next up (Session 07):</strong> Microsoft Azure SQL</p>
+          <p>
+            <strong>Next up (Session 07):</strong> Microsoft Azure SQL
+          </p>
+
         </article>
       </CustomLayout>
     </Layout>
