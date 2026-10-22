@@ -52,7 +52,7 @@ export default function Session09() {
           </p>
           <p><strong>Based on:</strong> Official Aptech Book – Session 9</p>
           <p>
-            <strong>Practical Database:</strong> AdventureWorks2022
+            <strong>Practical Database:</strong> AdventureWorks2019
           </p>
 
           <hr />
@@ -71,21 +71,21 @@ export default function Session09() {
 
           <hr />
 
-          <h2>0. Start with AdventureWorks2022</h2>
+          <h2>0. Start with AdventureWorks2019</h2>
 
           <p>
             In this course, all practical SQL examples use the
-            <strong> AdventureWorks2022 </strong> sample database.
+            <strong> AdventureWorks2019 </strong> sample database.
           </p>
 
           <p>
             Before running the examples in this session, make sure the
-            AdventureWorks2022 database is installed and available in SQL Server
+            AdventureWorks2019 database is installed and available in SQL Server
             Management Studio (SSMS).
           </p>
 
           <pre style={codeBlockStyle}>
-            <code>{`USE AdventureWorks2022;
+            <code>{`USE AdventureWorks2019;
 GO`}</code>
           </pre>
 
@@ -164,7 +164,7 @@ GO`}</code>
             <li><code>MAX()</code> – Finds maximum value</li>
           </ul>
 
-          <h3>Aggregate Functions with AdventureWorks2022</h3>
+          <h3>Aggregate Functions with AdventureWorks2019</h3>
 
           <pre style={codeBlockStyle}>
             <code>{`-- Count all products
@@ -927,7 +927,7 @@ ORDER BY SalesYear, TerritoryID;`}</code>
 
           <hr />
 
-          <h2>15. Practical Example – AdventureWorks2022</h2>
+          <h2>15. Practical Example – AdventureWorks2019</h2>
 
           <h3>Aggregate Functions</h3>
 
@@ -1188,7 +1188,7 @@ ORDER BY TotalSales DESC;`}</code>
           <ol>
             <li>
               Write a query to display the total number of products in
-              AdventureWorks2022.
+              AdventureWorks2019.
             </li>
 
             <li>
@@ -1240,7 +1240,7 @@ ORDER BY TotalSales DESC;`}</code>
 
           <p>
             Complete the following tasks using the
-            <strong>AdventureWorks2022</strong> database.
+            <strong>AdventureWorks2019</strong> database.
           </p>
 
           <ol>
@@ -1371,7 +1371,7 @@ ORDER BY TotalSales DESC;`}</code>
           <h3>Important Point</h3>
 
           <p>
-            You should understand that AdventureWorks2022 is not just a
+            You should understand that AdventureWorks2019 is not just a
             collection of unrelated tables. It is a relational database where
             tables are connected through keys.
           </p>
@@ -1822,7 +1822,7 @@ ProductCategory`}</code>
 //           <hr />
 
 //           <h2>Session 9 Challenge</h2>
-//           <p>Using AdventureWorks2022 (or your own database):</p>
+//           <p>Using AdventureWorks2019 (or your own database):</p>
 //           <ol>
 //             <li>Show the total sales amount for each year and each sales territory using GROUP BY.</li>
 //             <li>Write a query using CTE to find the top 5 products by total quantity sold.</li>
