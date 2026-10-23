@@ -649,6 +649,47 @@ FROM sys.database_files;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
+          <h3>Practical 4 — View Filegroups</h3>
+
+          <CodeBlock
+          language="sql"
+            code={`USE AdventureWorks2019;
+GO
+
+SELECT
+    name AS FilegroupName,
+    type_desc,
+    is_default
+FROM sys.filegroups;
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+          <h3>Practical 5 — Recovery Model</h3>
+
+          <CodeBlock
+          language="sql"
+            code={`SELECT
+    name AS DatabaseName,
+    recovery_model_desc AS RecoveryModel
+FROM sys.databases
+WHERE name = 'AdventureWorks2019';
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+          <hr />
+
+          <h2>9. Best Practices</h2>
+
+          <ul>
+            <li>Never modify system databases or system tables directly.</li>
+            <li>Use disposable practice databases (e.g. SQLDemoDB) for create/drop demos.</li>
+            <li>Never drop AdventureWorks2019 during the course.</li>
+            <li>Keep data files and log files on separate disks when possible.</li>
+            <li>Always verify database names before DROP DATABASE.</li>
+            <li>Back up important databases before structural changes.</li>
+            <li>Use supported T-SQL and SSMS tools instead of editing system metadata.</li>
+          </ul>
+
           <hr />
 
           <h2>Session 5 Exercise</h2>
@@ -662,10 +703,22 @@ GO`}
 
           <hr />
 
+          <h2>Session 5 Challenge</h2>
+          <p>Create a database named <code>InventoryDB</code> with the following specifications:</p>
+          <ul>
+            <li>Primary data file: 50MB initial size, growth by 10MB</li>
+            <li>Log file: 15MB initial size, growth by 5MB</li>
+            <li>Add one additional filegroup named <code>FG_Archive</code></li>
+            <li>Add one secondary data file to the <code>FG_Archive</code> filegroup</li>
+          </ul>
+          <p>Write all the required T-SQL commands and save them in a script file.</p>
+
+          <hr />
+
           <h2>Session 5 Quiz</h2>
           <ol>
             <li>Name the four main system databases.</li>
-            <li>What is the purpose of the model database?</li>
+            <li>What is the purpose of the <code>model</code> database?</li>
             <li>Can users directly update system tables? Why or why not?</li>
             <li>What is the difference between .mdf, .ndf, and .ldf files?</li>
             <li>What is a filegroup?</li>
@@ -678,7 +731,10 @@ GO`}
 
           <hr />
 
-          <p><strong>Next up (Session 06):</strong> Creating Tables</p>
+          <p>
+            <strong>Next up (Session 06):</strong> Creating Tables
+          </p>
+
         </article>
       </CustomLayout>
     </Layout>
