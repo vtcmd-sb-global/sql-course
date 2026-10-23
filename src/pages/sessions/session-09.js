@@ -67,6 +67,16 @@ WHERE ListPrice > 0;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
+          <CodeBlock
+          language="sql"
+            code={`SELECT
+    SUM(ListPrice) AS TotalListPrice,
+    COUNT(DISTINCT Color) AS DistinctColors
+FROM Production.Product
+WHERE ListPrice > 0;
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
           <hr />
 
           <h2>2. GROUP BY</h2>
@@ -83,9 +93,24 @@ ORDER BY ProductCount DESC;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
+          <CodeBlock
+          language="sql"
+            code={`SELECT
+    ProductSubcategoryID,
+    COUNT(*) AS ProductCount,
+    AVG(ListPrice) AS AvgPrice
+FROM Production.Product
+WHERE ProductSubcategoryID IS NOT NULL
+GROUP BY ProductSubcategoryID
+ORDER BY ProductCount DESC;
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
           <hr />
 
           <h2>3. HAVING Clause</h2>
+          <p>HAVING filters groups after aggregation. WHERE filters rows before grouping.</p>
+
           <CodeBlock
           language="sql"
             code={`SELECT
@@ -122,6 +147,17 @@ WHERE ProductSubcategoryID IN (
     SELECT ProductSubcategoryID
     FROM Production.ProductSubcategory
     WHERE Name LIKE '%Bike%'
+);
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+          <CodeBlock
+          language="sql"
+            code={`SELECT ProductID, Name, ListPrice
+FROM Production.Product
+WHERE ListPrice = (
+    SELECT MAX(ListPrice)
+    FROM Production.Product
 );
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
@@ -226,6 +262,24 @@ FROM Sales.SalesOrderDetail AS sod
 INNER JOIN Production.Product AS p
     ON sod.ProductID = p.ProductID
 GROUP BY p.Name
+ORDER BY TotalSales DESC;
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+          <CodeBlock
+          language="sql"
+            code={`SELECT
+    pc.Name AS CategoryName,
+    COUNT(DISTINCT p.ProductID) AS ProductCount,
+    SUM(sod.LineTotal) AS TotalSales
+FROM Sales.SalesOrderDetail AS sod
+INNER JOIN Production.Product AS p
+    ON sod.ProductID = p.ProductID
+INNER JOIN Production.ProductSubcategory AS ps
+    ON p.ProductSubcategoryID = ps.ProductSubcategoryID
+INNER JOIN Production.ProductCategory AS pc
+    ON ps.ProductCategoryID = pc.ProductCategoryID
+GROUP BY pc.Name
 ORDER BY TotalSales DESC;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
