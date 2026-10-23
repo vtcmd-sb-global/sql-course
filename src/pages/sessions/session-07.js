@@ -95,21 +95,17 @@ export default function Session07() {
             based on the SQL Server database engine.
           </p>
 
-          <p>
-            Azure SQL is not one single product. The main options are:
-          </p>
+          <p>Azure SQL is not one single product. The main options are:</p>
 
           <ul>
             <li>
               <strong>Azure SQL Database</strong> — A fully managed
               Platform-as-a-Service database.
             </li>
-
             <li>
               <strong>Azure SQL Managed Instance</strong> — A managed Azure
               service designed to provide high compatibility with SQL Server.
             </li>
-
             <li>
               <strong>SQL Server on Azure Virtual Machines</strong> — SQL
               Server running inside an Azure virtual machine, providing
@@ -156,8 +152,7 @@ export default function Session07() {
 
           <p>
             It is designed for customers who want to lift and shift
-            on-premises SQL Server workloads to Azure with minimal code
-            changes.
+            on-premises SQL Server workloads to Azure with minimal code changes.
           </p>
 
           <h3>Best suited for</h3>
@@ -178,8 +173,7 @@ export default function Session07() {
 
           <p>
             You manage the operating system, SQL Server configuration,
-            patching (unless using automated options), and many operational
-            tasks.
+            patching (unless using automated options), and many operational tasks.
           </p>
 
           <h3>Best suited for</h3>
@@ -232,7 +226,7 @@ export default function Session07() {
 
           <hr />
 
-          <h2>7. Benefits of Azure SQL</h2>
+          <h2>7. Why Use Azure SQL?</h2>
 
           <ul>
             <li>Managed backups, patching, and high availability</li>
@@ -281,7 +275,7 @@ export default function Session07() {
 
           <hr />
 
-          <h2>9. Deployment Options Summary</h2>
+          <h2>9. Azure SQL Deployment Options</h2>
 
           <ul>
             <li><strong>Azure SQL Database</strong> — best for new cloud-native apps</li>
@@ -291,65 +285,11 @@ export default function Session07() {
 
           <hr />
 
-          <h2>10. Pricing and Purchasing Models (Overview)</h2>
-
-          <p>
-            Azure SQL offers different purchasing models such as DTU-based and
-            vCore-based models, as well as serverless options for Azure SQL
-            Database. Exact pricing depends on region, performance tier, and
-            usage.
-          </p>
-
-          <p>
-            Always check the official Azure pricing calculator for current
-            numbers.
-          </p>
-
-          <hr />
-
-          <h2>11. Security Overview</h2>
-
-          <ul>
-            <li>Firewall rules and private endpoints</li>
-            <li>Microsoft Entra ID (Azure AD) authentication</li>
-            <li>Transparent Data Encryption (TDE)</li>
-            <li>Always Encrypted and Dynamic Data Masking</li>
-            <li>Auditing and threat detection features</li>
-          </ul>
-
-          <hr />
-
-          <h2>12. High Availability and Business Continuity</h2>
-
-          <p>
-            Azure SQL provides built-in high availability. Additional options
-            include geo-replication, failover groups, and point-in-time restore.
-          </p>
-
-          <hr />
-
-          <h2>13. Connecting with SSMS</h2>
-
-          <ol>
-            <li>Open SQL Server Management Studio</li>
-            <li>Server type: Database Engine</li>
-            <li>Server name: <code>yourserver.database.windows.net</code></li>
-            <li>Authentication: SQL Authentication or Microsoft Entra</li>
-            <li>Enter credentials and Connect</li>
-          </ol>
-
-          <p>
-            Ensure your client IP is allowed in the Azure SQL firewall rules.
-          </p>
-
-          <hr />
-
-          <h2>14. AdventureWorks and Azure SQL</h2>
+          <h2>10. AdventureWorks2022 and Azure SQL</h2>
 
           <p>
             The T-SQL skills you learn with AdventureWorks also apply when
-            working with Azure SQL. The same SELECT, JOIN, and DDL patterns
-            transfer.
+            working with Azure SQL. The same SELECT, JOIN, and DDL patterns transfer.
           </p>
 
           <CodeBlock
@@ -393,6 +333,57 @@ GO`}
 
           <hr />
 
+          <h2>11. Connecting Azure SQL Database with SSMS</h2>
+
+          <ol>
+            <li>Open SQL Server Management Studio</li>
+            <li>Server type: Database Engine</li>
+            <li>Server name: <code>yourserver.database.windows.net</code></li>
+            <li>Authentication: SQL Authentication or Microsoft Entra</li>
+            <li>Enter credentials and Connect</li>
+          </ol>
+
+          <p>Ensure your client IP is allowed in the Azure SQL firewall rules.</p>
+
+          <hr />
+
+          <h2>12. Azure SQL Authentication</h2>
+
+          <ul>
+            <li>SQL authentication (username and password)</li>
+            <li>Microsoft Entra ID (formerly Azure AD) authentication</li>
+            <li>Managed identities for Azure resources</li>
+          </ul>
+
+          <p>Prefer Microsoft Entra authentication where possible for better security and centralized identity management.</p>
+
+          <hr />
+
+          <h2>13. Azure SQL Firewall</h2>
+
+          <p>
+            Azure SQL Database uses a firewall to control which IP addresses can connect.
+            You must allow your client IP (or a range) before SSMS or applications can connect.
+          </p>
+
+          <p>Firewall rules can be set at the server level or database level in the Azure portal.</p>
+
+          <hr />
+
+          <h2>14. Creating an Azure SQL Database — Overview</h2>
+
+          <ol>
+            <li>Sign in to the Azure portal</li>
+            <li>Create a SQL server resource (logical server)</li>
+            <li>Create an Azure SQL Database on that server</li>
+            <li>Configure compute tier, storage, and firewall</li>
+            <li>Connect from SSMS using the server name and credentials</li>
+          </ol>
+
+          <p>Always check current Azure documentation and pricing for the latest options.</p>
+
+          <hr />
+
           <h2>15. Practical — Connecting SQL Knowledge to Azure</h2>
 
           <ol>
@@ -411,7 +402,8 @@ GO`}
             <li>Use Microsoft Entra authentication where possible</li>
             <li>Configure firewalls and private endpoints carefully</li>
             <li>Monitor costs with the Azure pricing calculator and budgets</li>
-            <li>Treat snapshots and geo-replication as part of a broader HA/DR plan</li>
+            <li>Treat geo-replication as part of a broader HA/DR plan</li>
+            <li>Keep T-SQL skills strong — they transfer directly to Azure SQL</li>
           </ul>
 
           <hr />
