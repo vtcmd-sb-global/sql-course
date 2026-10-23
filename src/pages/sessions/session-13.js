@@ -256,7 +256,7 @@ FROM Employees;`}
           <h2>Session 13 Challenge</h2>
           <p>Create the following:</p>
           <ol>
-            <li>A scalar function <code>fn_CalculateBonus</code> that returns 10% of salary if salary > 50000, otherwise 5%.</li>
+            <li>A scalar function <code>fn_CalculateBonus</code> that returns 10% of salary if salary {'>'} 50000, otherwise 5%.</li>
             <li>A multi-statement table-valued function that returns high-salary employees.</li>
             <li>A query that shows:
               <ul>
