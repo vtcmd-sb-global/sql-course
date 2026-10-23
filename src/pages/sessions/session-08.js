@@ -167,6 +167,14 @@ WHERE Color = 'Red' OR Color = 'Black';
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
+          <CodeBlock
+          language="sql"
+            code={`SELECT ProductID, Name, Color
+FROM Production.Product
+WHERE NOT Color = 'Red';
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
           <hr />
 
           <h2>8. LIKE Operator</h2>
@@ -232,7 +240,7 @@ GO`}
           <h2>12. Working with XML in SQL Server</h2>
           <p>SQL Server can store and query XML data using the <code>xml</code> data type.</p>
 
-          <h3>12.1 Untyped XML</h3>
+          <h2>12.1 Untyped XML</h2>
           <CodeBlock
           language="sql"
             code={`CREATE TABLE StudentXMLPractice
@@ -248,7 +256,7 @@ VALUES
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-          <h3>12.2 Typed XML</h3>
+          <h2>12.2 Typed XML</h2>
           <p>Typed XML is validated against an XML schema collection.</p>
 
           <hr />
@@ -326,6 +334,15 @@ ORDER BY ProductCount DESC;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
+          <CodeBlock
+          language="sql"
+            code={`SELECT ProductID, Name, ListPrice
+FROM Production.Product
+WHERE Name LIKE '%Bike%'
+  AND ListPrice BETWEEN 500 AND 3000;
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
           <hr />
 
           <h2>17. Cleaning Up XML Practice Objects</h2>
@@ -348,8 +365,9 @@ GO`}
             <li>Select only the columns you need instead of <code>SELECT *</code> in production code</li>
             <li>Filter early with WHERE to reduce rows processed</li>
             <li>Use meaningful aliases for readability</li>
-            <li>Handle NULL values explicitly</li>
+            <li>Handle NULL values explicitly with IS NULL / IS NOT NULL</li>
             <li>Practice on AdventureWorks before changing production data</li>
+            <li>Prefer parameterized queries in applications (avoid string concatenation)</li>
           </ul>
 
           <hr />
@@ -390,7 +408,7 @@ GO`}
 
           <hr />
 
-          <p><strong>Next up (Session 09):</strong> Joining Data</p>
+          <p><strong>Next up (Session 09):</strong> Advanced Queries and Joins</p>
         </article>
       </CustomLayout>
     </Layout>
