@@ -138,7 +138,7 @@ GO`}
           <hr />
 
           <h2>6. Comparison Operators</h2>
-          <p>Common operators: <code>=</code>, <code><></code>, <code><</code>, <code>></code>, <code><=</code>, <code>>=</code></p>
+          <p>Common operators: <code>=</code>, <code>{'<>'}</code>, <code>{'<'}</code>, <code>{'>'}</code>, <code>{'<='}</code>, <code>{'>='}</code></p>
 
           <CodeBlock
           language="sql"
