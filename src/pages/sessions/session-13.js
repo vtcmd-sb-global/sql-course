@@ -25,7 +25,7 @@ export default function Session13() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Learning procedural programming features in T-SQL including control-of-flow, functions, and window functions.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 13</p>
+          <p><strong>Based on:</strong> Official Book – Session 13</p>
 
           <hr />
 
@@ -36,7 +36,7 @@ export default function Session13() {
             <li>Identify program flow statements</li>
             <li>Describe various Transact-SQL functions</li>
             <li>Explain the procedure to create and alter User-Defined Functions (UDFs)</li>
-            <li>Elaborate on creation of windows with OVER</li>
+            <li>Elaborate on the creation of windows with OVER</li>
             <li>Define window functions</li>
           </ul>
 
