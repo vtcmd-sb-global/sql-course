@@ -25,7 +25,7 @@ export default function Session11() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Understanding indexes, their types, and how to manage them for better query performance.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 11</p>
+          <p><strong>Based on:</strong> Official Book – Session 11</p>
 
           <hr />
 
