@@ -34,7 +34,7 @@ export default function Session05() {
           </p>
 
           <p>
-            <strong>Based on:</strong> Official Aptech Book – Session 5
+            <strong>Based on:</strong> Official Book – Session 5
           </p>
 
           <p>
