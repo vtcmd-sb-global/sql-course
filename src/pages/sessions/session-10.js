@@ -25,7 +25,7 @@ export default function Session10() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Working with Views, Stored Procedures, and querying SQL Server metadata.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 10</p>
+          <p><strong>Based on:</strong> Official Book – Session 10</p>
           <p><strong>Note:</strong> All code snippets in this session are based on the AdventureWorks2022 database (or similar structure).</p>
 
           <hr />
