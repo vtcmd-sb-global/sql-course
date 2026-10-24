@@ -26,7 +26,7 @@ export default function Session12() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Understanding and working with Triggers in SQL Server.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 12</p>
+          <p><strong>Based on:</strong> Official Book – Session 12</p>
 
           <hr />
 
