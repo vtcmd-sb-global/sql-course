@@ -68,13 +68,19 @@ export default function Session06() {
           </p>
 
           <ul>
-            <li><strong>Rows</strong> represent individual records.</li>
-            <li><strong>Columns</strong> represent attributes or properties of those records.</li>
+            <li>
+              <strong>Rows</strong> represent individual records.
+            </li>
+            <li>
+              <strong>Columns</strong> represent attributes or properties of
+              those records.
+            </li>
           </ul>
 
           <p>
             For example, AdventureWorks2019 contains a table named
-            <code>Production.Product</code> that stores information about products.
+            <code>Production.Product</code> that stores information about
+            products.
           </p>
 
           <CodeBlock
@@ -91,7 +97,10 @@ FROM Production.Product;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-          <p>Here:</p>
+          <p>
+            Here:
+          </p>
+
           <ul>
             <li><code>ProductID</code> identifies the product.</li>
             <li><code>Name</code> stores the product name.</li>
@@ -104,6 +113,7 @@ GO`}
           <h2>2. Common Data Types in SQL Server 2022</h2>
 
           <h3>Numeric Types</h3>
+
           <ul>
             <li><code>tinyint</code></li>
             <li><code>smallint</code></li>
@@ -118,6 +128,7 @@ GO`}
           </ul>
 
           <h3>String / Character Types</h3>
+
           <ul>
             <li><code>char(n)</code></li>
             <li><code>varchar(n)</code></li>
@@ -128,6 +139,7 @@ GO`}
           </ul>
 
           <h3>Date and Time Types</h3>
+
           <ul>
             <li><code>date</code></li>
             <li><code>time</code></li>
@@ -138,6 +150,7 @@ GO`}
           </ul>
 
           <h3>Other Common Types</h3>
+
           <ul>
             <li><code>bit</code> — stores 0, 1, or NULL</li>
             <li><code>uniqueidentifier</code> — stores GUID values</li>
@@ -149,24 +162,42 @@ GO`}
 
           <h2>3. Advanced Data Types</h2>
 
-          <p>SQL Server also provides specialized data types for particular requirements.</p>
+          <p>
+            SQL Server also provides specialized data types for particular
+            requirements.
+          </p>
 
           <table>
             <thead>
-              <tr><th>Name</th><th>Description</th></tr>
+              <tr>
+                <th>Name</th>
+                <th>Description</th>
+              </tr>
             </thead>
+
             <tbody>
               <tr>
                 <td><code>hierarchyid</code></td>
-                <td>Represents a position in a hierarchy, such as an employee-manager structure.</td>
+                <td>
+                  Represents a position in a hierarchy, such as an
+                  employee-manager structure.
+                </td>
               </tr>
+
               <tr>
                 <td><code>geometry</code></td>
-                <td>Stores spatial data using a flat or Euclidean coordinate system.</td>
+                <td>
+                  Stores spatial data using a flat or Euclidean coordinate
+                  system.
+                </td>
               </tr>
+
               <tr>
                 <td><code>geography</code></td>
-                <td>Stores spatial data based on the earth's surface, such as latitude and longitude.</td>
+                <td>
+                  Stores spatial data based on the earth's surface, such as
+                  latitude and longitude.
+                </td>
               </tr>
             </tbody>
           </table>
@@ -175,7 +206,10 @@ GO`}
 
           <h2>4. Understanding Existing AdventureWorks2019 Tables</h2>
 
-          <p>Before creating our own tables, let's inspect the tables already available in AdventureWorks2019.</p>
+          <p>
+            Before creating our own tables, let's inspect the tables already
+            available in AdventureWorks2019.
+          </p>
 
           <CodeBlock
           language="sql"
@@ -191,9 +225,12 @@ ORDER BY TABLE_SCHEMA, TABLE_NAME;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-          <p>This query lists the base tables available in the database.</p>
+          <p>
+            This query lists the base tables available in the database.
+          </p>
 
           <h3>Example AdventureWorks2019 Tables</h3>
+
           <ul>
             <li><code>Production.Product</code></li>
             <li><code>Production.ProductCategory</code></li>
@@ -209,6 +246,7 @@ GO`}
             AdventureWorks uses <strong>schemas</strong> to organize tables.
             For example, <code>Production.Product</code> means:
           </p>
+
           <ul>
             <li><code>Production</code> = schema</li>
             <li><code>Product</code> = table</li>
@@ -218,7 +256,10 @@ GO`}
 
           <h2>5. Inspecting Table Columns</h2>
 
-          <p>We can use <code>INFORMATION_SCHEMA.COLUMNS</code> to examine the structure of an existing table.</p>
+          <p>
+            We can use <code>INFORMATION_SCHEMA.COLUMNS</code> to examine the
+            structure of an existing table.
+          </p>
 
           <CodeBlock
           language="sql"
@@ -237,7 +278,10 @@ ORDER BY ORDINAL_POSITION;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-          <p>This allows us to see the column names, data types, maximum character lengths, and whether NULL values are allowed.</p>
+          <p>
+            This allows us to see the column names, data types, maximum
+            character lengths, and whether NULL values are allowed.
+          </p>
 
           <hr />
 
@@ -245,12 +289,12 @@ GO`}
 
           <p>
             Use the <code>CREATE SCHEMA</code> statement to create a new schema.
-            It's always a good practice for beginners to create separate schema for separating entity (real world object).
+            It's always a good practice for bigenners to create separate schema for separating entity (real world object)
           </p>
 
           <p>
-            For learning purposes, we will create a small temporary practice schema.
-            We will <strong>not modify AdventureWorks2019 schemas</strong>.
+            For learning purposes, we will create a small temporary practice
+            schema. We will <strong>not modify AdventureWorks2019 schemas</strong>.
           </p>
 
           <CodeBlock
@@ -258,24 +302,30 @@ GO`}
             code={`USE AdventureWorks2019;
 GO
 
-CREATE SCHEMA PracticeStudent;
+CREATE TABLE SCHEMA PracticeStudent
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-          <h3>Important Points</h3>
+              <h3>Important Points</h3>
+
           <ul>
-            <li><code>SCHEMA</code> creates a separate namespace for organizing objects.</li>
+            <li>
+              <code>SCHEMA</code> automatically generates separate entity name
+              which you provide at the end of the command like here we have given PracticeStudent
+            </li>
           </ul>
 
           <hr />
-
+              
           <h2>7. Creating a Table</h2>
 
-          <p>Use the <code>CREATE TABLE</code> statement to create a new table.</p>
+          <p>
+            Use the <code>CREATE TABLE</code> statement to create a new table.
+          </p>
 
           <p>
-            For learning purposes, we will create a small temporary practice table.
-            We will <strong>not modify AdventureWorks2019 tables</strong>.
+            For learning purposes, we will create a small temporary practice
+            table. We will <strong>not modify AdventureWorks2019 tables</strong>.
           </p>
 
           <CodeBlock
@@ -302,13 +352,33 @@ GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>Important Points</h3>
+
           <ul>
-            <li><code>IDENTITY(1,1)</code> automatically generates numbers starting from 1 and increasing by 1.</li>
-            <li><code>PRIMARY KEY</code> uniquely identifies each row.</li>
-            <li><code>NOT NULL</code> prevents NULL values.</li>
-            <li><code>CHECK</code> enforces a condition.</li>
-            <li><code>DEFAULT</code> can provide a value automatically when a value is not supplied.</li>
-            <li><code>UNIQUE</code> prevents duplicate values.</li>
+            <li>
+              <code>IDENTITY(1,1)</code> automatically generates numbers
+              starting from 1 and increasing by 1.
+            </li>
+
+            <li>
+              <code>PRIMARY KEY</code> uniquely identifies each row.
+            </li>
+
+            <li>
+              <code>NOT NULL</code> prevents NULL values.
+            </li>
+
+            <li>
+              <code>CHECK</code> enforces a condition.
+            </li>
+
+            <li>
+              <code>DEFAULT</code> can provide a value automatically when a
+              value is not supplied.
+            </li>
+
+            <li>
+              <code>UNIQUE</code> prevents duplicate values.
+            </li>
           </ul>
 
           <hr />
@@ -317,15 +387,42 @@ GO`}
 
           <table>
             <thead>
-              <tr><th>Constraint</th><th>Purpose</th></tr>
+              <tr>
+                <th>Constraint</th>
+                <th>Purpose</th>
+              </tr>
             </thead>
+
             <tbody>
-              <tr><td><code>PRIMARY KEY</code></td><td>Uniquely identifies each row.</td></tr>
-              <tr><td><code>FOREIGN KEY</code></td><td>Creates a relationship between tables.</td></tr>
-              <tr><td><code>UNIQUE</code></td><td>Prevents duplicate values.</td></tr>
-              <tr><td><code>NOT NULL</code></td><td>Prevents NULL values.</td></tr>
-              <tr><td><code>CHECK</code></td><td>Ensures that data satisfies a condition.</td></tr>
-              <tr><td><code>DEFAULT</code></td><td>Provides a default value when no value is supplied.</td></tr>
+              <tr>
+                <td><code>PRIMARY KEY</code></td>
+                <td>Uniquely identifies each row.</td>
+              </tr>
+
+              <tr>
+                <td><code>FOREIGN KEY</code></td>
+                <td>Creates a relationship between tables.</td>
+              </tr>
+
+              <tr>
+                <td><code>UNIQUE</code></td>
+                <td>Prevents duplicate values.</td>
+              </tr>
+
+              <tr>
+                <td><code>NOT NULL</code></td>
+                <td>Prevents NULL values.</td>
+              </tr>
+
+              <tr>
+                <td><code>CHECK</code></td>
+                <td>Ensures that data satisfies a condition.</td>
+              </tr>
+
+              <tr>
+                <td><code>DEFAULT</code></td>
+                <td>Provides a default value when no value is supplied.</td>
+              </tr>
             </tbody>
           </table>
 
@@ -333,7 +430,10 @@ GO`}
 
           <h2>9. Adding a Foreign Key</h2>
 
-          <p>A <strong>Foreign Key</strong> creates a relationship between a child table and a parent table.</p>
+          <p>
+            A <strong>Foreign Key</strong> creates a relationship between a
+            child table and a parent table.
+          </p>
 
           <p>
             AdventureWorks2019 contains many examples of this concept.
@@ -362,7 +462,9 @@ GO`}
             <code>Production.ProductSubcategory</code> table.
           </p>
 
-          <p>We can also demonstrate the concept using our own practice tables.</p>
+          <p>
+            We can also demonstrate the concept using our own practice tables.
+          </p>
 
           <CodeBlock
           language="sql"
@@ -393,9 +495,13 @@ GO`}
 
           <h2>10. Modifying a Table — ALTER TABLE</h2>
 
-          <p>The <code>ALTER TABLE</code> statement is used to change an existing table.</p>
+          <p>
+            The <code>ALTER TABLE</code> statement is used to change an
+            existing table.
+          </p>
 
           <h3>Add a Column</h3>
+
           <CodeBlock
           language="sql"
             code={`ALTER TABLE CourseStudents
@@ -404,6 +510,7 @@ GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>Modify a Column</h3>
+
           <CodeBlock
           language="sql"
             code={`ALTER TABLE CourseStudents
@@ -412,6 +519,7 @@ GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>Drop a Column</h3>
+
           <CodeBlock
           language="sql"
             code={`ALTER TABLE CourseStudents
@@ -420,6 +528,7 @@ GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>Add a UNIQUE Constraint</h3>
+
           <CodeBlock
           language="sql"
             code={`ALTER TABLE CourseStudents
@@ -438,8 +547,8 @@ GO`}
           <h2>11. Inspecting Constraints in AdventureWorks2019</h2>
 
           <p>
-            AdventureWorks2019 contains many Primary Key and Foreign Key relationships.
-            We can inspect them using system catalog views.
+            AdventureWorks2019 contains many Primary Key and Foreign Key
+            relationships. We can inspect them using system catalog views.
           </p>
 
           <CodeBlock
@@ -458,13 +567,19 @@ ORDER BY ChildSchema, ChildTable;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-          <p>This is a useful way to see how tables in a real-world database are connected.</p>
+          <p>
+            This is a useful way to see how tables in a real-world database
+            are connected.
+          </p>
 
           <hr />
 
           <h2>12. Dropping a Table</h2>
 
-          <p>The <code>DROP TABLE</code> statement permanently removes a table and its data.</p>
+          <p>
+            The <code>DROP TABLE</code> statement permanently removes a table
+            and its data.
+          </p>
 
           <CodeBlock
           language="sql"
@@ -472,7 +587,9 @@ GO`}
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-          <p>A safer approach is to check whether the table exists first.</p>
+          <p>
+            A safer approach is to check whether the table exists first.
+          </p>
 
           <CodeBlock
           language="sql"
@@ -486,7 +603,9 @@ GO`}
             against AdventureWorks2019 tables during this course.
           </p>
 
-          <p>For example, students should <strong>not</strong> run:</p>
+          <p>
+            For example, students should <strong>not</strong> run:
+          </p>
 
           <CodeBlock
           language="sql"
@@ -502,9 +621,13 @@ GO`}
 
           <h2>13. Practical — Working with AdventureWorks2019</h2>
 
-          <p>Now let's apply what we have learned to the real AdventureWorks2019 database.</p>
+          <p>
+            Now let's apply what we have learned to the real AdventureWorks2019
+            database.
+          </p>
 
           <h3>Practical 1 — Select a Table</h3>
+
           <CodeBlock
           language="sql"
             code={`USE AdventureWorks2019;
@@ -516,6 +639,7 @@ GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>Practical 2 — Select Specific Columns</h3>
+
           <CodeBlock
           language="sql"
             code={`SELECT
@@ -529,6 +653,7 @@ GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>Practical 3 — Inspect the Table Structure</h3>
+
           <CodeBlock
           language="sql"
             code={`SELECT
@@ -543,69 +668,271 @@ ORDER BY ORDINAL_POSITION;
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
-          <h3>Practical 4 — Count Products by Color</h3>
+          <h3>Practical 4 — Find Primary Key Information</h3>
+
           <CodeBlock
           language="sql"
             code={`SELECT
-    Color,
-    COUNT(*) AS ProductCount
-FROM Production.Product
-WHERE Color IS NOT NULL
-GROUP BY Color
-ORDER BY ProductCount DESC;
+    tc.CONSTRAINT_NAME,
+    tc.TABLE_SCHEMA,
+    tc.TABLE_NAME,
+    kcu.COLUMN_NAME
+FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS AS tc
+INNER JOIN INFORMATION_SCHEMA.KEY_COLUMN_USAGE AS kcu
+    ON tc.CONSTRAINT_NAME = kcu.CONSTRAINT_NAME
+WHERE tc.CONSTRAINT_TYPE = 'PRIMARY KEY'
+  AND tc.TABLE_SCHEMA = 'Production'
+  AND tc.TABLE_NAME = 'Product';
 GO`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+          <h3>Practical 5 — Explore Product Relationships</h3>
+
+          <CodeBlock
+          language="sql"
+            code={`SELECT
+    p.ProductID,
+    p.Name AS ProductName,
+    pc.Name AS CategoryName,
+    ps.Name AS SubcategoryName
+FROM Production.Product AS p
+LEFT JOIN Production.ProductSubcategory AS ps
+    ON p.ProductSubcategoryID = ps.ProductSubcategoryID
+LEFT JOIN Production.ProductCategory AS pc
+    ON ps.ProductCategoryID = pc.ProductCategoryID;
+GO`}
+          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+          <p>
+            This practical demonstrates how tables, columns, keys, and
+            relationships work together inside a real database.
+          </p>
 
           <hr />
 
           <h2>14. Best Practices</h2>
 
           <ul>
-            <li>Always use a PRIMARY KEY on tables.</li>
-            <li>Use schemas to organize related tables.</li>
-            <li>Prefer IDENTITY for surrogate keys when appropriate.</li>
-            <li>Apply CHECK constraints for domain rules (age, marks, ranges).</li>
-            <li>Use FOREIGN KEY constraints to protect relationships.</li>
-            <li>Never drop AdventureWorks tables during this course.</li>
-            <li>Use IF OBJECT_ID checks before DROP TABLE in scripts.</li>
-            <li>Test ALTER TABLE changes carefully when data already exists.</li>
+            <li>Always define a Primary Key for important tables.</li>
+
+            <li>
+              Use appropriate data types instead of choosing
+              <code>nvarchar(max)</code> for everything.
+            </li>
+
+            <li>
+              Use <code>nvarchar</code> when Unicode support is required.
+            </li>
+
+            <li>Use meaningful table and column names.</li>
+
+            <li>Use schemas to organize database objects.</li>
+
+            <li>Add constraints to protect data integrity.</li>
+
+            <li>Avoid reserved keywords as object names.</li>
+
+            <li>
+              Do not modify or delete AdventureWorks2019 tables during
+              practice.
+            </li>
+
+            <li>
+              Use separate practice tables for destructive operations such as
+              <code>DROP TABLE</code>.
+            </li>
           </ul>
 
           <hr />
 
           <h2>Session 6 Exercise</h2>
+
+          <p>
+            Complete the following exercises using
+            <strong>AdventureWorks2019</strong> where possible.
+          </p>
+
           <ol>
-            <li>List five common SQL Server data types and give an example use for each.</li>
-            <li>Create a practice table with a primary key, NOT NULL, and CHECK constraints.</li>
-            <li>Add a column using ALTER TABLE, then drop it.</li>
-            <li>Create a parent and child table with a FOREIGN KEY relationship.</li>
-            <li>Write a safe DROP TABLE statement that checks if the table exists first.</li>
+            <li>
+              List all tables in the <code>Production</code> schema.
+            </li>
+
+            <li>
+              Display the columns and data types of
+              <code>Production.Product</code>.
+            </li>
+
+            <li>
+              Display the Primary Key information for
+              <code>Production.Product</code>.
+            </li>
+
+            <li>
+              Display the Foreign Key relationships involving
+              <code>Production.Product</code>.
+            </li>
+
+            <li>
+              Display the first 10 products from
+              <code>Production.Product</code>.
+            </li>
+
+            <li>
+              Display products together with their product subcategory.
+            </li>
+
+            <li>
+              Create a separate practice table named
+              <code>PracticeProducts</code> with:
+              <ul>
+                <li>ProductID</li>
+                <li>ProductName</li>
+                <li>Price</li>
+                <li>Quantity</li>
+              </ul>
+            </li>
+
+            <li>
+              Add a <code>CHECK</code> constraint so Price cannot be negative.
+            </li>
+
+            <li>
+              Add a new column named <code>ProductCode</code>.
+            </li>
+
+            <li>
+              Modify the <code>ProductCode</code> column.
+            </li>
+
+            <li>
+              Drop the <code>ProductCode</code> column.
+            </li>
           </ol>
 
           <hr />
 
           <h2>Session 6 Challenge</h2>
-          <ol>
-            <li>Design a small schema with two related tables (e.g. Courses and Enrollments).</li>
-            <li>Include PRIMARY KEY, FOREIGN KEY, UNIQUE, and CHECK constraints.</li>
-            <li>Write ALTER TABLE statements to add and remove a column.</li>
-            <li>Inspect AdventureWorks foreign keys using sys.foreign_keys.</li>
-          </ol>
+
+          <p>
+            Create a small <strong>Library System</strong> using your own
+            practice tables.
+          </p>
+
+          <h3>Books</h3>
+
+          <ul>
+            <li>BookID</li>
+            <li>Title</li>
+            <li>Author</li>
+            <li>ISBN</li>
+            <li>PublishedYear</li>
+            <li>AvailableCopies</li>
+          </ul>
+
+          <h3>Members</h3>
+
+          <ul>
+            <li>MemberID</li>
+            <li>FullName</li>
+            <li>Email</li>
+            <li>JoinDate</li>
+            <li>Phone</li>
+          </ul>
+
+          <h3>Borrowings</h3>
+
+          <ul>
+            <li>BorrowingID</li>
+            <li>BookID</li>
+            <li>MemberID</li>
+            <li>BorrowDate</li>
+            <li>ReturnDate</li>
+          </ul>
+
+          <p><strong>Requirements:</strong></p>
+
+          <ul>
+            <li>Use appropriate data types.</li>
+            <li>Add Primary Keys.</li>
+            <li>Add Foreign Keys.</li>
+            <li>Add at least one CHECK constraint.</li>
+            <li>Add at least one DEFAULT constraint.</li>
+            <li>Add at least one UNIQUE constraint.</li>
+            <li>Use meaningful constraint names.</li>
+          </ul>
+
+          <p>
+            <strong>Important:</strong> Create these tables as your own
+            practice tables. Do not create or modify tables inside the
+            AdventureWorks2019 schema for this challenge.
+          </p>
 
           <hr />
 
           <h2>Session 6 Quiz</h2>
+
           <ol>
-            <li>What is a table in an RDBMS?</li>
-            <li>What does IDENTITY(1,1) do?</li>
-            <li>What is the difference between PRIMARY KEY and UNIQUE?</li>
-            <li>What is a FOREIGN KEY used for?</li>
-            <li>How do you add a new column to an existing table?</li>
-            <li>How do you safely drop a table only if it exists?</li>
-            <li>Name three string data types in SQL Server.</li>
-            <li>What is the purpose of a CHECK constraint?</li>
-            <li>What is a schema in SQL Server?</li>
-            <li>Why should you not drop AdventureWorks tables during this course?</li>
+            <li>What is a table in SQL Server?</li>
+
+            <li>
+              What is the difference between a row and a column?
+            </li>
+
+            <li>
+              What is the difference between <code>char</code> and
+              <code>varchar</code>?
+            </li>
+
+            <li>
+              What does the <code>IDENTITY</code> property do?
+            </li>
+
+            <li>
+              What is a Primary Key?
+            </li>
+
+            <li>
+              What is a Foreign Key?
+            </li>
+
+            <li>
+              Name five common constraints and explain their purpose.
+            </li>
+
+            <li>
+              How do you add a new column to an existing table?
+            </li>
+
+            <li>
+              How do you modify the data type of an existing column?
+            </li>
+
+            <li>
+              What happens when you use <code>DROP TABLE</code>?
+            </li>
+
+            <li>
+              What is the purpose of <code>INFORMATION_SCHEMA.COLUMNS</code>?
+            </li>
+
+            <li>
+              What is the difference between a schema and a table?
+            </li>
+
+            <li>
+              What is the purpose of the <code>Production</code> schema in
+              AdventureWorks2019?
+            </li>
+
+            <li>
+              Give an example of a relationship between two AdventureWorks2019
+              tables.
+            </li>
+
+            <li>
+              Why should students avoid modifying or dropping AdventureWorks2019
+              tables during practical exercises?
+            </li>
           </ol>
 
           <hr />
@@ -619,3 +946,638 @@ GO`}
     </Layout>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React from 'react';
+// import Layout from '@theme/Layout';
+// import CustomLayout from '@site/src/components/Layout/Layout';
+// import CodeBlock from '@site/src/components/CodeBlock';
+
+// export default function Session06() {
+
+//   return (
+//     <Layout
+//       title="Session 06 — Creating Tables"
+//       description="Creating Tables in SQL Server 2022 — Data Types, Constraints, ALTER TABLE, DROP TABLE, AdventureWorks2019"
+//     >
+//       <CustomLayout>
+//         <article className="session-content">
+
+//           <style>{`
+//             article code:not(pre code) {
+//               background-color: #f4f4f4;
+//               color: #d10057;
+//               padding: 2px 6px;
+//               border-radius: 4px;
+//               font-family: Consolas, Monaco, monospace;
+//               font-size: 0.9em;
+//             }
+//           `}</style>
+
+//           <h1>Session 06 — Creating Tables</h1>
+
+//           <p><strong>Duration:</strong> 2 hours</p>
+
+//           <p>
+//             <strong>Focus:</strong> Learning how to create, modify, and manage
+//             tables and columns in SQL Server 2022.
+//           </p>
+
+//           <p>
+//             <strong>Practical Database:</strong> AdventureWorks2019
+//           </p>
+
+//           <p>
+//             <strong>Follows Book:</strong> From Book – Session 6
+//           </p>
+
+//           <hr />
+
+//           <h2>Learning Objectives</h2>
+
+//           <p>By the end of this session, you should be able to:</p>
+
+//           <ul>
+//             <li>List common SQL Server 2022 data types</li>
+//             <li>Explain the purpose of tables, rows, and columns</li>
+//             <li>Create tables using T-SQL</li>
+//             <li>Apply Primary Key, Foreign Key, UNIQUE, CHECK, DEFAULT, and NOT NULL constraints</li>
+//             <li>Explain how AdventureWorks2019 uses tables and relationships</li>
+//             <li>Add, modify, and drop columns using ALTER TABLE</li>
+//             <li>Understand how to safely drop tables</li>
+//             <li>Inspect existing AdventureWorks2019 tables and their structures</li>
+//           </ul>
+
+//           <hr />
+
+//           <h2>1. Introduction to Tables</h2>
+
+//           <p>
+//             A <strong>table</strong> is a database object used to store data
+//             in rows and columns.
+//           </p>
+
+//           <ul>
+//             <li><strong>Rows</strong> represent individual records.</li>
+//             <li><strong>Columns</strong> represent attributes or properties of those records.</li>
+//           </ul>
+
+//           <p>
+//             For example, AdventureWorks2019 contains a table named
+//             <code>Production.Product</code> that stores information about products.
+//           </p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// SELECT TOP 10
+//     ProductID,
+//     Name,
+//     ProductNumber,
+//     ListPrice
+// FROM Production.Product;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>Here:</p>
+//           <ul>
+//             <li><code>ProductID</code> identifies the product.</li>
+//             <li><code>Name</code> stores the product name.</li>
+//             <li><code>ProductNumber</code> stores the product number.</li>
+//             <li><code>ListPrice</code> stores the product price.</li>
+//           </ul>
+
+//           <hr />
+
+//           <h2>2. Common Data Types in SQL Server 2022</h2>
+
+//           <h3>Numeric Types</h3>
+//           <ul>
+//             <li><code>tinyint</code></li>
+//             <li><code>smallint</code></li>
+//             <li><code>int</code></li>
+//             <li><code>bigint</code></li>
+//             <li><code>decimal(p,s)</code></li>
+//             <li><code>numeric(p,s)</code></li>
+//             <li><code>float</code></li>
+//             <li><code>real</code></li>
+//             <li><code>money</code></li>
+//             <li><code>smallmoney</code></li>
+//           </ul>
+
+//           <h3>String / Character Types</h3>
+//           <ul>
+//             <li><code>char(n)</code></li>
+//             <li><code>varchar(n)</code></li>
+//             <li><code>varchar(max)</code></li>
+//             <li><code>nchar(n)</code></li>
+//             <li><code>nvarchar(n)</code></li>
+//             <li><code>nvarchar(max)</code></li>
+//           </ul>
+
+//           <h3>Date and Time Types</h3>
+//           <ul>
+//             <li><code>date</code></li>
+//             <li><code>time</code></li>
+//             <li><code>datetime</code></li>
+//             <li><code>datetime2</code></li>
+//             <li><code>smalldatetime</code></li>
+//             <li><code>datetimeoffset</code></li>
+//           </ul>
+
+//           <h3>Other Common Types</h3>
+//           <ul>
+//             <li><code>bit</code> — stores 0, 1, or NULL</li>
+//             <li><code>uniqueidentifier</code> — stores GUID values</li>
+//             <li><code>xml</code> — stores XML data</li>
+//             <li><code>varbinary</code> — stores binary data</li>
+//           </ul>
+
+//           <hr />
+
+//           <h2>3. Advanced Data Types</h2>
+
+//           <p>SQL Server also provides specialized data types for particular requirements.</p>
+
+//           <table>
+//             <thead>
+//               <tr><th>Name</th><th>Description</th></tr>
+//             </thead>
+//             <tbody>
+//               <tr>
+//                 <td><code>hierarchyid</code></td>
+//                 <td>Represents a position in a hierarchy, such as an employee-manager structure.</td>
+//               </tr>
+//               <tr>
+//                 <td><code>geometry</code></td>
+//                 <td>Stores spatial data using a flat or Euclidean coordinate system.</td>
+//               </tr>
+//               <tr>
+//                 <td><code>geography</code></td>
+//                 <td>Stores spatial data based on the earth's surface, such as latitude and longitude.</td>
+//               </tr>
+//             </tbody>
+//           </table>
+
+//           <hr />
+
+//           <h2>4. Understanding Existing AdventureWorks2019 Tables</h2>
+
+//           <p>Before creating our own tables, let's inspect the tables already available in AdventureWorks2019.</p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// SELECT
+//     TABLE_SCHEMA,
+//     TABLE_NAME
+// FROM INFORMATION_SCHEMA.TABLES
+// WHERE TABLE_TYPE = 'BASE TABLE'
+// ORDER BY TABLE_SCHEMA, TABLE_NAME;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>This query lists the base tables available in the database.</p>
+
+//           <h3>Example AdventureWorks2019 Tables</h3>
+//           <ul>
+//             <li><code>Production.Product</code></li>
+//             <li><code>Production.ProductCategory</code></li>
+//             <li><code>Production.ProductSubcategory</code></li>
+//             <li><code>Person.Person</code></li>
+//             <li><code>Person.Address</code></li>
+//             <li><code>Sales.Customer</code></li>
+//             <li><code>Sales.SalesOrderHeader</code></li>
+//             <li><code>Sales.SalesOrderDetail</code></li>
+//           </ul>
+
+//           <p>
+//             AdventureWorks uses <strong>schemas</strong> to organize tables.
+//             For example, <code>Production.Product</code> means:
+//           </p>
+//           <ul>
+//             <li><code>Production</code> = schema</li>
+//             <li><code>Product</code> = table</li>
+//           </ul>
+
+//           <hr />
+
+//           <h2>5. Inspecting Table Columns</h2>
+
+//           <p>We can use <code>INFORMATION_SCHEMA.COLUMNS</code> to examine the structure of an existing table.</p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// SELECT
+//     COLUMN_NAME,
+//     DATA_TYPE,
+//     CHARACTER_MAXIMUM_LENGTH,
+//     IS_NULLABLE
+// FROM INFORMATION_SCHEMA.COLUMNS
+// WHERE TABLE_SCHEMA = 'Production'
+//   AND TABLE_NAME = 'Product'
+// ORDER BY ORDINAL_POSITION;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>This allows us to see the column names, data types, maximum character lengths, and whether NULL values are allowed.</p>
+
+//           <hr />
+
+//           <h2>6. Creating a Schema</h2>
+
+//           <p>
+//             Use the <code>CREATE SCHEMA</code> statement to create a new schema.
+//             It's always a good practice for beginners to create separate schema for separating entity (real world object).
+//           </p>
+
+//           <p>
+//             For learning purposes, we will create a small temporary practice schema.
+//             We will <strong>not modify AdventureWorks2019 schemas</strong>.
+//           </p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// CREATE SCHEMA PracticeStudent;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <h3>Important Points</h3>
+//           <ul>
+//             <li><code>SCHEMA</code> creates a separate namespace for organizing objects.</li>
+//           </ul>
+
+//           <hr />
+
+//           <h2>7. Creating a Table</h2>
+
+//           <p>Use the <code>CREATE TABLE</code> statement to create a new table.</p>
+
+//           <p>
+//             For learning purposes, we will create a small temporary practice table.
+//             We will <strong>not modify AdventureWorks2019 tables</strong>.
+//           </p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// CREATE TABLE CourseStudents
+// (
+//     StudentID INT PRIMARY KEY IDENTITY(1,1),
+//     StudentName VARCHAR(100) NOT NULL,
+//     Age INT,
+//     Gender VARCHAR(10),
+//     City VARCHAR(50),
+//     Marks INT,
+
+//     CONSTRAINT CK_CourseStudents_Age
+//         CHECK (Age >= 16),
+
+//     CONSTRAINT CK_CourseStudents_Marks
+//         CHECK (Marks BETWEEN 0 AND 100)
+// );
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <h3>Important Points</h3>
+//           <ul>
+//             <li><code>IDENTITY(1,1)</code> automatically generates numbers starting from 1 and increasing by 1.</li>
+//             <li><code>PRIMARY KEY</code> uniquely identifies each row.</li>
+//             <li><code>NOT NULL</code> prevents NULL values.</li>
+//             <li><code>CHECK</code> enforces a condition.</li>
+//             <li><code>DEFAULT</code> can provide a value automatically when a value is not supplied.</li>
+//             <li><code>UNIQUE</code> prevents duplicate values.</li>
+//           </ul>
+
+//           <hr />
+
+//           <h2>8. Common Constraints</h2>
+
+//           <table>
+//             <thead>
+//               <tr><th>Constraint</th><th>Purpose</th></tr>
+//             </thead>
+//             <tbody>
+//               <tr><td><code>PRIMARY KEY</code></td><td>Uniquely identifies each row.</td></tr>
+//               <tr><td><code>FOREIGN KEY</code></td><td>Creates a relationship between tables.</td></tr>
+//               <tr><td><code>UNIQUE</code></td><td>Prevents duplicate values.</td></tr>
+//               <tr><td><code>NOT NULL</code></td><td>Prevents NULL values.</td></tr>
+//               <tr><td><code>CHECK</code></td><td>Ensures that data satisfies a condition.</td></tr>
+//               <tr><td><code>DEFAULT</code></td><td>Provides a default value when no value is supplied.</td></tr>
+//             </tbody>
+//           </table>
+
+//           <hr />
+
+//           <h2>9. Adding a Foreign Key</h2>
+
+//           <p>A <strong>Foreign Key</strong> creates a relationship between a child table and a parent table.</p>
+
+//           <p>
+//             AdventureWorks2019 contains many examples of this concept.
+//             For example, products are connected to product subcategories.
+//           </p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// SELECT
+//     p.ProductID,
+//     p.Name AS ProductName,
+//     ps.ProductSubcategoryID,
+//     ps.Name AS SubcategoryName
+// FROM Production.Product AS p
+// INNER JOIN Production.ProductSubcategory AS ps
+//     ON p.ProductSubcategoryID = ps.ProductSubcategoryID;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>
+//             Here, <code>ProductSubcategoryID</code> connects the
+//             <code>Production.Product</code> table with the
+//             <code>Production.ProductSubcategory</code> table.
+//           </p>
+
+//           <p>We can also demonstrate the concept using our own practice tables.</p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// CREATE TABLE Departments
+// (
+//     DepartmentID INT PRIMARY KEY IDENTITY(1,1),
+//     DepartmentName VARCHAR(100) NOT NULL UNIQUE
+// );
+// GO
+
+// CREATE TABLE PracticeStudents
+// (
+//     StudentID INT PRIMARY KEY IDENTITY(1,1),
+//     StudentName VARCHAR(100) NOT NULL,
+//     DepartmentID INT,
+
+//     CONSTRAINT FK_PracticeStudents_Departments
+//         FOREIGN KEY (DepartmentID)
+//         REFERENCES Departments(DepartmentID)
+// );
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <hr />
+
+//           <h2>10. Modifying a Table — ALTER TABLE</h2>
+
+//           <p>The <code>ALTER TABLE</code> statement is used to change an existing table.</p>
+
+//           <h3>Add a Column</h3>
+//           <CodeBlock
+//           language="sql"
+//             code={`ALTER TABLE CourseStudents
+// ADD PhoneNumber NVARCHAR(20);
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <h3>Modify a Column</h3>
+//           <CodeBlock
+//           language="sql"
+//             code={`ALTER TABLE CourseStudents
+// ALTER COLUMN PhoneNumber NVARCHAR(30);
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <h3>Drop a Column</h3>
+//           <CodeBlock
+//           language="sql"
+//             code={`ALTER TABLE CourseStudents
+// DROP COLUMN PhoneNumber;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <h3>Add a UNIQUE Constraint</h3>
+//           <CodeBlock
+//           language="sql"
+//             code={`ALTER TABLE CourseStudents
+// ADD CONSTRAINT UQ_CourseStudents_StudentName
+// UNIQUE (StudentName);
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>
+//             <strong>Important:</strong> Before changing an existing column,
+//             make sure the new data type is compatible with the existing data.
+//           </p>
+
+//           <hr />
+
+//           <h2>11. Inspecting Constraints in AdventureWorks2019</h2>
+
+//           <p>
+//             AdventureWorks2019 contains many Primary Key and Foreign Key relationships.
+//             We can inspect them using system catalog views.
+//           </p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// SELECT
+//     fk.name AS ForeignKeyName,
+//     OBJECT_SCHEMA_NAME(fk.parent_object_id) AS ChildSchema,
+//     OBJECT_NAME(fk.parent_object_id) AS ChildTable,
+//     OBJECT_SCHEMA_NAME(fk.referenced_object_id) AS ParentSchema,
+//     OBJECT_NAME(fk.referenced_object_id) AS ParentTable
+// FROM sys.foreign_keys AS fk
+// ORDER BY ChildSchema, ChildTable;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>This is a useful way to see how tables in a real-world database are connected.</p>
+
+//           <hr />
+
+//           <h2>12. Dropping a Table</h2>
+
+//           <p>The <code>DROP TABLE</code> statement permanently removes a table and its data.</p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`DROP TABLE CourseStudents;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>A safer approach is to check whether the table exists first.</p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`IF OBJECT_ID('dbo.CourseStudents', 'U') IS NOT NULL
+//     DROP TABLE dbo.CourseStudents;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>
+//             <strong>Important:</strong> Do not execute <code>DROP TABLE</code>
+//             against AdventureWorks2019 tables during this course.
+//           </p>
+
+//           <p>For example, students should <strong>not</strong> run:</p>
+
+//           <CodeBlock
+//           language="sql"
+//             code={`DROP TABLE Production.Product;`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <p>
+//             This would attempt to remove an important AdventureWorks table and
+//             may also be blocked by existing relationships.
+//           </p>
+
+//           <hr />
+
+//           <h2>13. Practical — Working with AdventureWorks2019</h2>
+
+//           <p>Now let's apply what we have learned to the real AdventureWorks2019 database.</p>
+
+//           <h3>Practical 1 — Select a Table</h3>
+//           <CodeBlock
+//           language="sql"
+//             code={`USE AdventureWorks2019;
+// GO
+
+// SELECT TOP 10 *
+// FROM Production.Product;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <h3>Practical 2 — Select Specific Columns</h3>
+//           <CodeBlock
+//           language="sql"
+//             code={`SELECT
+//     ProductID,
+//     Name,
+//     ProductNumber,
+//     Color,
+//     ListPrice
+// FROM Production.Product;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <h3>Practical 3 — Inspect the Table Structure</h3>
+//           <CodeBlock
+//           language="sql"
+//             code={`SELECT
+//     COLUMN_NAME,
+//     DATA_TYPE,
+//     CHARACTER_MAXIMUM_LENGTH,
+//     IS_NULLABLE
+// FROM INFORMATION_SCHEMA.COLUMNS
+// WHERE TABLE_SCHEMA = 'Production'
+//   AND TABLE_NAME = 'Product'
+// ORDER BY ORDINAL_POSITION;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <h3>Practical 4 — Count Products by Color</h3>
+//           <CodeBlock
+//           language="sql"
+//             code={`SELECT
+//     Color,
+//     COUNT(*) AS ProductCount
+// FROM Production.Product
+// WHERE Color IS NOT NULL
+// GROUP BY Color
+// ORDER BY ProductCount DESC;
+// GO`}
+//           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+
+//           <hr />
+
+//           <h2>14. Best Practices</h2>
+
+//           <ul>
+//             <li>Always use a PRIMARY KEY on tables.</li>
+//             <li>Use schemas to organize related tables.</li>
+//             <li>Prefer IDENTITY for surrogate keys when appropriate.</li>
+//             <li>Apply CHECK constraints for domain rules (age, marks, ranges).</li>
+//             <li>Use FOREIGN KEY constraints to protect relationships.</li>
+//             <li>Never drop AdventureWorks tables during this course.</li>
+//             <li>Use IF OBJECT_ID checks before DROP TABLE in scripts.</li>
+//             <li>Test ALTER TABLE changes carefully when data already exists.</li>
+//           </ul>
+
+//           <hr />
+
+//           <h2>Session 6 Exercise</h2>
+//           <ol>
+//             <li>List five common SQL Server data types and give an example use for each.</li>
+//             <li>Create a practice table with a primary key, NOT NULL, and CHECK constraints.</li>
+//             <li>Add a column using ALTER TABLE, then drop it.</li>
+//             <li>Create a parent and child table with a FOREIGN KEY relationship.</li>
+//             <li>Write a safe DROP TABLE statement that checks if the table exists first.</li>
+//           </ol>
+
+//           <hr />
+
+//           <h2>Session 6 Challenge</h2>
+//           <ol>
+//             <li>Design a small schema with two related tables (e.g. Courses and Enrollments).</li>
+//             <li>Include PRIMARY KEY, FOREIGN KEY, UNIQUE, and CHECK constraints.</li>
+//             <li>Write ALTER TABLE statements to add and remove a column.</li>
+//             <li>Inspect AdventureWorks foreign keys using sys.foreign_keys.</li>
+//           </ol>
+
+//           <hr />
+
+//           <h2>Session 6 Quiz</h2>
+//           <ol>
+//             <li>What is a table in an RDBMS?</li>
+//             <li>What does IDENTITY(1,1) do?</li>
+//             <li>What is the difference between PRIMARY KEY and UNIQUE?</li>
+//             <li>What is a FOREIGN KEY used for?</li>
+//             <li>How do you add a new column to an existing table?</li>
+//             <li>How do you safely drop a table only if it exists?</li>
+//             <li>Name three string data types in SQL Server.</li>
+//             <li>What is the purpose of a CHECK constraint?</li>
+//             <li>What is a schema in SQL Server?</li>
+//             <li>Why should you not drop AdventureWorks tables during this course?</li>
+//           </ol>
+
+//           <hr />
+
+//           <p>
+//             <strong>Next up (Session 07):</strong> Microsoft Azure SQL
+//           </p>
+
+//         </article>
+//       </CustomLayout>
+//     </Layout>
+//   );
+// }
