@@ -1161,8 +1161,9 @@ ORDER BY ListPrice DESC;`}
 
           <h3>CTE</h3>
 
-          <pre>
-            <code>{`WITH ProductSummary AS
+          <CodeBlock
+            language="sql"
+            code={`WITH ProductSummary AS
 (
     SELECT
         ProductSubcategoryID,
@@ -1175,8 +1176,8 @@ ORDER BY ListPrice DESC;`}
 SELECT *
 FROM ProductSummary
 WHERE TotalProducts > 5
-ORDER BY TotalProducts DESC;`}</code>
-          </pre>
+ORDER BY TotalProducts DESC;`}
+caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>Sales Aggregation</h3>
 
