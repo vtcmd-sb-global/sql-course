@@ -25,7 +25,7 @@ export default function Session15() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Querying external data sources with PolyBase and monitoring/tuning query performance using Query Store.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 15</p>
+          <p><strong>Based on:</strong> Official Book – Session 15</p>
 
           <hr />
 
