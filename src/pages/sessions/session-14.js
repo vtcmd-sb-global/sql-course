@@ -25,7 +25,7 @@ export default function Session14() {
 
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Understanding transactions, concurrency, and professional error handling in T-SQL.</p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 14</p>
+          <p><strong>Based on:</strong> Official Book – Session 14</p>
 
           <hr />
 
