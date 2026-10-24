@@ -31,7 +31,7 @@ export default function Session09() {
             <strong>Focus:</strong> Writing powerful queries using grouping,
             subqueries, joins, set operators, and pivoting.
           </p>
-          <p><strong>Based on:</strong> Official Aptech Book – Session 9</p>
+          <p><strong>Based on:</strong> Official Book – Session 9</p>
           <p>
             <strong>Practical Database:</strong> AdventureWorks2019
           </p>
