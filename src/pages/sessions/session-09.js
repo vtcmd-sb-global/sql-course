@@ -450,7 +450,7 @@ HAVING AVG(ListPrice) > 500;`}
             <li>
               <strong>Single-row subquery</strong> – Returns exactly one value
               (one row, one column). It can be compared with operators such as
-              <code>=</code>, <code>></code>, <code><</code>, etc.
+              <code>=</code>, <code>{'>'}</code>, <code>{'<'}</code>, etc.
             </li>
             <li>
               <strong>Multi-row subquery</strong> – Returns multiple values.
@@ -1378,7 +1378,7 @@ SELECT
 FROM Production.Product
 WHERE Color IS NOT NULL
 GROUP BY Color
-ORDER BY AveragePrice DESC;`} 
+ORDER BY AveragePrice DESC;`}
           caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
 
           <h3>JOIN + GROUP BY</h3>
