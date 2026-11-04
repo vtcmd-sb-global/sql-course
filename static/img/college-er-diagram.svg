@@ -90,7 +90,7 @@
 
   <!-- ========== RELATIONSHIPS ========== -->
 
-  <!-- WorksIn (Department 1 ---- M Instructor) -->
+  <!-- WorksIn (Department 1 to M Instructor) -->
   <polygon points="200,160 250,135 300,160 250,185" class="diamond"/>
   <text x="250" y="165" text-anchor="middle" class="rel">WorksIn</text>
   <line x1="250" y1="135" x2="420" y2="108" class="line"/>
@@ -98,7 +98,7 @@
   <text x="340" y="115" class="card">1</text>
   <text x="175" y="240" class="card">M</text>
 
-  <!-- Offers (Department 1 ---- M Course) -->
+  <!-- Offers (Department 1 to M Course) -->
   <polygon points="660,160 710,135 760,160 710,185" class="diamond"/>
   <text x="710" y="165" text-anchor="middle" class="rel">Offers</text>
   <line x1="710" y1="135" x2="540" y2="108" class="line"/>
@@ -106,7 +106,7 @@
   <text x="600" y="115" class="card">1</text>
   <text x="770" y="240" class="card">M</text>
 
-  <!-- Teaches (Instructor M ---- N Course) -->
+  <!-- Teaches (Instructor M to N Course) -->
   <polygon points="420,300 490,270 560,300 490,330" class="diamond"/>
   <text x="490" y="305" text-anchor="middle" class="rel">Teaches</text>
   <line x1="420" y1="300" x2="200" y2="300" class="line"/>
@@ -114,7 +114,7 @@
   <text x="300" y="290" class="card">M</text>
   <text x="660" y="290" class="card">N</text>
 
-  <!-- Enrolls (Student M ---- N Course) -->
+  <!-- Enrolls (Student M to N Course) -->
   <polygon points="560,420 630,390 700,420 630,450" class="diamond"/>
   <text x="630" y="425" text-anchor="middle" class="rel">Enrolls</text>
   <line x1="560" y1="420" x2="500" y2="520" class="line"/>
