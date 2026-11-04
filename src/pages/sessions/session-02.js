@@ -1,6 +1,7 @@
 import React from 'react';
 import Layout from '@theme/Layout';
 import CustomLayout from '@site/src/components/Layout/Layout';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 export default function Session02() {
   return (
@@ -259,7 +260,7 @@ export default function Session02() {
 
           <div style={{textAlign: 'center', margin: '24px 0'}}>
             <img 
-              src="/img/er-symbols.svg" 
+              src={useBaseUrl('/img/er-symbols.svg')} 
               alt="Entity-Relationship Diagram Symbols Legend showing entities, attributes, relationships, cardinality and participation" 
               style={{maxWidth: '100%', height: 'auto', border: '1px solid #e0e0e0', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}
             />
@@ -283,7 +284,7 @@ export default function Session02() {
 
           <div style={{textAlign: 'center', margin: '24px 0'}}>
             <img 
-              src="/img/college-er-diagram.svg" 
+              src={useBaseUrl('/img/college-er-diagram.svg')} 
               alt="Sample Entity-Relationship Diagram for College Management System showing Department, Instructor, Course, Student entities and their relationships" 
               style={{maxWidth: '100%', height: 'auto', border: '1px solid #e0e0e0', borderRadius: '8px', boxShadow: '0 2px 8px rgba(0,0,0,0.08)'}}
             />
