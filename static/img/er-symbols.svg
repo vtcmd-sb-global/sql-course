@@ -91,7 +91,7 @@
   <text x="720" y="208" class="sub">(double diamond)</text>
 
   <!-- ========== CARDINALITY ========== -->
-  <text x="480" y="280" class="label" font-weight="600">4. Cardinality & Participation</text>
+  <text x="480" y="280" class="label" font-weight="600">4. Cardinality &amp; Participation</text>
 
   <!-- 1:1 -->
   <rect x="480" y="300" width="80" height="36" rx="3" class="box"/>
@@ -143,5 +143,5 @@
   <text x="690" y="650" text-anchor="middle" class="sub">single line</text>
 
   <!-- Footer -->
-  <text x="450" y="700" text-anchor="middle" class="sub">Chen Notation • Common symbols used in academic and professional ER diagrams</text>
+  <text x="450" y="700" text-anchor="middle" class="sub">Chen Notation • Common symbols used in academic &amp; professional ER diagrams</text>
 </svg>
