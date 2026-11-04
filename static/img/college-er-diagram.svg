@@ -1,0 +1,150 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="720" viewBox="0 0 980 720">
+  <defs>
+    <style>
+      .title { font-family: system-ui, -apple-system, sans-serif; font-size: 22px; font-weight: 700; fill: #1a1a1a; }
+      .entity { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 600; fill: #1a1a1a; }
+      .attr { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #1a1a1a; }
+      .rel { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; font-weight: 600; fill: #1a1a1a; }
+      .card { font-family: system-ui, -apple-system, sans-serif; font-size: 13px; font-weight: 700; fill: #c0392b; }
+      .note { font-family: system-ui, -apple-system, sans-serif; font-size: 12px; fill: #555; }
+      .box { fill: #ffffff; stroke: #2c3e50; stroke-width: 2.5; }
+      .attrbox { fill: #eaf2f8; stroke: #2980b9; stroke-width: 1.5; }
+      .diamond { fill: #fef5e7; stroke: #d68910; stroke-width: 2; }
+      .line { stroke: #2c3e50; stroke-width: 1.8; fill: none; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="980" height="720" fill="#f8fafc"/>
+
+  <!-- Title -->
+  <text x="490" y="36" text-anchor="middle" class="title">Sample E-R Diagram — College Management System</text>
+
+  <!-- ========== DEPARTMENT ========== -->
+  <rect x="400" y="60" width="160" height="50" rx="4" class="box"/>
+  <text x="480" y="90" text-anchor="middle" class="entity">Department</text>
+
+  <!-- Dept attributes -->
+  <ellipse cx="320" cy="50" rx="55" ry="20" class="attrbox"/>
+  <text x="320" y="54" text-anchor="middle" class="attr" text-decoration="underline">DeptID</text>
+  <line x1="370" y1="60" x2="400" y2="75" class="line"/>
+
+  <ellipse cx="320" cy="95" rx="55" ry="18" class="attrbox"/>
+  <text x="320" y="99" text-anchor="middle" class="attr">DeptName</text>
+  <line x1="375" y1="95" x2="400" y2="90" class="line"/>
+
+  <ellipse cx="640" cy="70" rx="50" ry="18" class="attrbox"/>
+  <text x="640" y="74" text-anchor="middle" class="attr">Location</text>
+  <line x1="590" y1="70" x2="560" y2="80" class="line"/>
+
+  <!-- ========== INSTRUCTOR ========== -->
+  <rect x="80" y="260" width="150" height="50" rx="4" class="box"/>
+  <text x="155" y="290" text-anchor="middle" class="entity">Instructor</text>
+
+  <!-- Instructor attributes -->
+  <ellipse cx="50" cy="230" rx="50" ry="18" class="attrbox"/>
+  <text x="50" y="234" text-anchor="middle" class="attr" text-decoration="underline">InstrID</text>
+  <line x1="90" y1="240" x2="110" y2="265" class="line"/>
+
+  <ellipse cx="50" cy="280" rx="45" ry="16" class="attrbox"/>
+  <text x="50" y="284" text-anchor="middle" class="attr">Name</text>
+  <line x1="95" y1="280" x2="110" y2="280" class="line"/>
+
+  <ellipse cx="50" cy="320" rx="45" ry="16" class="attrbox"/>
+  <text x="50" y="324" text-anchor="middle" class="attr">Email</text>
+  <line x1="95" y1="320" x2="110" y2="295" class="line"/>
+
+  <!-- ========== COURSE ========== -->
+  <rect x="700" y="260" width="140" height="50" rx="4" class="box"/>
+  <text x="770" y="290" text-anchor="middle" class="entity">Course</text>
+
+  <!-- Course attributes -->
+  <ellipse cx="900" cy="230" rx="55" ry="18" class="attrbox"/>
+  <text x="900" y="234" text-anchor="middle" class="attr" text-decoration="underline">CourseID</text>
+  <line x1="845" y1="240" x2="820" y2="265" class="line"/>
+
+  <ellipse cx="910" cy="280" rx="45" ry="16" class="attrbox"/>
+  <text x="910" y="284" text-anchor="middle" class="attr">Title</text>
+  <line x1="865" y1="280" x2="840" y2="280" class="line"/>
+
+  <ellipse cx="900" cy="320" rx="45" ry="16" class="attrbox"/>
+  <text x="900" y="324" text-anchor="middle" class="attr">Credits</text>
+  <line x1="855" y1="320" x2="830" y2="295" class="line"/>
+
+  <!-- ========== STUDENT ========== -->
+  <rect x="400" y="520" width="150" height="50" rx="4" class="box"/>
+  <text x="475" y="550" text-anchor="middle" class="entity">Student</text>
+
+  <!-- Student attributes -->
+  <ellipse cx="320" cy="500" rx="55" ry="18" class="attrbox"/>
+  <text x="320" y="504" text-anchor="middle" class="attr" text-decoration="underline">StudentID</text>
+  <line x1="370" y1="510" x2="400" y2="535" class="line"/>
+
+  <ellipse cx="300" cy="545" rx="45" ry="16" class="attrbox"/>
+  <text x="300" y="549" text-anchor="middle" class="attr">Name</text>
+  <line x1="345" y1="545" x2="400" y2="545" class="line"/>
+
+  <ellipse cx="320" cy="590" rx="45" ry="16" class="attrbox"/>
+  <text x="320" y="594" text-anchor="middle" class="attr">DOB</text>
+  <line x1="360" y1="580" x2="410" y2="560" class="line"/>
+
+  <!-- Multi-valued Phone -->
+  <ellipse cx="620" cy="540" rx="50" ry="20" class="attrbox"/>
+  <ellipse cx="620" cy="540" rx="42" ry="13" fill="none" stroke="#2980b9" stroke-width="1.5"/>
+  <text x="620" y="544" text-anchor="middle" class="attr">Phone</text>
+  <line x1="570" y1="540" x2="550" y2="545" class="line"/>
+  <text x="620" y="575" text-anchor="middle" class="note">(multi-valued)</text>
+
+  <!-- ========== RELATIONSHIPS ========== -->
+
+  <!-- Department - Instructor (1:M) -->
+  <polygon points="200,160 250,135 300,160 250,185" class="diamond"/>
+  <text x="250" y="165" text-anchor="middle" class="rel">WorksIn</text>
+  <line x1="250" y1="135" x2="420" y2="110" class="line"/>
+  <line x1="250" y1="185" x2="155" y2="260" class="line"/>
+  <text x="340" y="115" class="card">1</text>
+  <text x="180" y="230" class="card">M</text>
+
+  <!-- Department - Course (1:M) -->
+  <polygon points="650,160 700,135 750,160 700,185" class="diamond"/>
+  <text x="700" y="165" text-anchor="middle" class="rel">Offers</text>
+  <line x1="700" y1="135" x2="540" y2="110" class="line"/>
+  <line x1="700" y1="185" x2="770" y2="260" class="line"/>
+  <text x="600" y="115" class="card">1</text>
+  <text x="740" y="230" class="card">M</text>
+
+  <!-- Instructor - Course (M:N) via Teaches -->
+  <polygon points="400,300 470,270 540,300 470,330" class="diamond"/>
+  <text x="470" y="305" text-anchor="middle" class="rel">Teaches</text>
+  <line x1="400" y1="300" x2="230" y2="285" class="line"/>
+  <line x1="540" y1="300" x2="700" y2="285" class="line"/>
+  <text x="300" y="280" class="card">M</text>
+  <text x="620" y="280" class="card">N</text>
+
+  <!-- Student - Course (M:N) via Enrolls -->
+  <polygon points="550,420 620,390 690,420 620,450" class="diamond"/>
+  <text x="620" y="425" text-anchor="middle" class="rel">Enrolls</text>
+  <line x1="550" y1="420" x2="500" y2="520" class="line"/>
+  <line x1="690" y1="420" x2="770" y2="310" class="line"/>
+  <text x="520" y="480" class="card">M</text>
+  <text x="740" y="370" class="card">N</text>
+
+  <!-- Enrollment attributes (relationship attributes) -->
+  <ellipse cx="720" cy="470" rx="50" ry="16" class="attrbox"/>
+  <text x="720" y="474" text-anchor="middle" class="attr">Grade</text>
+  <line x1="680" y1="460" x2="650" y2="440" class="line"/>
+
+  <ellipse cx="780" cy="500" rx="60" ry="16" class="attrbox"/>
+  <text x="780" y="504" text-anchor="middle" class="attr">EnrollDate</text>
+  <line x1="740" y1="490" x2="680" y2="445" class="line"/>
+
+  <!-- Legend box -->
+  <rect x="30" y="600" width="280" height="100" rx="6" fill="#ffffff" stroke="#bdc3c7" stroke-width="1.5"/>
+  <text x="45" y="625" class="entity" font-size="13">Legend</text>
+  <text x="45" y="650" class="note">• Underlined = Primary Key</text>
+  <text x="45" y="670" class="note">• Double oval = Multi-valued attribute</text>
+  <text x="45" y="690" class="note">• Diamonds = Relationships (with cardinality)</text>
+
+  <!-- Note -->
+  <text x="490" y="710" text-anchor="middle" class="note">Note: M:N relationships (Teaches, Enrolls) will be resolved into junction tables in the relational schema</text>
+</svg>
