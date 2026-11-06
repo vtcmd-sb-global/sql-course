@@ -684,7 +684,7 @@ SELECT @EmployeeName AS Name, @Salary AS Salary, @IsActive AS Active;`} caption=
 
           <h4>Operators</h4>
           <p><strong>Arithmetic operators:</strong> <code>+</code> <code>-</code> <code>*</code> <code>/</code> <code>%</code> (modulo)</p>
-          <p><strong>Comparison operators:</strong> <code>=</code> <code>></code> <code><</code> <code>>=</code> <code><=</code> <code><></code> <code>!=</code> <code>!></code> <code>!<</code></p>
+          <p><strong>Comparison operators:</strong> <code>=</code> <code>&gt;</code> <code>&lt;</code> <code>&gt;=</code> <code>&lt;=</code> <code>&lt;&gt;</code> <code>!=</code> <code>!&gt;</code> <code>!&lt;</code></p>
           <p><strong>Logical operators:</strong> <code>AND</code> <code>OR</code> <code>NOT</code></p>
           <p><strong>Other important operators:</strong> <code>IN</code> <code>BETWEEN</code> <code>LIKE</code> <code>IS NULL</code> <code>IS NOT NULL</code> <code>EXISTS</code> <code>ANY</code> <code>ALL</code> <code>SOME</code></p>
 
