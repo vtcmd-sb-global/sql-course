@@ -185,6 +185,7 @@ export default function CodeBlock({
   code,
   language = "javascript",
   initialTheme = "blue",
+  caption,
 }) {
   const [theme, setTheme] = useState(initialTheme);
   const [loaded, setLoaded] = useState(false);
@@ -279,6 +280,22 @@ export default function CodeBlock({
       >
         {code.trimEnd()}
       </SyntaxHighlighter>
+      
+      {/* Caption */}
+      {caption && (
+        <div
+          style={{
+            padding: "8px 14px",
+            fontSize: 13,
+            color: theme === "dark" ? "#AAAAAA" : "#666666",
+            background: selected.toolbarBg,
+            borderTop: `1px solid ${selected.border}`,
+            fontStyle: "italic",
+          }}
+        >
+          {caption}
+        </div>
+      )}
     </section>
   );
 }
