@@ -26,7 +26,7 @@ export default function Session10() {
           <p><strong>Duration:</strong> 2 hours</p>
           <p><strong>Focus:</strong> Working with Views, Stored Procedures, and querying SQL Server metadata.</p>
           <p><strong>Based on:</strong> Official Book – Session 10</p>
-          <p><strong>Note:</strong> All code snippets in this session are based on the AdventureWorks2022 database (or similar structure).</p>
+          <p><strong>Note:</strong> All code snippets in this session use the <strong>AdventureWorks2019</strong> sample database.</p>
 
           <hr />
 
@@ -113,18 +113,28 @@ export default function Session10() {
           <h3>Creating a View</h3>
           <CodeBlock
           language="sql"
-            code={`CREATE VIEW vw_EmployeeDetails
+            code={`USE AdventureWorks2019;
+GO
+
+CREATE VIEW vw_EmployeeDetails
 AS
 SELECT 
-    e.EmployeeID,
-    e.FirstName,
-    e.LastName,
-    e.Salary,
-    d.DepartmentName
-FROM Employees e
-INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
+    e.BusinessEntityID,
+    p.FirstName,
+    p.LastName,
+    e.JobTitle,
+    e.HireDate,
+    d.Name AS DepartmentName
+FROM HumanResources.Employee e
+INNER JOIN Person.Person p 
+    ON e.BusinessEntityID = p.BusinessEntityID
+INNER JOIN HumanResources.EmployeeDepartmentHistory edh 
+    ON e.BusinessEntityID = edh.BusinessEntityID
+INNER JOIN HumanResources.Department d 
+    ON edh.DepartmentID = d.DepartmentID
+WHERE edh.EndDate IS NULL;   -- current department only
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+          caption="Create a view that joins Employee, Person and Department"/>
 
           <p>
             The <code>CREATE VIEW</code> statement stores only the SELECT
@@ -138,9 +148,11 @@ GO`}
           <h3>Querying a View</h3>
           <CodeBlock
           language="sql"
-            code={`SELECT * FROM vw_EmployeeDetails
-WHERE Salary > 60000;`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+            code={`SELECT *
+FROM vw_EmployeeDetails
+WHERE DepartmentName = 'Sales'
+ORDER BY LastName;`}
+          caption="Query the view just like a table"/>
 
           <p>
             You can apply WHERE, ORDER BY, JOIN, and other clauses when you
@@ -155,14 +167,21 @@ WHERE Salary > 60000;`}
             code={`ALTER VIEW vw_EmployeeDetails
 AS
 SELECT 
-    e.EmployeeID,
-    e.FirstName + ' ' + e.LastName AS FullName,
-    e.Salary,
-    d.DepartmentName
-FROM Employees e
-INNER JOIN Departments d ON e.DepartmentID = d.DepartmentID;
+    e.BusinessEntityID,
+    p.FirstName + ' ' + p.LastName AS FullName,
+    e.JobTitle,
+    e.HireDate,
+    d.Name AS DepartmentName
+FROM HumanResources.Employee e
+INNER JOIN Person.Person p 
+    ON e.BusinessEntityID = p.BusinessEntityID
+INNER JOIN HumanResources.EmployeeDepartmentHistory edh 
+    ON e.BusinessEntityID = edh.BusinessEntityID
+INNER JOIN HumanResources.Department d 
+    ON edh.DepartmentID = d.DepartmentID
+WHERE edh.EndDate IS NULL;
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+          caption="ALTER VIEW – replace the entire definition"/>
 
           <p>
             <code>ALTER VIEW</code> replaces the entire definition of the view.
@@ -178,7 +197,7 @@ GO`}
           language="sql"
             code={`DROP VIEW vw_EmployeeDetails;
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+          caption="Drop a view"/>
 
           <p>
             Dropping a view removes only the view definition. The underlying
@@ -299,12 +318,27 @@ GO`}
     @DepartmentID INT
 AS
 BEGIN
-    SELECT EmployeeID, FirstName, LastName, Salary
-    FROM Employees
-    WHERE DepartmentID = @DepartmentID;
+    SELECT 
+        e.BusinessEntityID,
+        p.FirstName,
+        p.LastName,
+        e.JobTitle,
+        e.HireDate
+    FROM HumanResources.Employee e
+    INNER JOIN Person.Person p 
+        ON e.BusinessEntityID = p.BusinessEntityID
+    INNER JOIN HumanResources.EmployeeDepartmentHistory edh 
+        ON e.BusinessEntityID = edh.BusinessEntityID
+    WHERE edh.DepartmentID = @DepartmentID
+      AND edh.EndDate IS NULL
+    ORDER BY p.LastName;
 END;
+GO
+
+-- Example execution
+EXEC usp_GetEmployeesByDepartment @DepartmentID = 7;   -- 7 = Sales
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+          caption="Stored procedure with one input parameter"/>
 
           <p>
             Parameters are declared after the procedure name and before the
@@ -322,7 +356,7 @@ GO`}
 
 -- or
 EXECUTE usp_GetEmployeesByDepartment 3;`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+          caption="Executing a stored procedure"/>
 
           <p>
             Both <code>EXEC</code> and <code>EXECUTE</code> are valid. You can
@@ -341,16 +375,21 @@ EXECUTE usp_GetEmployeesByDepartment 3;`}
 AS
 BEGIN
     SELECT @TotalEmployees = COUNT(*)
-    FROM Employees
-    WHERE DepartmentID = @DepartmentID;
+    FROM HumanResources.EmployeeDepartmentHistory
+    WHERE DepartmentID = @DepartmentID
+      AND EndDate IS NULL;
 END;
 GO
 
--- Execution
+-- Execution example
 DECLARE @Count INT;
-EXEC usp_GetEmployeeCount 3, @Count OUTPUT;
-SELECT @Count AS TotalEmployees;`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+EXEC usp_GetEmployeeCount 
+    @DepartmentID = 7, 
+    @TotalEmployees = @Count OUTPUT;
+
+SELECT @Count AS TotalEmployeesInSales;
+GO`}
+          caption="Stored procedure with OUTPUT parameter"/>
 
           <p>
             An OUTPUT parameter lets the procedure return a scalar value to the
@@ -369,13 +408,24 @@ SELECT @Count AS TotalEmployees;`}
     @DepartmentID INT
 AS
 BEGIN
-    SELECT EmployeeID, FirstName, LastName, Salary, HireDate
-    FROM Employees
-    WHERE DepartmentID = @DepartmentID
-    ORDER BY LastName;
+    SELECT 
+        e.BusinessEntityID,
+        p.FirstName,
+        p.LastName,
+        e.JobTitle,
+        e.HireDate,
+        e.VacationHours
+    FROM HumanResources.Employee e
+    INNER JOIN Person.Person p 
+        ON e.BusinessEntityID = p.BusinessEntityID
+    INNER JOIN HumanResources.EmployeeDepartmentHistory edh 
+        ON e.BusinessEntityID = edh.BusinessEntityID
+    WHERE edh.DepartmentID = @DepartmentID
+      AND edh.EndDate IS NULL
+    ORDER BY p.LastName;
 END;
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+          caption="ALTER PROCEDURE – add more columns"/>
 
           <p>
             <code>ALTER PROCEDURE</code> replaces the entire body of the
@@ -390,7 +440,7 @@ GO`}
           language="sql"
             code={`DROP PROCEDURE usp_GetEmployeesByDepartment;
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+          caption="Drop a stored procedure"/>
 
           <p>
             Once a procedure is dropped, any code that tries to execute it will
@@ -423,15 +473,49 @@ GO`}
 
           <CodeBlock
           language="sql"
-            code={`CREATE PROCEDURE usp_OuterProcedure
+            code={`-- Inner procedure
+CREATE PROCEDURE usp_GetDepartmentName
+    @DepartmentID INT,
+    @DeptName NVARCHAR(50) OUTPUT
 AS
 BEGIN
-    PRINT 'Outer procedure started';
-    EXEC usp_InnerProcedure;
-    PRINT 'Outer procedure finished';
+    SELECT @DeptName = Name
+    FROM HumanResources.Department
+    WHERE DepartmentID = @DepartmentID;
 END;
+GO
+
+-- Outer procedure that calls the inner one
+CREATE PROCEDURE usp_ShowDepartmentEmployees
+    @DepartmentID INT
+AS
+BEGIN
+    DECLARE @Name NVARCHAR(50);
+
+    EXEC usp_GetDepartmentName 
+        @DepartmentID = @DepartmentID, 
+        @DeptName = @Name OUTPUT;
+
+    PRINT 'Employees in department: ' + @Name;
+
+    SELECT 
+        p.FirstName,
+        p.LastName,
+        e.JobTitle
+    FROM HumanResources.Employee e
+    INNER JOIN Person.Person p 
+        ON e.BusinessEntityID = p.BusinessEntityID
+    INNER JOIN HumanResources.EmployeeDepartmentHistory edh 
+        ON e.BusinessEntityID = edh.BusinessEntityID
+    WHERE edh.DepartmentID = @DepartmentID
+      AND edh.EndDate IS NULL;
+END;
+GO
+
+-- Test
+EXEC usp_ShowDepartmentEmployees @DepartmentID = 7;
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+          caption="Nested stored procedures example"/>
 
           <p>
             When the outer procedure runs, control transfers to the inner
