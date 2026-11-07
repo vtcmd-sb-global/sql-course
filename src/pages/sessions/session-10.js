@@ -207,6 +207,115 @@ GO`}
             recreated.
           </p>
 
+                        <h3>Indexed Views (Materialized Views)</h3>
+
+          <p>
+            An ordinary view stores only the SELECT statement.  
+            An <strong>indexed view</strong> (also called a materialized view) 
+            stores the result set on disk, just like a table.  
+            SQL Server automatically keeps the data in the indexed view 
+            synchronized with the base tables.
+          </p>
+
+          <p>
+            Indexed views are useful when you have complex joins or aggregations 
+            that are queried very frequently. Because the data is already 
+            calculated and stored, queries against the view can be much faster.
+          </p>
+
+          <h4>Important Requirements for Indexed Views</h4>
+          <ul>
+            <li>The view must be created with <code>WITH SCHEMABINDING</code>.</li>
+            <li>All tables referenced must use two-part names (<code>schema.table</code>).</li>
+            <li>Only deterministic functions are allowed.</li>
+            <li>You must first create a <strong>unique clustered index</strong> on the view.</li>
+            <li>After the unique clustered index exists, you may create additional non-clustered indexes.</li>
+            <li>Certain constructs are not allowed (OUTER JOIN, UNION, DISTINCT, TOP, subqueries in some places, etc.).</li>
+          </ul>
+
+          <h4>Example – Creating an Indexed View in AdventureWorks2019</h4>
+
+          <CodeBlock
+          language="sql"
+            code={`USE AdventureWorks2019;
+GO
+
+-- 1. Create the view with SCHEMABINDING
+CREATE VIEW Production.vw_ProductSoldSummary
+WITH SCHEMABINDING
+AS
+SELECT 
+    p.ProductID,
+    p.Name AS ProductName,
+    SUM(sod.OrderQty) AS TotalQuantitySold,
+    SUM(sod.LineTotal) AS TotalSalesAmount,
+    COUNT_BIG(*) AS OrderLineCount      -- COUNT_BIG is required for aggregates
+FROM Production.Product p
+INNER JOIN Sales.SalesOrderDetail sod 
+    ON p.ProductID = sod.ProductID
+GROUP BY p.ProductID, p.Name;
+GO
+
+-- 2. Create the unique clustered index 
+--    (this actually materializes the view)
+CREATE UNIQUE CLUSTERED INDEX IX_vw_ProductSoldSummary
+ON Production.vw_ProductSoldSummary (ProductID);
+GO
+
+-- 3. (Optional) Create additional non-clustered indexes
+CREATE NONCLUSTERED INDEX IX_vw_ProductSoldSummary_TotalSales
+ON Production.vw_ProductSoldSummary (TotalSalesAmount DESC);
+GO`}
+          caption="Creating an indexed view with SCHEMABINDING and a unique clustered index"/>
+
+          <p>
+            After the unique clustered index is created, the view becomes a 
+            real stored object. SQL Server will automatically maintain the 
+            aggregated data whenever the underlying tables change.
+          </p>
+
+          <h4>Querying the Indexed View</h4>
+
+          <CodeBlock
+          language="sql"
+            code={`-- Query the indexed view directly
+SELECT ProductID, ProductName, TotalQuantitySold, TotalSalesAmount
+FROM Production.vw_ProductSoldSummary
+WHERE TotalSalesAmount > 50000
+ORDER BY TotalSalesAmount DESC;
+
+-- SQL Server may also automatically use the indexed view 
+-- even when you query the base tables (Enterprise Edition)
+SELECT p.Name, SUM(sod.LineTotal) AS TotalSales
+FROM Production.Product p
+INNER JOIN Sales.SalesOrderDetail sod ON p.ProductID = sod.ProductID
+GROUP BY p.Name
+HAVING SUM(sod.LineTotal) > 50000;`}
+          caption="Querying an indexed view"/>
+
+          <h4>Dropping an Indexed View</h4>
+
+          <CodeBlock
+          language="sql"
+            code={`-- First drop the indexes, then the view
+DROP INDEX IX_vw_ProductSoldSummary_TotalSales 
+ON Production.vw_ProductSoldSummary;
+
+DROP INDEX IX_vw_ProductSoldSummary 
+ON Production.vw_ProductSoldSummary;
+
+DROP VIEW Production.vw_ProductSoldSummary;
+GO`}
+          caption="Correct order when dropping an indexed view"/>
+
+          <p>
+            <strong>Note:</strong> Indexed views are most beneficial on 
+            editions of SQL Server that support automatic matching 
+            (Enterprise / Developer). On other editions you must query the 
+            view explicitly using the <code>NOEXPAND</code> hint if you want 
+            to force its use.
+          </p>
+              
           <h3>Benefits of Views</h3>
           <ul>
             <li>Simplify complex queries</li>
