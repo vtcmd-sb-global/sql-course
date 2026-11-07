@@ -789,23 +789,84 @@ OFFSET-FETCH`}
 
           <h2>Additional Reference — Reserved Keywords, Operators, Functions & System Procedures</h2>
 
-          <h3>T-SQL Reserved Keywords (Most Common)</h3>
-          <p>These words have special meaning to the T-SQL parser. You should avoid using them as identifiers. If you must use them, enclose them in square brackets <code>[ ]</code>.</p>
+                    <h3>T-SQL Reserved Keywords (Most Common)</h3>
+          <p>
+            These words have special meaning to the T-SQL parser. 
+            You should avoid using them as identifiers. 
+            If you must use them, enclose them in square brackets <code>[ ]</code>.
+          </p>
 
-          <p><strong>A–C:</strong> ADD, ALL, ALTER, AND, ANY, AS, ASC, AUTHORIZATION, BACKUP, BEGIN, BETWEEN, BREAK, BROWSE, BULK, BY, CASCADE, CASE, CHECK, CHECKPOINT, CLOSE, CLUSTERED, COALESCE, COLLATE, COLUMN, COMMIT, COMPUTE, CONSTRAINT, CONTAINS, CONTAINSTABLE, CONTINUE, CONVERT, CREATE, CROSS, CURRENT, CURRENT_DATE, CURRENT_TIME, CURRENT_TIMESTAMP, CURRENT_USER, CURSOR</p>
+          <h4>A – C</h4>
+          <p>
+            <code>ADD</code> <code>ALL</code> <code>ALTER</code> <code>AND</code> <code>ANY</code> <code>AS</code> <code>ASC</code> 
+            <code>AUTHORIZATION</code> <code>BACKUP</code> <code>BEGIN</code> <code>BETWEEN</code> <code>BREAK</code> 
+            <code>BROWSE</code> <code>BULK</code> <code>BY</code> <code>CASCADE</code> <code>CASE</code> <code>CHECK</code> 
+            <code>CHECKPOINT</code> <code>CLOSE</code> <code>CLUSTERED</code> <code>COALESCE</code> <code>COLLATE</code> 
+            <code>COLUMN</code> <code>COMMIT</code> <code>COMPUTE</code> <code>CONSTRAINT</code> <code>CONTAINS</code> 
+            <code>CONTAINSTABLE</code> <code>CONTINUE</code> <code>CONVERT</code> <code>CREATE</code> <code>CROSS</code> 
+            <code>CURRENT</code> <code>CURRENT_DATE</code> <code>CURRENT_TIME</code> <code>CURRENT_TIMESTAMP</code> 
+            <code>CURRENT_USER</code> <code>CURSOR</code>
+          </p>
 
-          <p><strong>D–F:</strong> DATABASE, DBCC, DEALLOCATE, DECLARE, DEFAULT, DELETE, DENY, DESC, DISK, DISTINCT, DISTRIBUTED, DOUBLE, DROP, DUMP, ELSE, END, ERRLVL, ESCAPE, EXCEPT, EXEC, EXECUTE, EXISTS, EXIT, EXTERNAL, FETCH, FILE, FILLFACTOR, FOR, FOREIGN, FREETEXT, FREETEXTTABLE, FROM, FULL, FUNCTION</p>
+          <h4>D – F</h4>
+          <p>
+            <code>DATABASE</code> <code>DBCC</code> <code>DEALLOCATE</code> <code>DECLARE</code> <code>DEFAULT</code> 
+            <code>DELETE</code> <code>DENY</code> <code>DESC</code> <code>DISK</code> <code>DISTINCT</code> 
+            <code>DISTRIBUTED</code> <code>DOUBLE</code> <code>DROP</code> <code>DUMP</code> <code>ELSE</code> 
+            <code>END</code> <code>ERRLVL</code> <code>ESCAPE</code> <code>EXCEPT</code> <code>EXEC</code> 
+            <code>EXECUTE</code> <code>EXISTS</code> <code>EXIT</code> <code>EXTERNAL</code> <code>FETCH</code> 
+            <code>FILE</code> <code>FILLFACTOR</code> <code>FOR</code> <code>FOREIGN</code> <code>FREETEXT</code> 
+            <code>FREETEXTTABLE</code> <code>FROM</code> <code>FULL</code> <code>FUNCTION</code>
+          </p>
 
-          <p><strong>G–L:</strong> GOTO, GRANT, GROUP, HAVING, HOLDLOCK, IDENTITY, IDENTITY_INSERT, IDENTITYCOL, IF, IN, INDEX, INNER, INSERT, INTERSECT, INTO, IS, JOIN, KEY, KILL, LEFT, LIKE, LINENO, LOAD</p>
+          <h4>G – L</h4>
+          <p>
+            <code>GOTO</code> <code>GRANT</code> <code>GROUP</code> <code>HAVING</code> <code>HOLDLOCK</code> 
+            <code>IDENTITY</code> <code>IDENTITY_INSERT</code> <code>IDENTITYCOL</code> <code>IF</code> <code>IN</code> 
+            <code>INDEX</code> <code>INNER</code> <code>INSERT</code> <code>INTERSECT</code> <code>INTO</code> 
+            <code>IS</code> <code>JOIN</code> <code>KEY</code> <code>KILL</code> <code>LEFT</code> <code>LIKE</code> 
+            <code>LINENO</code> <code>LOAD</code>
+          </p>
 
-          <p><strong>M–P:</strong> MERGE, NATIONAL, NOCHECK, NONCLUSTERED, NOT, NULL, NULLIF, OF, OFF, OFFSETS, ON, OPEN, OPENDATASOURCE, OPENQUERY, OPENROWSET, OPENXML, OPTION, OR, ORDER, OUTER, OVER, PERCENT, PIVOT, PLAN, PRECISION, PRIMARY, PRINT, PROC, PROCEDURE, PUBLIC</p>
+          <h4>M – P</h4>
+          <p>
+            <code>MERGE</code> <code>NATIONAL</code> <code>NOCHECK</code> <code>NONCLUSTERED</code> <code>NOT</code> 
+            <code>NULL</code> <code>NULLIF</code> <code>OF</code> <code>OFF</code> <code>OFFSETS</code> <code>ON</code> 
+            <code>OPEN</code> <code>OPENDATASOURCE</code> <code>OPENQUERY</code> <code>OPENROWSET</code> 
+            <code>OPENXML</code> <code>OPTION</code> <code>OR</code> <code>ORDER</code> <code>OUTER</code> 
+            <code>OVER</code> <code>PERCENT</code> <code>PIVOT</code> <code>PLAN</code> <code>PRECISION</code> 
+            <code>PRIMARY</code> <code>PRINT</code> <code>PROC</code> <code>PROCEDURE</code> <code>PUBLIC</code>
+          </p>
 
-          <p><strong>R–S:</strong> RAISERROR, READ, READTEXT, RECONFIGURE, REFERENCES, REPLICATION, RESTORE, RESTRICT, RETURN, REVERT, REVOKE, RIGHT, ROLLBACK, ROWCOUNT, ROWGUIDCOL, RULE, SAVE, SCHEMA, SECURITYAUDIT, SELECT, SEMANTICKEYPHRASETABLE, SEMANTICSIMILARITYDETAILSTABLE, SEMANTICSIMILARITYTABLE, SESSION_USER, SET, SETUSER, SHUTDOWN, SOME, STATISTICS, SYSTEM_USER</p>
+          <h4>R – S</h4>
+          <p>
+            <code>RAISERROR</code> <code>READ</code> <code>READTEXT</code> <code>RECONFIGURE</code> 
+            <code>REFERENCES</code> <code>REPLICATION</code> <code>RESTORE</code> <code>RESTRICT</code> 
+            <code>RETURN</code> <code>REVERT</code> <code>REVOKE</code> <code>RIGHT</code> <code>ROLLBACK</code> 
+            <code>ROWCOUNT</code> <code>ROWGUIDCOL</code> <code>RULE</code> <code>SAVE</code> <code>SCHEMA</code> 
+            <code>SECURITYAUDIT</code> <code>SELECT</code> <code>SEMANTICKEYPHRASETABLE</code> 
+            <code>SEMANTICSIMILARITYDETAILSTABLE</code> <code>SEMANTICSIMILARITYTABLE</code> 
+            <code>SESSION_USER</code> <code>SET</code> <code>SETUSER</code> <code>SHUTDOWN</code> <code>SOME</code> 
+            <code>STATISTICS</code> <code>SYSTEM_USER</code>
+          </p>
 
-          <p><strong>T–W:</strong> TABLE, TABLESAMPLE, TEXTSIZE, THEN, TO, TOP, TRAN, TRANSACTION, TRIGGER, TRUNCATE, TSEQUAL, UNION, UNIQUE, UNPIVOT, UPDATE, UPDATETEXT, USE, USER, VALUES, VARYING, VIEW, WAITFOR, WHEN, WHERE, WHILE, WITH, WRITETEXT</p>
+          <h4>T – W</h4>
+          <p>
+            <code>TABLE</code> <code>TABLESAMPLE</code> <code>TEXTSIZE</code> <code>THEN</code> <code>TO</code> 
+            <code>TOP</code> <code>TRAN</code> <code>TRANSACTION</code> <code>TRIGGER</code> <code>TRUNCATE</code> 
+            <code>TSEQUAL</code> <code>UNION</code> <code>UNIQUE</code> <code>UNPIVOT</code> <code>UPDATE</code> 
+            <code>UPDATETEXT</code> <code>USE</code> <code>USER</code> <code>VALUES</code> <code>VARYING</code> 
+            <code>VIEW</code> <code>WAITFOR</code> <code>WHEN</code> <code>WHERE</code> <code>WHILE</code> 
+            <code>WITH</code> <code>WRITETEXT</code>
+          </p>
 
-          <p>There are also many words reserved for future use (ABSOLUTE, ACTION, ADMIN, AFTER, AGGREGATE, ALIAS, ...). Always check the official Microsoft documentation when in doubt.</p>
-
+          <p>
+            There are also many words reserved for future use 
+            (<code>ABSOLUTE</code>, <code>ACTION</code>, <code>ADMIN</code>, <code>AFTER</code>, 
+            <code>AGGREGATE</code>, <code>ALIAS</code>, …). 
+            Always check the official Microsoft documentation when in doubt.
+          </p>
+            
           <h3>Special Keywords & Operators Frequently Used in T-SQL</h3>
           <ul>
             <li><code>GO</code> — Batch separator (client tool keyword, not a T-SQL statement)</li>
