@@ -621,122 +621,145 @@ SELECT * FROM INFORMATION_SCHEMA.VIEWS;`}
 
           <hr />
   
-          <h2>Practical Example – CollegeDB</h2>
+          <h2>Practical Example – AdventureWorks2019</h2>
 
           <p>
-            The following examples use a simple College database with Students
-            and Departments tables. They illustrate the same concepts you saw
-            earlier, but with realistic create/alter/execute patterns that you
-            can adapt to your own projects.
+            The following examples use real tables from the AdventureWorks2019
+            sample database. They illustrate the same concepts you saw earlier
+            (views and stored procedures) with tables that already exist in
+            your course database.
           </p>
 
           <h3>Views</h3>
           <CodeBlock
           language="sql"
-            code={`CREATE VIEW StudentDetails
-AS
-SELECT
-    s.StudentID, s.Name, s.Age, s.City, s.Marks,
-    d.DepartmentName
-FROM Students AS s
-INNER JOIN Departments AS d ON s.DepartmentID = d.DepartmentID;
+            code={`USE AdventureWorks2019;
 GO
 
-SELECT * FROM StudentDetails;
-SELECT * FROM StudentDetails WHERE Marks >= 80;
+-- Create a useful view of products and their categories
+CREATE VIEW vw_ProductCatalog
+AS
+SELECT 
+    p.ProductID,
+    p.Name AS ProductName,
+    p.ProductNumber,
+    p.ListPrice,
+    p.Color,
+    pc.Name AS CategoryName,
+    ps.Name AS SubcategoryName
+FROM Production.Product p
+INNER JOIN Production.ProductSubcategory ps 
+    ON p.ProductSubcategoryID = ps.ProductSubcategoryID
+INNER JOIN Production.ProductCategory pc 
+    ON ps.ProductCategoryID = pc.ProductCategoryID
+WHERE p.ListPrice > 0;
+GO
+
+-- Query the view
+SELECT * FROM vw_ProductCatalog
+WHERE CategoryName = 'Bikes'
+ORDER BY ListPrice DESC;
 
 -- Modify the view
-ALTER VIEW StudentDetails
+ALTER VIEW vw_ProductCatalog
 AS
-SELECT s.StudentID, s.Name, s.Marks, d.DepartmentName
-FROM Students AS s
-INNER JOIN Departments AS d ON s.DepartmentID = d.DepartmentID;
+SELECT 
+    p.ProductID,
+    p.Name AS ProductName,
+    p.ListPrice,
+    pc.Name AS CategoryName
+FROM Production.Product p
+INNER JOIN Production.ProductSubcategory ps 
+    ON p.ProductSubcategoryID = ps.ProductSubcategoryID
+INNER JOIN Production.ProductCategory pc 
+    ON ps.ProductCategoryID = pc.ProductCategoryID
+WHERE p.ListPrice > 0;
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
-
-          <p>
-            Notice that after creating the view you can filter it just like a
-            table. The later ALTER VIEW removes some columns from the view
-            definition; any application that selected Age or City from the
-            view would need to be updated after that change.
-          </p>
+          caption="Practical view using Production.Product and categories"/>
 
           <h3>Stored Procedures</h3>
 
-          <h4>Insert Procedure</h4>
+          <h4>Insert Procedure (example pattern)</h4>
           <CodeBlock
           language="sql"
-            code={`CREATE PROCEDURE AddStudent
-    @Name VARCHAR(100),
-    @Age INT,
-    @Gender VARCHAR(10),
-    @City VARCHAR(50),
-    @Marks INT,
-    @DepartmentID INT
+            code={`-- Example of a parameterized insert procedure
+-- (AdventureWorks already has data, so this is for learning the pattern)
+
+CREATE PROCEDURE usp_AddProductReview
+    @ProductID INT,
+    @ReviewerName NVARCHAR(50),
+    @EmailAddress NVARCHAR(50),
+    @Rating INT,
+    @Comments NVARCHAR(3850)
 AS
 BEGIN
-    INSERT INTO Students (Name, Age, Gender, City, Marks, DepartmentID)
-    VALUES (@Name, @Age, @Gender, @City, @Marks, @DepartmentID);
+    INSERT INTO Production.ProductReview
+        (ProductID, ReviewerName, ReviewDate, EmailAddress, Rating, Comments)
+    VALUES
+        (@ProductID, @ReviewerName, GETDATE(), @EmailAddress, @Rating, @Comments);
 END;
 GO
 
--- EXEC AddStudent 'Shaarif', 27, 'Male', 'Rawalpindi', 61, 3;`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
-
+-- Example call
+-- EXEC usp_AddProductReview 
+--     @ProductID = 709,
+--     @ReviewerName = N'Ali Khan',
+--     @EmailAddress = N'ali@example.com',
+--     @Rating = 5,
+--     @Comments = N'Excellent product!';`}
+          caption="Parameterized INSERT stored procedure"/>
+         
           <p>
             Parameterized INSERT procedures are preferred over building INSERT
             statements as dynamic SQL in the application. They reduce the risk
             of SQL injection and keep the column list and data types under the
             control of the database developer.
           </p>
-
+            
           <h4>Update Procedure (with Error Handling)</h4>
           <CodeBlock
           language="sql"
-            code={`CREATE PROCEDURE UpdateStudent
-    @StudentID INT,
-    @City VARCHAR(100) = NULL
+            code={`CREATE PROCEDURE usp_UpdateProductListPrice
+    @ProductID INT,
+    @NewListPrice MONEY
 AS
 BEGIN
     BEGIN TRY
-        BEGIN TRANSACTION;
+        UPDATE Production.Product
+        SET ListPrice = @NewListPrice,
+            ModifiedDate = GETDATE()
+        WHERE ProductID = @ProductID;
 
-        UPDATE Students
-        SET City = @City
-        WHERE StudentID = @StudentID;
+        IF @@ROWCOUNT = 0
+            THROW 50001, 'Product not found.', 1;
 
-        COMMIT TRANSACTION;
     END TRY
     BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        SELECT ERROR_MESSAGE() AS ErrorMessage;
+        IF @@TRANCOUNT > 0
+            ROLLBACK TRANSACTION;
+
+        SELECT 
+            ERROR_NUMBER() AS ErrorNumber,
+            ERROR_MESSAGE() AS ErrorMessage;
     END CATCH;
 END;
 GO`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
-
-          <p>
-            This example demonstrates a common production pattern: wrap the
-            data-change statement in an explicit transaction and use
-            TRY/CATCH so that any error rolls back the transaction and returns
-            a clear error message. The <code>@City</code> parameter has a
-            default of NULL, which means the caller can omit it; you would
-            normally add logic to update only when a non-NULL value is supplied.
-          </p>
+          caption="UPDATE procedure with TRY/CATCH and transaction"/>
 
           <h4>Delete Procedure</h4>
           <CodeBlock
           language="sql"
-            code={`CREATE PROCEDURE DeleteStudent
-    @StudentID INT
+            code={`CREATE PROCEDURE usp_DeleteProductReview
+    @ProductReviewID INT
 AS
 BEGIN
-    DELETE FROM Students WHERE StudentID = @StudentID;
+    DELETE FROM Production.ProductReview
+    WHERE ProductReviewID = @ProductReviewID;
 END;
 GO
 
--- EXEC DeleteStudent @StudentID = 12;`}
-          caption="Interactive preview: switch between themes to see the same C# snippet restyled."/>
+-- EXEC usp_DeleteProductReview @ProductReviewID = 1;`}
+          caption="Simple DELETE stored procedure"/>
 
           <p>
             Even a simple DELETE is often placed inside a procedure so that
@@ -750,14 +773,13 @@ GO
           <h2>Session 10 Exercise</h2>
 
           <p>
-            Complete each exercise in order. Use a practice database that
-            contains Employees and Departments tables (or adapt the names to
-            the sample database you are using). After each step, verify the
-            result with a SELECT or by calling the procedure.
+            Complete each exercise in order. Use the AdventureWorks2019
+            database. After each step, verify the result with a SELECT or by
+            calling the procedure.
           </p>
 
           <ol>
-            <li>Create a view that shows Employee Full Name, Department Name, and Salary.</li>
+            <li>Create a view that shows Product Name, ListPrice, and Category Name from the Production schema.</li>
             <li>Create a stored procedure that accepts DepartmentID and returns all employees of that department.</li>
             <li>Modify the stored procedure to also return the total number of employees as an OUTPUT parameter.</li>
             <li>Write queries to list all user tables and all stored procedures in your database.</li>
